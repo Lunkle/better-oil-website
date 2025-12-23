@@ -1,0 +1,16 @@
+
+> oil-co-website@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.1 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+
+✓ Starting...
+✓ Ready in 1145ms
+ GET / 200 in 674ms (compile: 377ms, render: 297ms)
+ GET /?lang=zh 200 in 65ms (compile: 5ms, render: 59ms)
+ GET / 200 in 263ms (compile: 122ms, render: 141ms)
+ GET /?lang=zh 200 in 58ms (compile: 5ms, render: 54ms)
+ GET / 200 in 61ms (compile: 5ms, render: 56ms)
+ GET /?lang=zh 200 in 59ms (compile: 4ms, render: 56ms)
