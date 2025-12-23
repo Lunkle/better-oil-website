@@ -16,8 +16,8 @@ export default function FocusAreas() {
             </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {areas.map((area, index) => (
-            <div key={index} className="group relative bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-shadow overflow-hidden h-80 flex flex-col justify-end p-6 cursor-pointer">
+          {areas.map((area) => (
+            <div key={area.title} className="group relative bg-white border border-gray-200 shadow-sm hover:shadow-lg transition-shadow overflow-hidden h-80 flex flex-col justify-end p-6 cursor-pointer">
               <div className="absolute inset-0 bg-gray-200 group-hover:bg-blue-50 transition-colors">
                   {/* Placeholder for image */}
                   <div className="w-full h-full flex items-center justify-center text-gray-400">
