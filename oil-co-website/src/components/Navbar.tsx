@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Search, Globe, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { usePathname } from 'next/navigation';
 
 interface NavbarProps {
   nav: {
@@ -20,6 +21,7 @@ interface NavbarProps {
 
 export default function Navbar({ nav, currentLang }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
   const toggleLang = currentLang === 'en' ? 'zh' : 'en';
 
   const navLinks = [
@@ -61,7 +63,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
           {/* Right Side Icons */}
           <div className="hidden lg:flex items-center space-x-6">
             <Link
-              href={`/?lang=${toggleLang}`}
+              href={`${pathname}?lang=${toggleLang}`}
               className="flex items-center space-x-2 text-foreground/70 hover:text-primary transition-colors border border-border rounded-full px-3 py-1 text-xs font-bold"
             >
               <Globe className="h-3 w-3" />
@@ -110,7 +112,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
               ))}
               <div className="pt-4 border-t border-border flex justify-between items-center">
                 <Link
-                  href={`/?lang=${toggleLang}`}
+                  href={`${pathname}?lang=${toggleLang}`}
                   onClick={() => setIsOpen(false)}
                   className="flex items-center space-x-2 text-primary font-bold"
                 >
