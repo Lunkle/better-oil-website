@@ -46,15 +46,6 @@ export default function HeroVideo({
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-6xl md:text-9xl font-black text-white tracking-tighter mb-4 drop-shadow-lg">
-            <span className="text-primary">{firstWord}</span> {restOfTitle}
-          </h1>
-          <div className="w-24 h-2 bg-primary mb-8 shadow-[0_0_15px_#ff6600]" />
-
-          <p className="text-xl md:text-3xl text-primary font-black tracking-[0.2em] uppercase mb-8 drop-shadow-md">
-            {subtitle}
-          </p>
-
           <div className="mb-6 space-y-2">
             {descriptionLines.map((line, i) => (
               <p key={i} className="text-white/90 text-2xl leading-relaxed font-bold drop-shadow max-w-3xl">
@@ -63,7 +54,7 @@ export default function HeroVideo({
             ))}
           </div>
 
-          <p className="text-white/80 text-xl font-medium tracking-wide mb-12 drop-shadow">
+          <p className="text-white text-xl font-medium tracking-wide mb-12 drop-shadow">
             {companyName}
           </p>
 
