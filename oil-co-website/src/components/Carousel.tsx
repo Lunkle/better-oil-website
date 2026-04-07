@@ -38,7 +38,7 @@ export default function Carousel({
       setActiveIndex((current) => (current + 1) % tabs.length);
     }, autoSwitchInterval);
     return () => clearInterval(timer);
-  }, [tabs.length, autoSwitchInterval]);
+  }, [tabs.length, autoSwitchInterval, activeIndex]);
 
   // Render active item based on index
   const renderItem = () => {
