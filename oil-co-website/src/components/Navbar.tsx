@@ -77,7 +77,11 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-foreground">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className={`transition-colors ${isOpen ? 'text-primary' : 'text-foreground hover:text-primary'}`}
+              aria-label="Toggle menu"
+            >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
