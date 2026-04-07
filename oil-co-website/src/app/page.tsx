@@ -87,13 +87,13 @@ function HomeContent() {
         {/* Section 1: Hero */}
         <section id="hero" className="snap-start h-screen w-full relative flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0 z-0">
-             <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/20 to-white/80 z-10" />
-             <div className="w-full h-full bg-[#fdfdfd] relative overflow-hidden">
-                {/* Abstract Tech Background */}
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 blur-[100px] rounded-full" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-200/20 blur-[100px] rounded-full" />
-                <div className="absolute inset-0 opacity-5"
-                     style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(0,0,0,0.1) 1px, transparent 0)', backgroundSize: '40px 40px' }}
+             <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-white/10 to-orange-50/30 z-10" />
+             <div className="w-full h-full bg-[#ffffff] relative overflow-hidden">
+                {/* Abstract Tech Background - More vibrant orange accents */}
+                <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/10 blur-[120px] rounded-full animate-pulse" />
+                <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full opacity-[0.03]"
+                     style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #ff6600 1px, transparent 0)', backgroundSize: '30px 30px' }}
                 />
              </div>
           </div>
@@ -104,22 +104,23 @@ function HomeContent() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-6xl md:text-8xl font-black text-foreground tracking-tighter mb-4">
-                {t.hero.title}
+              <h1 className="text-6xl md:text-9xl font-black text-foreground tracking-tighter mb-4">
+                <span className="text-primary">{t.hero.title.split(' ')[0]}</span> {t.hero.title.split(' ').slice(1).join(' ')}
               </h1>
-              <p className="text-xl md:text-2xl text-primary font-bold tracking-widest uppercase mb-8">
+              <div className="w-24 h-2 bg-primary mx-auto mb-8" />
+              <p className="text-xl md:text-3xl text-primary font-black tracking-[0.2em] uppercase mb-8">
                 {t.hero.subtitle}
               </p>
-              <p className="max-w-2xl mx-auto text-foreground/60 text-lg mb-10 leading-relaxed font-medium">
+              <p className="max-w-2xl mx-auto text-foreground/70 text-xl mb-12 leading-relaxed font-bold">
                 {t.hero.description}
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <button className="px-8 py-4 bg-primary text-white font-bold uppercase tracking-widest hover:bg-black transition-all transform hover:-translate-y-1 shadow-lg shadow-primary/20">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <button className="px-10 py-5 bg-primary text-white font-black uppercase tracking-widest hover:bg-black transition-all transform hover:-translate-y-1 shadow-2xl shadow-primary/40 text-lg">
                   {t.hero.explore}
                 </button>
-                <button className="px-8 py-4 border-2 border-primary text-primary font-bold uppercase tracking-widest hover:bg-primary/5 transition-all flex items-center gap-2">
-                  <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                    <div className="w-0 h-0 border-t-[4px] border-t-transparent border-l-[7px] border-l-white border-b-[4px] border-b-transparent ml-0.5" />
+                <button className="px-10 py-5 border-4 border-primary text-primary font-black uppercase tracking-widest hover:bg-primary hover:text-white transition-all flex items-center gap-3 text-lg">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center group-hover:bg-white">
+                    <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[9px] border-l-white border-b-[5px] border-b-transparent ml-1" />
                   </div>
                   {t.hero.video}
                 </button>
@@ -138,8 +139,8 @@ function HomeContent() {
         </section>
 
         {/* Section 2: Strategic Overview */}
-        <section id="global" className="snap-start h-screen w-full relative bg-secondary flex items-center pt-20">
-           <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <section id="global" className="snap-start h-screen w-full relative bg-secondary flex items-center pt-24">
+           <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
               <motion.div
                 initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -236,42 +237,45 @@ function HomeContent() {
         {/* Section 3: Core Technology */}
         <section id="tech" className="snap-start h-screen w-full relative bg-white flex items-center">
            <div className="container mx-auto px-6">
-              <div className="text-center mb-16">
+              <div className="text-center mb-20">
                 <motion.span
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  className="text-primary font-bold tracking-[0.3em] uppercase text-sm mb-4 block"
+                  className="text-primary font-black tracking-[0.4em] uppercase text-sm mb-4 block"
                 >
                   {t.tech.subtitle}
                 </motion.span>
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  className="text-5xl md:text-6xl font-bold text-foreground tracking-tight"
+                  className="text-5xl md:text-7xl font-black text-foreground tracking-tight"
                 >
                   {t.tech.title}
                 </motion.h2>
+                <div className="w-20 h-1.5 bg-primary mx-auto mt-6" />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
                 {t.tech.items.map((item: TechItem, i: number) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.2 }}
-                    className="group relative p-8 bg-secondary border border-border hover:border-primary/50 transition-all duration-500 overflow-hidden shadow-sm hover:shadow-xl"
+                    className="group relative p-10 bg-white border-2 border-border hover:border-primary transition-all duration-500 overflow-hidden shadow-lg hover:shadow-2xl hover:-translate-y-2"
                   >
-                    <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
-                       <Cpu className="text-primary" size={40} />
+                    <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-100 transition-all transform group-hover:scale-110">
+                       <Cpu className="text-primary" size={48} />
                     </div>
-                    <div className="w-12 h-1 bg-primary mb-8 group-hover:w-full transition-all duration-500" />
-                    <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-primary transition-colors">{item.title}</h3>
-                    <p className="text-foreground/50 leading-relaxed mb-8 font-medium">{item.description}</p>
-                    <button className="flex items-center gap-2 text-foreground/40 text-sm font-bold uppercase tracking-widest group-hover:text-primary transition-colors">
-                      Learn More <ExternalLink size={14} />
+                    <div className="w-16 h-2 bg-primary mb-10 group-hover:w-full transition-all duration-500" />
+                    <h3 className="text-2xl font-black text-foreground mb-6 group-hover:text-primary transition-colors leading-tight">{item.title}</h3>
+                    <p className="text-foreground/60 leading-relaxed mb-10 font-bold">{item.description}</p>
+                    <button className="flex items-center gap-3 text-primary text-sm font-black uppercase tracking-widest group-hover:gap-5 transition-all">
+                      Learn More <ExternalLink size={18} />
                     </button>
-                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                    {/* Corner accent */}
+                    <div className="absolute top-0 left-0 w-3 h-3 border-t-2 border-l-2 border-primary" />
+                    <div className="absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 border-primary" />
                   </motion.div>
                 ))}
               </div>
@@ -332,17 +336,17 @@ function HomeContent() {
            </div>
 
            {/* In-page Footer */}
-           <div className="w-full border-t border-border bg-white pt-10 pb-6">
+           <div className="w-full border-t-4 border-primary bg-white pt-16 pb-8">
               <div className="container mx-auto px-6">
                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-8">
                     <div>
-                       <div className="flex items-center space-x-2 mb-4">
-                          <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center rotate-45">
-                             <div className="w-4 h-4 bg-white rounded-full" />
+                       <div className="flex items-center space-x-3 mb-6">
+                          <div className="w-10 h-10 bg-primary rounded-sm flex items-center justify-center rotate-45 shadow-lg shadow-primary/20">
+                             <div className="w-5 h-5 bg-white rounded-full" />
                           </div>
-                          <span className="font-bold text-lg tracking-wider text-foreground uppercase">Better Petroleum</span>
+                          <span className="font-black text-2xl tracking-tighter text-foreground uppercase">Better <span className="text-primary">Petroleum</span></span>
                        </div>
-                       <p className="text-foreground/40 text-sm max-w-sm font-medium">
+                       <p className="text-foreground/60 text-base max-w-sm font-bold">
                           Innovation driving the future of energy. Leading the way in petroleum technology and sustainable solutions.
                        </p>
                     </div>
