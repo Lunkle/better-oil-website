@@ -16,7 +16,8 @@ function HomeContent() {
       <HeroVideo
         title={t.hero.title}
         subtitle={t.hero.subtitle}
-        description={t.hero.description}
+        descriptionLines={t.hero.descriptionLines}
+        companyName={t.hero.companyName}
         exploreText={t.hero.explore}
         videoText={t.hero.video}
       />
