@@ -16,14 +16,55 @@ export const en = {
     video: "Watch Video",
   },
   global: {
-    title: "Global Footprint",
-    subtitle: "Connecting the Global Energy Network",
-    description: "With operations in over 20 countries and regions, we provide professional technical support and services for diverse oil and gas fields.",
+    title: "Core Strategic Pillars",
+    subtitle: "Driving Innovation Across the Industry",
+    description: "Leveraging our core strengths to provide cutting-edge solutions for the global energy landscape.",
     stats: [
-      { label: "Countries", value: "20+" },
-      { label: "Projects", value: "500+" },
-      { label: "Experts", value: "100+" },
-      { label: "Patents", value: "50+" },
+      {
+        label: "Theoretical Innovation",
+        value: "3",
+        suffix: "Main",
+        details: [
+          "Deep Oil & Gas Migration Mechanism",
+          "Complex Reservoir Fracturing Propagation",
+          "Heterogeneous Reservoir Fluid Dynamics"
+        ]
+      },
+      {
+        label: "Strategic Layout",
+        value: "4",
+        suffix: "Major",
+        details: [
+          "Southwest Shale Gas Demonstration Zone",
+          "Northwest Tight Oil Research Base",
+          "Middle East Overseas Service Center",
+          "Southeast Asia Smart Energy R&D Center"
+        ]
+      },
+      {
+        label: "Technical Fields",
+        value: "6",
+        suffix: "Major",
+        details: [
+          "Integrated Drilling & Completion",
+          "Intelligent Stimulation Systems",
+          "Deep Subsurface Sensing Tech",
+          "Green Chemical Additives R&D",
+          "Digital Oilfield Cloud Platform",
+          "Carbon Capture & Storage (CCS)"
+        ]
+      },
+      {
+        label: "Core Experts",
+        value: "127",
+        suffix: "Total",
+        details: [
+          "5 State-Council Allowance Experts",
+          "22 Professor-level Senior Engineers",
+          "15 PhDs from Renowned Universities",
+          "85% R&D Personnel Ratio"
+        ]
+      },
     ],
   },
   tech: {

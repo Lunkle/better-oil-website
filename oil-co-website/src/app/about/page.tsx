@@ -12,12 +12,12 @@ function Content() {
     <div className="min-h-screen bg-background flex flex-col items-center justify-center text-center p-6">
       <Navbar nav={t.nav} currentLang={locale} />
       <div className="space-y-8 max-w-lg">
-        <h1 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tighter">{t.nav.about}</h1>
-        <div className="h-1 w-20 bg-accent mx-auto" />
-        <p className="text-white/40 font-mono text-sm tracking-widest">{t.placeholders.comingSoon}</p>
+        <h1 className="text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tighter">{t.nav.about}</h1>
+        <div className="h-1 w-20 bg-primary mx-auto" />
+        <p className="text-foreground/40 font-mono text-sm tracking-widest">{t.placeholders.comingSoon}</p>
         <Link
           href={`/?lang=${locale}`}
-          className="inline-flex items-center gap-2 text-accent border border-accent/20 px-6 py-3 hover:bg-accent hover:text-black transition-all"
+          className="inline-flex items-center gap-2 text-primary border border-primary/20 px-6 py-3 hover:bg-primary hover:text-white transition-all font-bold"
         >
           <MoveLeft size={16} /> {t.placeholders.backHome}
         </Link>
