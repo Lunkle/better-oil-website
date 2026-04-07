@@ -15,85 +15,76 @@ export const en = {
     explore: "Explore More",
     video: "Watch Video",
   },
-  global: {
-    title: "Core Strategic Pillars",
-    subtitle: "Driving Innovation Across the Industry",
-    description: "Leveraging our core strengths to provide cutting-edge solutions for the global energy landscape.",
-    stats: [
+  carouselTabs: [
+    "Theoretical Innovation",
+    "Strategic Layout",
+    "Technical Fields",
+    "Core Experts"
+  ],
+  carouselItem1: {
+    rows: [
       {
-        label: "Theoretical Innovation",
-        value: "3",
-        suffix: "Main",
-        details: [
-          "Deep Oil & Gas Migration Mechanism",
-          "Complex Reservoir Fracturing Propagation",
-          "Heterogeneous Reservoir Fluid Dynamics"
-        ]
+        topic: "Theory of Rock Self-Restoring Original State Characteristics",
+        detail: "Reveals the rock self-plastic stress reset mechanism, establishing a new understanding of geomechanics."
       },
       {
-        label: "Strategic Layout",
-        value: "4",
-        suffix: "Major",
-        details: [
-          "Southwest Shale Gas Demonstration Zone",
-          "Northwest Tight Oil Research Base",
-          "Middle East Overseas Service Center",
-          "Southeast Asia Smart Energy R&D Center"
-        ]
+        topic: "Effective Reservoir Volume Stimulation Theory",
+        detail: "Creates the scientific basis for optimal stimulation, making production increase effects designable and verifiable."
       },
       {
-        label: "Technical Fields",
-        value: "6",
-        suffix: "Major",
-        details: [
-          "Integrated Drilling & Completion",
-          "Intelligent Stimulation Systems",
-          "Deep Subsurface Sensing Tech",
-          "Green Chemical Additives R&D",
-          "Digital Oilfield Cloud Platform",
-          "Carbon Capture & Storage (CCS)"
-        ]
-      },
-      {
-        label: "Core Experts",
-        value: "127",
-        suffix: "Total",
-        details: [
-          "5 State-Council Allowance Experts",
-          "22 Professor-level Senior Engineers",
-          "15 PhDs from Renowned Universities",
-          "85% R&D Personnel Ratio"
-        ]
-      },
-    ],
+        topic: "Targeted Lubrication Theory",
+        detail: "Disrupts traditional lubrication methods, achieving precise release and breaking the limit of ultra-long horizontal sections."
+      }
+    ]
   },
-  tech: {
-    title: "Core Technologies",
-    subtitle: "Leading with Innovation, Delivering Excellence",
-    items: [
-      {
-        title: "BPS Multi-stage Temporary Plugging Technology",
-        description: "Enables precise interval fracturing, significantly increasing single-well production.",
-      },
-      {
-        title: "NEW-DRILL Systems",
-        description: "Integrated advanced drilling tools to improve ROP and ensure safety.",
-      },
-      {
-        title: "Smart Completion Solutions",
-        description: "Optimizing production processes through digitalization to reduce operational costs.",
-      },
-    ],
+  carouselItem2: {
+    poi: {
+      name: "Production Base",
+      location: "Nanchong, Sichuan",
+      points: [
+        "Covers an area of over 16,000 square meters",
+        "Integrates modern production with advanced laboratories",
+        "Large-scale stable supply from raw materials to finished products"
+      ]
+    }
   },
-  esg: {
-    title: "Sustainability",
-    subtitle: "Green Energy, Responsible Commitment",
-    description: "We are committed to environmental protection and social responsibility, reducing our carbon footprint through innovative technologies and driving a sustainable transition in the energy industry.",
-    areas: [
-      { title: "Environment", description: "Reducing waste emissions and protecting biodiversity." },
-      { title: "Social", description: "Supporting local community development and employee growth." },
-      { title: "Governance", description: "Adhering to integrity and improving risk control systems." },
+  carouselItem3: {
+    leftPillars: [
+      { header: "Core Mechanism", title: "Migration Theory", sub: "Proprietary stress reset technique" },
+      { header: "Fracturing", title: "Volume Stimulation", sub: "Optimal designable effects" },
+      { header: "Lubrication", title: "Targeted Release", sub: "Ultra-long horizontal reach" },
+      { header: "Sensing", title: "Deep Subsurface", sub: "High-res data mapping" },
+      { header: "Chemistry", title: "Green Additives", sub: "Eco-friendly formulas" },
+      { header: "Digital", title: "Cloud Platform", sub: "AI-driven analytics" }
     ],
+    rightCategories: [
+      {
+        title: "Drilling/Completion",
+        items: ["Integrated Tooling", "Smart Well Control", "High-Torque Systems"]
+      },
+      {
+        title: "Reservoir Core",
+        items: ["3D Fluid Modeling", "Geomechanical Analysis"]
+      },
+      {
+        title: "Fracturing Additives",
+        items: ["Nano-Proppants", "Temp-Plugging Agents"]
+      },
+      {
+        title: "Pipeline Protection",
+        items: ["Anti-Corrosion Tech", "Flow Assurance"]
+      }
+    ]
+  },
+  carouselItem4: {
+    departments: [
+      "R&D Center",
+      "Engineering Services",
+      "Global Operations",
+      "Digital Lab",
+      "HSE Division",
+      "Human Resources"
+    ]
   },
   footer: {
     contactUs: "Contact Us",
