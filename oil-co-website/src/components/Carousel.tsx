@@ -7,8 +7,14 @@ import Item2 from "./carousel/Item2";
 import Item3 from "./carousel/Item3";
 import Item4 from "./carousel/Item4";
 
+interface TabInfo {
+  value: string;
+  suffix: string;
+  label: string;
+}
+
 interface CarouselProps {
-  tabs: string[];
+  tabs: TabInfo[];
   item1Data: any;
   item2Data: any;
   item3Data: any;
@@ -55,30 +61,46 @@ export default function Carousel({
       <div className="container mx-auto px-6">
 
         {/* Tab Headers */}
-        <div className="relative flex justify-between items-center mb-12 border-b-2 border-slate-100">
+        <div className="relative flex justify-between items-center mb-16 border-b-2 border-slate-200">
           {tabs.map((tab, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className="relative flex-1 py-4 text-center group"
+              className="relative flex-1 py-8 text-center group overflow-visible"
             >
-              <span
-                className={`text-lg md:text-xl font-black transition-colors ${
-                  activeIndex === idx ? "text-primary" : "text-slate-400 group-hover:text-slate-600"
-                }`}
-              >
-                {tab}
-              </span>
-
-              {/* Active Indicator Sliding Rectangle */}
+              {/* Active Indicator Sliding Background */}
               {activeIndex === idx && (
                 <motion.div
                   layoutId="activeTab"
-                  className="absolute bottom-[-2px] left-0 right-0 h-1 bg-primary"
+                  className="absolute inset-0 bg-primary -top-4 -bottom-4 z-0"
                   initial={false}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 />
               )}
+
+              <div className="relative z-10 flex items-baseline justify-center gap-2">
+                <span
+                  className={`text-7xl font-black transition-colors ${
+                    activeIndex === idx ? "text-white" : "text-slate-800 group-hover:text-primary"
+                  }`}
+                >
+                  {tab.value}
+                </span>
+                <span
+                  className={`text-2xl font-bold transition-colors ${
+                    activeIndex === idx ? "text-white/90" : "text-slate-500 group-hover:text-primary/80"
+                  }`}
+                >
+                  {tab.suffix}
+                </span>
+                <span
+                  className={`text-2xl font-bold ml-2 transition-colors ${
+                    activeIndex === idx ? "text-white" : "text-slate-800 group-hover:text-primary"
+                  }`}
+                >
+                  {tab.label}
+                </span>
+              </div>
             </button>
           ))}
         </div>

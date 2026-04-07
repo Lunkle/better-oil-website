@@ -1,11 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface HeroVideoProps {
   title: string;
   subtitle: string;
-  description: string;
+  descriptionLines: string[];
+  companyName: string;
   exploreText: string;
   videoText: string;
 }
@@ -13,7 +15,8 @@ interface HeroVideoProps {
 export default function HeroVideo({
   title,
   subtitle,
-  description,
+  descriptionLines,
+  companyName,
   exploreText,
   videoText,
 }: HeroVideoProps) {
@@ -23,7 +26,7 @@ export default function HeroVideo({
   const restOfTitle = titleWords.slice(1).join(" ");
 
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-black">
+    <section className="relative h-[60vh] w-full flex items-center justify-start overflow-hidden bg-black">
       {/* Autoplay Background Video */}
       <video
         autoPlay
@@ -37,32 +40,46 @@ export default function HeroVideo({
       </video>
 
       {/* Overlay Content */}
-      <div className="relative z-10 container mx-auto px-6 text-center">
+      <div className="relative z-10 container mx-auto px-6 text-left">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-6xl md:text-9xl font-black text-white tracking-tighter mb-4 drop-shadow-lg">
             <span className="text-primary">{firstWord}</span> {restOfTitle}
           </h1>
-          <div className="w-24 h-2 bg-primary mx-auto mb-8 shadow-[0_0_15px_#ff6600]" />
+          <div className="w-24 h-2 bg-primary mb-8 shadow-[0_0_15px_#ff6600]" />
+
           <p className="text-xl md:text-3xl text-primary font-black tracking-[0.2em] uppercase mb-8 drop-shadow-md">
             {subtitle}
           </p>
-          <p className="max-w-2xl mx-auto text-white/90 text-xl mb-12 leading-relaxed font-bold drop-shadow">
-            {description}
+
+          <div className="mb-6 space-y-2">
+            {descriptionLines.map((line, i) => (
+              <p key={i} className="text-white/90 text-2xl leading-relaxed font-bold drop-shadow max-w-3xl">
+                {line}
+              </p>
+            ))}
+          </div>
+
+          <p className="text-white/80 text-xl font-medium tracking-wide mb-12 drop-shadow">
+            {companyName}
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button className="px-10 py-5 bg-primary text-white font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all transform hover:-translate-y-1 shadow-2xl shadow-primary/40 text-lg">
+
+          <div className="flex flex-col sm:flex-row items-center justify-start gap-6">
+            <Link
+              href="/tech"
+              className="px-10 py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-lg flex items-center justify-center"
+            >
               {exploreText}
-            </button>
-            <button className="px-10 py-5 border-4 border-primary text-white font-black uppercase tracking-widest hover:bg-primary transition-all flex items-center gap-3 text-lg bg-black/30 backdrop-blur-sm">
-              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center group-hover:bg-white">
-                <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[9px] border-l-white border-b-[5px] border-b-transparent ml-1" />
-              </div>
+            </Link>
+            <Link
+              href="/about"
+              className="px-10 py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-lg flex items-center justify-center"
+            >
               {videoText}
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>

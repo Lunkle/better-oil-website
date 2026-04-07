@@ -11,15 +11,19 @@ export const en = {
   hero: {
     title: "BETTER PETROLEUM",
     subtitle: "Innovation Driving the Future of Energy",
-    description: "Dedicated to the R&D and promotion of new oil and gas extraction technologies, providing efficient and reliable energy solutions for global customers.",
-    explore: "Explore More",
-    video: "Watch Video",
+    descriptionLines: [
+      "Defining technology with innovation, delivering promises with service.",
+      "Safeguarding the green future of the industry, powering national energy security."
+    ],
+    companyName: "Better Petroleum Technology Co., Ltd.",
+    explore: "Explore Our Tech",
+    video: "View Global Layout",
   },
   carouselTabs: [
-    "Theoretical Innovation",
-    "Strategic Layout",
-    "Technical Fields",
-    "Core Experts"
+    { value: "3", suffix: "Main", label: "Theoretical Innovations" },
+    { value: "4", suffix: "Major", label: "Strategic Layouts" },
+    { value: "6", suffix: "Major", label: "Technical Fields" },
+    { value: "127", suffix: "Total", label: "Core Experts" }
   ],
   carouselItem1: {
     rows: [
@@ -38,15 +42,38 @@ export const en = {
     ]
   },
   carouselItem2: {
-    poi: {
-      name: "Production Base",
-      location: "Nanchong, Sichuan",
-      points: [
-        "Covers an area of over 16,000 square meters",
-        "Integrates modern production with advanced laboratories",
-        "Large-scale stable supply from raw materials to finished products"
-      ]
-    }
+    pois: [
+      {
+        id: "poi1",
+        name: "Production Base",
+        location: "Nanchong, Sichuan",
+        points: [
+          "Covers an area of over 16,000 square meters",
+          "Integrates modern production with advanced laboratories",
+          "Large-scale stable supply from raw materials to finished products"
+        ]
+      },
+      {
+        id: "poi2",
+        name: "Overseas Service Center",
+        location: "Middle East",
+        points: [
+          "Supporting international drilling operations",
+          "24/7 technical assistance and logistics",
+          "Deep local partnerships"
+        ]
+      },
+      {
+        id: "poi3",
+        name: "R&D Center",
+        location: "Southeast Asia",
+        points: [
+          "Focusing on smart energy solutions",
+          "Collaborative research with top universities",
+          "Pioneering sustainable practices"
+        ]
+      }
+    ]
   },
   carouselItem3: {
     leftPillars: [
@@ -83,7 +110,9 @@ export const en = {
       "Global Operations",
       "Digital Lab",
       "HSE Division",
-      "Human Resources"
+      "Human Resources",
+      "Finance & Legal",
+      "Strategic Planning"
     ]
   },
   footer: {
