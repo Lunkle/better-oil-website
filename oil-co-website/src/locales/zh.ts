@@ -1,58 +1,69 @@
 export const zh = {
   nav: {
     home: "首页",
-    about: "公司简介",
+    about: "关于我们",
+    tech: "核心技术",
+    solutions: "解决方案",
     news: "新闻中心",
-    products: "产品与服务",
-    culture: "企业文化",
-    jobs: "人力资源",
     contact: "联系我们",
-    setHomepage: "设为主页",
-    addFavorite: "加入收藏",
+    lang: "EN",
   },
   hero: {
-    title: "四川省贝特石油技术有限公司",
-    description: "成立于2009年，致力于油气开采新技术的研发和推广应用。",
-    learnMore: "了解更多",
-    watchVideo: "观看视频",
+    title: "贝特石油",
+    subtitle: "创新驱动能源未来",
+    description: "致力于油气开采新技术的研发和推广应用，为全球客户提供高效、可靠的能源解决方案。",
+    explore: "探索更多",
+    video: "观看视频",
   },
-  news: {
-    title: "新闻中心",
-    readMore: "阅读更多",
+  global: {
+    title: "全球布局",
+    subtitle: "连接全球能源网络",
+    description: "我们的业务遍布全球20多个国家和地区，为多样化的油气田提供专业的技术支持和服务。",
+    stats: [
+      { label: "覆盖国家", value: "20+" },
+      { label: "完工项目", value: "500+" },
+      { label: "专家团队", value: "100+" },
+      { label: "专利技术", value: "50+" },
+    ],
+  },
+  tech: {
+    title: "核心技术",
+    subtitle: "技术引领 卓越表现",
     items: [
       {
-        date: "2019-04-29",
-        title: "四川省贝特石油技术有限公司两名员工荣获 “成华工匠”称号",
+        title: "BPS多级暂堵转向压裂技术",
+        description: "实现精准层段压裂，显著提升单井产量。",
       },
       {
-        date: "2023-09-20",
-        title: "油气田用生产线项目建设竣工环境保护验收报告公示",
+        title: "NEW-DRILL钻井系统",
+        description: "集成了先进的钻井工具，提高钻速并确保安全。",
+      },
+      {
+        title: "智能完井解决方案",
+        description: "通过数字化手段优化生产流程，降低运营成本。",
       },
     ],
   },
-  company: {
-    label: "关于我们",
-    title: "公司简介",
-    description: [
-      "四川省贝特石油技术有限公司在2009年注册成立，公司现有职工78人，其中博士3人，硕士15人，本科学历49人，大、中专学历11人。",
-      "现场服务工程师中有5人曾有5年以上就职于贝克、哈里伯顿等国际著名油田服务公司的经历,16人有国内各油田公司研究单位及服务公司5-15年以上的工作经验。",
-      "目前，公司拥有一个素质全面团结向上的管理团队、一支认真负责作风优良的现场服务工程师队伍和一个开拓进取不断创新的研发团队。",
-      "我们长期与中石化、中石油等大型油企及斯伦贝谢、贝克休斯、哈里伯顿等全球知名企业合作，坚持诚信、务实、专业、高效的原则，致力于油气开采新技术的研发和推广应用，受到合作方的广泛好评和尊重。",
+  esg: {
+    title: "可持续发展",
+    subtitle: "绿色能源 责任担当",
+    description: "我们致力于环境保护和社会责任，通过创新技术减少碳足迹，推动能源行业的可持续转型。",
+    areas: [
+      { title: "环境保护", description: "减少废弃物排放，保护生物多样性。" },
+      { title: "社会责任", description: "支持当地社区发展，关注员工成长。" },
+      { title: "公司治理", description: "坚持诚信经营，完善风险防控体系。" },
     ],
-  },
-  products: {
-    title: "产品与成就",
-    description: "近年研制成功了NEW-DRILL、套管保护器、整体式扶正器等多套先进的钻完井工具设备和BPS多级暂堵转向压裂技术，获得多项专利，并在国内外进行了推广应用，取得了明显的社会和经济效益，为保障钻完井安全、提高钻完井效率、降低勘探开发成本发挥了积极的作用。",
   },
   footer: {
     contactUs: "联系我们",
-    addressLabel: "地址：",
-    phoneLabel: "电话：",
-    websiteLabel: "网址：",
     address: "成都市建设路9号1栋高地中心706",
     phone: "028-83298086",
-    website: "www.petrobetter.com",
+    email: "contact@petrobetter.com",
     copyright: "版权所有 © 2025 四川省贝特石油技术有限公司",
-    icp: "备案号：蜀ICP备12003457号-1",
+    icp: "蜀ICP备12003457号-1",
   },
+  placeholders: {
+    comingSoon: "内容正在建设中...",
+    backHome: "返回首页",
+  }
 };
