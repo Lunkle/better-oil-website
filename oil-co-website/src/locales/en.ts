@@ -105,14 +105,14 @@ export const en = {
   },
   carouselItem4: {
     departments: [
-      "R&D Center",
-      "Engineering Services",
-      "Global Operations",
-      "Digital Lab",
-      "HSE Division",
-      "Human Resources",
-      "Finance & Legal",
-      "Strategic Planning"
+      "Organizational Structure",
+      "Board of Directors",
+      "Procurement Process Management",
+      "Better Chemical",
+      "Engineering Team",
+      "Xinjiang/Southwest Project Management Department",
+      "Technology R&D Center",
+      "International Business Department"
     ]
   },
   footer: {
