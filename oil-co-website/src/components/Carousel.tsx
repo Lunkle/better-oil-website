@@ -80,7 +80,7 @@ export default function Carousel({
       <div className="container mx-auto px-6">
 
         {/* Tab Headers with Mobile Controls */}
-        <div className="relative mb-8 md:mb-16 border-b-2 border-slate-200 flex items-center">
+        <div role="tablist" className="relative mb-8 md:mb-16 border-b-2 border-slate-200 flex items-center">
 
           {/* Mobile Prev Button */}
           <button
