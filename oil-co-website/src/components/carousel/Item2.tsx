@@ -90,7 +90,7 @@ export default function Item2({ data }: Item2Props) {
 
               {/* Descriptor Card */}
               <div
-                className="absolute bg-white p-6 shadow-2xl max-w-sm pointer-events-auto border border-border/50"
+                className="absolute bg-white p-6 shadow-2xl w-[320px] pointer-events-auto border border-border/50"
                 style={{ top: pos.cardTop, right: pos.cardRight, transform: 'translate(50%, -50%)' }}
               >
                 <div className="flex items-center gap-4 mb-4">
