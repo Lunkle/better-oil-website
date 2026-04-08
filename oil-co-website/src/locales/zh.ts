@@ -105,23 +105,38 @@ export const zh = {
   },
   carouselItem4: {
     departments: [
-      "研发中心",
-      "工程服务",
-      "全球运营",
-      "数字实验室",
-      "HSE部门",
-      "人力资源",
-      "财务法务",
-      "战略规划"
+      "组织架构",
+      "董事会",
+      "采购流程管理",
+      "贝特化工",
+      "工程师团队",
+      "新疆/西南 项目管理部",
+      "技术研发中心",
+      "国际事业部"
     ]
   },
   footer: {
     contactUs: "联系我们",
-    address: "成都市建设路9号1栋高地中心706",
+    address: "四川省成都市成华区东三环路二段龙潭工业园成济路18号",
     phone: "028-83298086",
     email: "contact@petrobetter.com",
-    copyright: "版权所有 © 2025 四川省贝特石油技术有限公司",
+    companyName: "贝特石油",
+    copyright: "版权所有 © {{year}} 四川省贝特石油技术有限公司",
     icp: "蜀ICP备12003457号-1",
+    links: {
+      company: "公司信息",
+      about: "关于我们",
+      news: "新闻中心",
+      careers: "加入我们",
+      resources: "资源中心",
+      tech: "核心技术",
+      solutions: "解决方案",
+      support: "客户支持",
+      contact: "联系我们",
+      legal: "法律信息",
+      privacy: "隐私政策",
+      terms: "服务条款",
+    }
   },
   placeholders: {
     comingSoon: "内容正在建设中...",

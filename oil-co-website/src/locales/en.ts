@@ -105,23 +105,38 @@ export const en = {
   },
   carouselItem4: {
     departments: [
-      "R&D Center",
-      "Engineering Services",
-      "Global Operations",
-      "Digital Lab",
-      "HSE Division",
-      "Human Resources",
-      "Finance & Legal",
-      "Strategic Planning"
+      "Organizational Structure",
+      "Board of Directors",
+      "Procurement Process Management",
+      "Better Chemical",
+      "Engineering Team",
+      "Xinjiang/Southwest Project Management Department",
+      "Technology R&D Center",
+      "International Business Department"
     ]
   },
   footer: {
     contactUs: "Contact Us",
-    address: "Room 706, Gaodi Center, No. 9 Jianshe Road, Chengdu",
+    address: "No. 18 Chengji Road, Longtan Industrial Park, Section 2, East 3rd Ring Road, Chenghua District, Chengdu, Sichuan, China",
     phone: "028-83298086",
     email: "contact@petrobetter.com",
-    copyright: "Copyright © 2025 Better Petroleum Technology Co., Ltd. All Rights Reserved.",
+    companyName: "Better Petroleum",
+    copyright: "Copyright © {{year}} Better Petroleum Technology Co., Ltd. All Rights Reserved.",
     icp: "ICP: 蜀ICP备12003457号-1",
+    links: {
+      company: "Company",
+      about: "About Us",
+      news: "News",
+      careers: "Careers",
+      resources: "Resources",
+      tech: "Technologies",
+      solutions: "Solutions",
+      support: "Support",
+      contact: "Contact",
+      legal: "Legal",
+      privacy: "Privacy Policy",
+      terms: "Terms of Service",
+    }
   },
   placeholders: {
     comingSoon: "Content is coming soon...",

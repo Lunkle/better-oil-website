@@ -14,9 +14,13 @@ function DepartmentGridButton({ label, index }: { label: string; index: number }
   return (
     <button
       type="button"
-      className="dept-btn cursor-pointer group flex flex-col items-start justify-between p-6 transition-all duration-300 hover:bg-primary hover:text-white"
+      className={`cursor-pointer hover:bg-primary hover:text-white group flex flex-col items-start justify-between p-6 transition-all duration-300 ${
+        isNavy
+          ? "bg-[#1a1a3a] text-white"
+          : "bg-white text-[#1a1a3a]"
+      }`}
     >
-      <span className="text-xl font-black">{label}</span>
+      <span className="text-xl font-black text-left">{label}</span>
       <div className="opacity-50 group-hover:opacity-100 transition-opacity mt-4 md:mt-0">
         <ArrowRight className="w-6 h-6" />
       </div>
