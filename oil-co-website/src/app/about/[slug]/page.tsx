@@ -1,7 +1,5 @@
-import Navbar from "../../../components/Navbar";
-import { en } from "../../../locales/en";
-import { zh } from "../../../locales/zh";
-import Placeholder from "../../placeholder-component";
+import { Suspense } from 'react';
+import AboutSubPageClient from './about-subpage-client';
 
 export function generateStaticParams() {
   const slugs = [
@@ -13,8 +11,6 @@ export function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-import { Suspense } from 'react';
-
 export default async function AboutSubPage({
   params,
 }: {
@@ -25,8 +21,7 @@ export default async function AboutSubPage({
   return (
     <main className="min-h-screen bg-background">
       <Suspense fallback={<div className="pt-24 text-center">Loading...</div>}>
-        {/* We use a client component wrapper in Placeholder for the Navbar to get search params */}
-        <Placeholder title={`About Us: ${slug}`} />
+        <AboutSubPageClient slug={slug} />
       </Suspense>
     </main>
   );
