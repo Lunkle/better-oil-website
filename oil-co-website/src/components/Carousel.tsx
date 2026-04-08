@@ -32,6 +32,20 @@ export default function Carousel({
 }: CarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const tabListRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTabs = () => {
+    if (tabListRef.current) {
+      const navbarHeight = 80;
+      const elementPosition = tabListRef.current.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
 
   // Auto-switch logic
   useEffect(() => {
@@ -53,10 +67,12 @@ export default function Carousel({
 
   const handlePrev = () => {
     setActiveIndex((current) => (current - 1 + tabs.length) % tabs.length);
+    scrollToTabs();
   };
 
   const handleNext = () => {
     setActiveIndex((current) => (current + 1) % tabs.length);
+    scrollToTabs();
   };
 
   // Render active item based on index
@@ -80,7 +96,11 @@ export default function Carousel({
       <div className="container mx-auto px-6">
 
         {/* Tab Headers with Mobile Controls */}
-        <div role="tablist" className="relative mb-8 md:mb-16 border-b-2 border-slate-200 flex items-center">
+        <div
+          ref={tabListRef}
+          role="tablist"
+          className="relative mb-8 md:mb-16 border-b-2 border-slate-200 flex items-center"
+        >
 
           {/* Mobile Prev Button */}
           <button
@@ -99,7 +119,10 @@ export default function Carousel({
             {tabs.map((tab, idx) => (
               <button
                 key={idx}
-                onClick={() => setActiveIndex(idx)}
+                onClick={() => {
+                  setActiveIndex(idx);
+                  scrollToTabs();
+                }}
                 className="relative min-w-[80%] sm:min-w-[50%] md:min-w-0 flex-1 py-4 md:py-8 text-center group overflow-visible snap-center shrink-0"
               >
                 {/* Active Indicator Sliding Background */}
