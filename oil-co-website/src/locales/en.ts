@@ -45,32 +45,48 @@ export const en = {
     pois: [
       {
         id: "poi1",
-        name: "Production Base",
-        location: "Nanchong, Sichuan",
+        name: "Headquarters",
+        location: "Chengdu, Sichuan",
         points: [
-          "Covers an area of over 16,000 square meters",
-          "Integrates modern production with advanced laboratories",
-          "Large-scale stable supply from raw materials to finished products"
+          "A well-structured, experienced elite team of 126 industry professionals",
+          "Premium Grade-A office environment serving as the operational foundation for specialized projects"
         ]
       },
       {
         id: "poi2",
-        name: "Overseas Service Center",
-        location: "Middle East",
+        name: "Overseas Market Expansion",
+        location: "",
         points: [
-          "Supporting international drilling operations",
-          "24/7 technical assistance and logistics",
-          "Deep local partnerships"
+          "Middle East (2025): UAE (Abu Dhabi), Saudi Arabia, Qatar",
+          "Russia & Central Asia (2026): Russia (Siberia), Kazakhstan, Uzbekistan"
         ]
       },
       {
         id: "poi3",
         name: "R&D Center",
-        location: "Southeast Asia",
+        location: "Chengdu, Sichuan",
         points: [
-          "Focusing on smart energy solutions",
-          "Collaborative research with top universities",
-          "Pioneering sustainable practices"
+          "The birthplace of breakthrough technologies, uniting top-tier teams to efficiently translate cutting-edge theories into practice",
+          "Leveraging high-level innovation platforms that integrate industry, academia, and research for advanced technology development and reserves"
+        ]
+      },
+      {
+        id: "poi4",
+        name: "Production Base",
+        location: "Nanchong, Sichuan",
+        points: [
+          "Spanning over 16,000 square meters",
+          "Integrates modern manufacturing facilities with advanced laboratories",
+          "Ensuring a large-scale, stable supply chain from raw materials to finished products"
+        ]
+      },
+      {
+        id: "poi5",
+        name: "Project Management Center",
+        location: "Xinjiang & Southwest Region",
+        points: [
+          "A strategic hub radiating across the western domestic market",
+          "Ensuring efficient material supply and rapid technical response for all projects"
         ]
       }
     ]

@@ -16,11 +16,13 @@ interface Item2Props {
 }
 
 export default function Item2({ data }: Item2Props) {
-  // Hardcoded visual positioning for the 3 placeholder POIs to match the map aesthetic
+  // Hardcoded visual positioning for the 5 placeholder POIs to match the map aesthetic
   const positions = [
-    { top: "35%", right: "25%", cardTop: "20%", cardRight: "40%" }, // Asia/China
-    { top: "45%", right: "35%", cardTop: "50%", cardRight: "50%" }, // Middle East
-    { top: "60%", right: "20%", cardTop: "70%", cardRight: "35%" }  // SE Asia
+    { top: "45%", right: "25%", cardTop: "20%", cardRight: "20%" }, // 1. HQ
+    { top: "35%", right: "40%", cardTop: "20%", cardRight: "80%" }, // 2. Overseas
+    { top: "47%", right: "26%", cardTop: "80%", cardRight: "20%" }, // 3. R&D
+    { top: "46%", right: "24%", cardTop: "80%", cardRight: "80%" }, // 4. Production
+    { top: "40%", right: "30%", cardTop: "50%", cardRight: "50%" }  // 5. Project Mgmt
   ];
 
   return (
