@@ -1,11 +1,62 @@
 export const zh = {
   nav: {
-    home: "首页",
-    about: "关于我们",
-    tech: "核心技术",
-    solutions: "解决方案",
-    news: "新闻中心",
-    contact: "联系我们",
+    about: {
+      name: "关于我们",
+      href: "/about",
+      items: [
+        { name: "公司简介", href: "/about/company-profile" },
+        { name: "使命愿景", href: "/about/mission-vision" },
+        { name: "发展历程", href: "/about/development-history" },
+        { name: "荣誉资质", href: "/about/honors-qualifications" }
+      ]
+    },
+    tech: {
+      name: "核心技术",
+      href: "/tech",
+      items: [
+        {
+          name: "钻井提速技术",
+          subItems: [
+            { name: "钻井恒扭恒压提速技术", href: "/tech/drilling-speed" }
+          ]
+        },
+        {
+          name: "超高难度成井技术",
+          subItems: [
+            { name: "微胶囊靶向润滑技术", href: "/tech/ultra-difficult-well" }
+          ]
+        },
+        {
+          name: "页岩油气改造技术",
+          subItems: [
+            { name: "低摩阻清洁变粘压裂液技术", href: "/tech/shale-oil-gas-1" },
+            { name: "页岩油气低伤害多维度体积压裂技术", href: "/tech/shale-oil-gas-2" }
+          ]
+        },
+        {
+          name: "非常规储层改造技术",
+          subItems: [
+            { name: "煤层气原位增能解吸压裂新技术", href: "/tech/unconventional-1" },
+            { name: "碳酸盐岩靶向控缝深度酸压技术", href: "/tech/unconventional-2" }
+          ]
+        },
+        {
+          name: "油气管道防腐工程",
+          subItems: [
+            { name: "采输管道可视化智能腐蚀防治技术", href: "/tech/pipeline-anti-corrosion" }
+          ]
+        },
+        {
+          name: "老井改造",
+          subItems: [
+            { name: "老井二次治理新技术", href: "/tech/old-well-renovation" }
+          ]
+        }
+      ]
+    },
+    solutions: { name: "解决方案", href: "/solutions" },
+    news: { name: "新闻中心", href: "/news" },
+    contact: { name: "联系我们", href: "/contact" },
     lang: "EN",
   },
   hero: {
