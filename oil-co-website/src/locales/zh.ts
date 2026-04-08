@@ -20,10 +20,10 @@ export const zh = {
     video: "查看全球布局",
   },
   carouselTabs: [
-    { value: "3", suffix: "大", label: "理论创新" },
-    { value: "4", suffix: "大", label: "战略布局" },
-    { value: "6", suffix: "大", label: "技术领域" },
-    { value: "127", suffix: "人", label: "核心团队" }
+    { value: "3", label: "大理论创新" },
+    { value: "4", label: "大战略布局" },
+    { value: "6", label: "大技术领域" },
+    { value: "127", label: "人核心团队" }
   ],
   carouselItem1: {
     rows: [
