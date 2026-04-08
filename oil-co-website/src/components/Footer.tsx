@@ -10,6 +10,7 @@ interface FooterProps {
     address: string;
     phone: string;
     email: string;
+    companyName: string;
     copyright: string;
     icp: string;
     links: {
@@ -42,7 +43,7 @@ export default function Footer({ t, currentLang }: FooterProps) {
             <Link href={`/?lang=${currentLang}`} className="inline-block">
               <Image
                 src="/logo/logo-with-company-name.png"
-                alt="Better Petroleum"
+                alt={t.companyName}
                 width={200}
                 height={60}
                 className="h-12 w-auto object-contain"
@@ -137,7 +138,7 @@ export default function Footer({ t, currentLang }: FooterProps) {
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="text-foreground/40 text-xs font-medium space-x-4">
-            <span>{t.copyright.replace("2025", currentYear.toString())}</span>
+            <span>{t.copyright.replace("{{year}}", currentYear.toString())}</span>
             <span className="hidden md:inline">|</span>
             <span className="block md:inline mt-2 md:mt-0">{t.icp}</span>
           </div>

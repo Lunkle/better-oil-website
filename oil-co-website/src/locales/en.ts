@@ -120,7 +120,8 @@ export const en = {
     address: "No. 18 Chengji Road, Longtan Industrial Park, Section 2, East 3rd Ring Road, Chenghua District, Chengdu, Sichuan, China",
     phone: "028-83298086",
     email: "contact@petrobetter.com",
-    copyright: "Copyright © 2025 Better Petroleum Technology Co., Ltd. All Rights Reserved.",
+    companyName: "Better Petroleum",
+    copyright: "Copyright © {{year}} Better Petroleum Technology Co., Ltd. All Rights Reserved.",
     icp: "ICP: 蜀ICP备12003457号-1",
     links: {
       company: "Company",

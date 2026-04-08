@@ -120,7 +120,8 @@ export const zh = {
     address: "四川省成都市成华区东三环路二段龙潭工业园成济路18号",
     phone: "028-83298086",
     email: "contact@petrobetter.com",
-    copyright: "版权所有 © 2025 四川省贝特石油技术有限公司",
+    companyName: "贝特石油",
+    copyright: "版权所有 © {{year}} 四川省贝特石油技术有限公司",
     icp: "蜀ICP备12003457号-1",
     links: {
       company: "公司信息",
