@@ -8,17 +8,14 @@ interface Item4Props {
   };
 }
 
-function DepartmentGridButton({ label, index }: { label: string; index: number }) {
+function DepartmentGridButton({ label }: { label: string }) {
   // Using pure CSS rules for checkerboard to properly handle responsive grid changes
   // instead of hardcoding row/col math that only works for 4-columns
+
   return (
     <button
       type="button"
-      className={`cursor-pointer hover:bg-primary hover:text-white group flex flex-col items-start justify-between p-6 transition-all duration-300 ${
-        isNavy
-          ? "bg-[#1a1a3a] text-white"
-          : "bg-white text-[#1a1a3a]"
-      }`}
+      className="dept-btn cursor-pointer group flex flex-col items-start justify-between p-6 transition-all duration-300 hover:bg-primary hover:text-white"
     >
       <span className="text-xl font-black text-left">{label}</span>
       <div className="opacity-50 group-hover:opacity-100 transition-opacity mt-4 md:mt-0">
@@ -52,7 +49,7 @@ export default function Item4({ data }: Item4Props) {
       {/* Grid of Buttons with Checkerboard Shading */}
       <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full h-full border border-[#1a1a3a]/10">
         {data.departments.map((dept, idx) => (
-          <DepartmentGridButton key={idx} label={dept} index={idx} />
+          <DepartmentGridButton key={idx} label={dept} />
         ))}
       </div>
     </div>
