@@ -112,7 +112,7 @@ export default function Carousel({
                   />
                 )}
 
-                <div className="relative z-10 flex items-baseline justify-center gap-1 md:gap-2 px-2">
+                <div className="relative z-10 flex items-end justify-center text-start gap-1 md:gap-2 px-2">
                   <span
                     className={`text-4xl md:text-7xl font-black transition-colors ${
                       activeIndex === idx ? "text-white" : "text-slate-800 group-hover:text-primary"
