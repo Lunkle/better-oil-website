@@ -71,10 +71,10 @@ export const en = {
     video: "View Global Layout",
   },
   carouselTabs: [
-    { value: "3", label: "Main Theoretical Innovations" },
-    { value: "4", label: "Major Strategic Layouts" },
-    { value: "6", label: "Major Technical Fields" },
-    { value: "127", label: "Total Core Experts" }
+    { value: "3", suffix: "Main", label: "Theoretical Innovations" },
+    { value: "4", suffix: "Major", label: "Strategic Layouts" },
+    { value: "6", suffix: "Major", label: "Technical Fields" },
+    { value: "127", suffix: "Total", label: "Core Experts" }
   ],
   carouselItem1: {
     rows: [

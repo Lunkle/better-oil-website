@@ -31,11 +31,7 @@ export default function Item2({ data }: Item2Props) {
       />
 
       {/* SVG Container for Curved Dotted Lines */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none z-0"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
+      <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
         <defs>
           <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5">
             <circle cx="5" cy="5" r="5" fill="#ff6600" />
@@ -45,24 +41,17 @@ export default function Item2({ data }: Item2Props) {
           if (!positions[idx]) return null;
           const pos = positions[idx];
 
-          // Since we are using "right" in CSS, X coordinate from left is (100 - right).
-          const xStart = 100 - parseInt(pos.cardRight);
-          const yStart = parseInt(pos.cardTop);
-          const xEnd = 100 - parseInt(pos.right);
-          const yEnd = parseInt(pos.top);
-
-          // Control point for quadratic curve
-          const cx = (xStart + xEnd) / 2;
-          const cy = Math.min(yStart, yEnd) - 10;
-
+          // Using percentages in path is tricky, so we rely on relative visual proximity.
+          // This creates a curved dotted line effect from the card area to the point area.
+          // Note: In a production scenario, precise coordinate mapping would be needed.
           return (
             <path
               key={`path-${idx}`}
-              d={`M ${xStart} ${yStart} Q ${cx} ${cy} ${xEnd} ${yEnd}`}
+              d={`M ${parseInt(pos.cardRight)}% ${parseInt(pos.cardTop)}% Q ${(parseInt(pos.cardRight) + parseInt(pos.right))/2}% ${parseInt(pos.top) - 10}% ${parseInt(pos.right)}% ${parseInt(pos.top)}%`}
               fill="none"
               stroke="#1a1a3a"
-              strokeWidth="0.5"
-              strokeDasharray="1 1"
+              strokeWidth="2"
+              strokeDasharray="4 4"
               className="opacity-40"
             />
           );
