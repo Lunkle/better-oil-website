@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import Navbar from "../components/Navbar";
 import HeroVideo from "../components/HeroVideo";
 import Carousel from "../components/Carousel";
+import Footer from "../components/Footer";
 import { useTranslation } from "../hooks/useTranslation";
 
 function HomeContent() {
@@ -29,6 +30,8 @@ function HomeContent() {
         item4Data={t.carouselItem4}
         autoSwitchInterval={5000}
       />
+
+      <Footer t={t.footer} currentLang={locale} />
     </main>
   );
 }

@@ -117,11 +117,25 @@ export const zh = {
   },
   footer: {
     contactUs: "联系我们",
-    address: "成都市建设路9号1栋高地中心706",
+    address: "四川省成都市成华区东三环路二段龙潭工业园成济路18号",
     phone: "028-83298086",
     email: "contact@petrobetter.com",
     copyright: "版权所有 © 2025 四川省贝特石油技术有限公司",
     icp: "蜀ICP备12003457号-1",
+    links: {
+      company: "公司信息",
+      about: "关于我们",
+      news: "新闻中心",
+      careers: "加入我们",
+      resources: "资源中心",
+      tech: "核心技术",
+      solutions: "解决方案",
+      support: "客户支持",
+      contact: "联系我们",
+      legal: "法律信息",
+      privacy: "隐私政策",
+      terms: "服务条款",
+    }
   },
   placeholders: {
     comingSoon: "内容正在建设中...",
