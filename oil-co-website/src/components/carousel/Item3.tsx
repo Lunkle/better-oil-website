@@ -36,7 +36,7 @@ export default function Item3({ data }: Item3Props) {
             {/* Content */}
             <h4 className="text-xl font-black text-foreground mb-2">{pillar.title}</h4>
             <div className="flex items-start gap-2 mb-4">
-               <div className="w-1.5 h-1.5 bg-primary mt-2 flex-shrink-0" />
+               <div className="w-1.5 h-1.5 bg-primary mt-2 shrink-0" />
                <p className="text-sm text-foreground/70 font-medium">{pillar.sub}</p>
             </div>
 
@@ -54,8 +54,6 @@ export default function Item3({ data }: Item3Props) {
 
       {/* Right Side: Product System Vertical List */}
       <div className="w-1/3 bg-slate-800 p-8 text-white flex flex-col justify-center">
-         <h3 className="text-2xl font-black mb-8 border-b border-white/20 pb-4">Product System</h3>
-
          <div className="space-y-8">
             {data.rightCategories.map((cat, idx) => (
               <div key={idx}>
