@@ -14,12 +14,11 @@ function HomeContent() {
       <Navbar nav={t.nav} currentLang={locale} />
 
       <HeroVideo
-        title={t.hero.title}
-        subtitle={t.hero.subtitle}
         descriptionLines={t.hero.descriptionLines}
         companyName={t.hero.companyName}
         exploreText={t.hero.explore}
         videoText={t.hero.video}
+        currentLang={locale}
       />
 
       <Carousel
