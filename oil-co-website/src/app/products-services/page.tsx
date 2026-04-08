@@ -12,7 +12,7 @@ function Content() {
     <div className="min-h-screen bg-background flex flex-col items-center justify-center text-center p-6">
       <Navbar nav={t.nav} currentLang={locale} />
       <div className="space-y-8 max-w-lg">
-        <h1 className="text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tighter">{t.nav.solutions.name}</h1>
+        <h1 className="text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tighter">{t.nav.productsServices.name}</h1>
         <div className="h-1 w-20 bg-primary mx-auto" />
         <p className="text-foreground/40 font-mono text-sm tracking-widest">{t.placeholders.comingSoon}</p>
         <Link
@@ -26,7 +26,7 @@ function Content() {
   );
 }
 
-export default function SolutionsPage() {
+export default function ProductsServicesPage() {
   return (
     <Suspense fallback={null}>
       <Content />

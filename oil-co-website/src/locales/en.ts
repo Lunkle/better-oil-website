@@ -54,9 +54,10 @@ export const en = {
         }
       ]
     },
-    solutions: { name: "Solutions", href: "/solutions" },
-    news: { name: "News", href: "/news" },
-    contact: { name: "Contact", href: "/contact" },
+    productsServices: { name: "Products & Services", href: "/products-services" },
+    cases: { name: "Performance & Cases", href: "/cases" },
+    news: { name: "News & Dynamics", href: "/news" },
+    cooperation: { name: "Resource Cooperation", href: "/cooperation" },
     lang: "中文",
   },
   hero: {

@@ -27,9 +27,10 @@ interface NavbarProps {
   nav: {
     about: NavSection;
     tech: NavSection;
-    solutions: { name: string; href: string };
+    productsServices: { name: string; href: string };
+    cases: { name: string; href: string };
     news: { name: string; href: string };
-    contact: { name: string; href: string };
+    cooperation: { name: string; href: string };
     lang: string;
   };
   currentLang: 'en' | 'zh';
@@ -42,11 +43,12 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
   const toggleLang = currentLang === 'en' ? 'zh' : 'en';
 
   const navLinks = [
-    { ...nav.about, key: 'about', hasDropdown: true, type: 'single' as const },
     { ...nav.tech, key: 'tech', hasDropdown: true, type: 'double' as const },
-    { ...nav.solutions, key: 'solutions', hasDropdown: false, type: 'none' as const },
+    { ...nav.about, key: 'about', hasDropdown: true, type: 'single' as const },
+    { ...nav.productsServices, key: 'productsServices', hasDropdown: false, type: 'none' as const },
+    { ...nav.cases, key: 'cases', hasDropdown: false, type: 'none' as const },
     { ...nav.news, key: 'news', hasDropdown: false, type: 'none' as const },
-    { ...nav.contact, key: 'contact', hasDropdown: false, type: 'none' as const },
+    { ...nav.cooperation, key: 'cooperation', hasDropdown: false, type: 'none' as const },
   ];
 
   return (

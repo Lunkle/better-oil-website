@@ -54,9 +54,10 @@ export const zh = {
         }
       ]
     },
-    solutions: { name: "解决方案", href: "/solutions" },
-    news: { name: "新闻中心", href: "/news" },
-    contact: { name: "联系我们", href: "/contact" },
+    productsServices: { name: "产品与服务", href: "/products-services" },
+    cases: { name: "业绩与案例", href: "/cases" },
+    news: { name: "新闻与动态", href: "/news" },
+    cooperation: { name: "资源合作", href: "/cooperation" },
     lang: "EN",
   },
   hero: {
