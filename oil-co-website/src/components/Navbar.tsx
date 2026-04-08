@@ -113,19 +113,17 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
                         </div>
 
                         {/* Right Column */}
-                        {activeTechItem && activeTechItem.subItems && (
-                          <div className="w-[320px] bg-white py-2">
-                            {activeTechItem.subItems.map((subItem, idx) => (
-                              <Link
-                                key={idx}
-                                href={`${subItem.href}?lang=${currentLang}`}
-                                className="block px-6 py-3 text-foreground/80 hover:text-primary transition-colors whitespace-nowrap hover:bg-gray-50"
-                              >
-                                <span className="mr-2">&gt;</span> {subItem.name}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
+                        <div className="w-[320px] bg-white py-2">
+                          {activeTechItem && activeTechItem.subItems && activeTechItem.subItems.map((subItem, idx) => (
+                            <Link
+                              key={idx}
+                              href={`${subItem.href}?lang=${currentLang}`}
+                              className="block px-6 py-3 text-foreground/80 hover:text-primary transition-colors whitespace-nowrap hover:bg-gray-50"
+                            >
+                              <span className="mr-2">&gt;</span> {subItem.name}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     )}
                   </div>
