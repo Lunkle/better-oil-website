@@ -22,10 +22,10 @@ interface Item3Props {
 
 export default function Item3({ data }: Item3Props) {
   return (
-    <div className="relative w-full h-[600px] bg-white overflow-hidden border border-border p-8 flex gap-12">
+    <div className="relative w-full min-h-[600px] md:h-[600px] bg-white overflow-hidden border border-border p-4 md:p-8 flex flex-col md:flex-row gap-6 md:gap-12">
 
       {/* Left Side: 3x2 Pillars */}
-      <div className="w-2/3 grid grid-cols-2 grid-rows-3 gap-6">
+      <div className="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-2 grid-rows-6 md:grid-rows-3 gap-4 md:gap-6">
         {data.leftPillars.map((pillar, idx) => (
           <div key={idx} className="flex flex-col h-full bg-slate-50 border border-slate-100 p-4 shadow-sm">
             {/* Parallelogram Header */}
@@ -53,8 +53,8 @@ export default function Item3({ data }: Item3Props) {
       </div>
 
       {/* Right Side: Product System Vertical List */}
-      <div className="w-1/3 bg-slate-800 p-8 text-white flex flex-col justify-center">
-         <div className="space-y-8">
+      <div className="hidden md:flex w-1/3 bg-slate-800 p-8 text-white flex-col justify-center">
+         <div className="space-y-8 overflow-y-auto">
             {data.rightCategories.map((cat, idx) => (
               <div key={idx}>
                  <h4 className="text-lg font-bold text-primary mb-3">{cat.title}</h4>

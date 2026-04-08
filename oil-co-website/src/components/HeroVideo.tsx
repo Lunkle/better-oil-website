@@ -19,7 +19,7 @@ export default function HeroVideo({
   currentLang,
 }: HeroVideoProps) {
   return (
-    <section className="relative h-[60vh] w-full flex items-center justify-start overflow-hidden bg-black">
+    <section className="relative min-h-[100svh] md:min-h-0 md:h-[60vh] py-20 md:py-0 w-full flex items-center justify-start overflow-hidden bg-black">
       {/* Autoplay Background Video */}
       <video
         autoPlay
@@ -39,28 +39,28 @@ export default function HeroVideo({
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="mb-6 space-y-2">
+          <div className="mb-4 md:mb-6 space-y-2">
             {descriptionLines.map((line, i) => (
-              <p key={i} className="text-white/90 text-2xl leading-relaxed font-bold drop-shadow max-w-3xl">
+              <p key={i} className="text-white/90 text-lg md:text-2xl leading-relaxed font-bold drop-shadow max-w-3xl">
                 {line}
               </p>
             ))}
           </div>
 
-          <p className="text-white text-xl font-medium tracking-wide mb-12 drop-shadow">
+          <p className="text-white text-base md:text-xl font-medium tracking-wide mb-8 md:mb-12 drop-shadow">
             {companyName}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-start gap-6">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 md:gap-6">
             <Link
               href={`/tech?lang=${currentLang}`}
-              className="px-10 py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-lg flex items-center justify-center"
+              className="px-6 py-4 md:px-10 md:py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-base md:text-lg flex items-center justify-center text-center"
             >
               {exploreText}
             </Link>
             <Link
               href={`/contact?lang=${currentLang}`}
-              className="px-10 py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-lg flex items-center justify-center"
+              className="px-6 py-4 md:px-10 md:py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-base md:text-lg flex items-center justify-center text-center"
             >
               {videoText}
             </Link>

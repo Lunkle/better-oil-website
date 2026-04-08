@@ -8,7 +8,7 @@ interface Item1Props {
 
 export default function Item1({ data }: Item1Props) {
   return (
-    <div className="relative w-full h-[600px] bg-slate-800 flex items-center justify-center p-8 overflow-hidden">
+    <div className="relative w-full min-h-[600px] bg-slate-800 flex items-center justify-center p-8 overflow-hidden">
       {/* Background Image Placeholder */}
       <div
         className="absolute inset-0 opacity-40 mix-blend-overlay bg-cover bg-center"
@@ -16,13 +16,13 @@ export default function Item1({ data }: Item1Props) {
       />
 
       {/* 3 rows, 2 columns (Left: Topic, Right: Detail) */}
-      <div className="relative z-10 max-w-5xl w-full flex flex-col gap-y-12">
+      <div className="relative z-10 max-w-5xl w-full flex flex-col gap-y-8 md:gap-y-12">
         {data.rows.map((row, idx) => (
-          <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-x-16 items-center">
-            <h3 className="text-3xl font-black text-white leading-tight">
+          <div key={idx} className="grid grid-cols-1 md:grid-cols-2 gap-y-2 md:gap-y-0 gap-x-16 items-start md:items-center">
+            <h3 className="text-2xl md:text-3xl font-black text-white leading-tight">
               {row.topic}
             </h3>
-            <p className="text-xl text-white/80 font-medium leading-relaxed">
+            <p className="text-lg md:text-xl text-white/80 font-medium leading-relaxed">
               {row.detail}
             </p>
           </div>
