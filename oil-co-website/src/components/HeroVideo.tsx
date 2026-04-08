@@ -4,27 +4,20 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 
 interface HeroVideoProps {
-  title: string;
-  subtitle: string;
   descriptionLines: string[];
   companyName: string;
   exploreText: string;
   videoText: string;
+  currentLang: string;
 }
 
 export default function HeroVideo({
-  title,
-  subtitle,
   descriptionLines,
   companyName,
   exploreText,
   videoText,
+  currentLang,
 }: HeroVideoProps) {
-  // Split title to stylize the first word like in the original page
-  const titleWords = title.split(" ");
-  const firstWord = titleWords[0];
-  const restOfTitle = titleWords.slice(1).join(" ");
-
   return (
     <section className="relative h-[60vh] w-full flex items-center justify-start overflow-hidden bg-black">
       {/* Autoplay Background Video */}
@@ -60,13 +53,13 @@ export default function HeroVideo({
 
           <div className="flex flex-col sm:flex-row items-center justify-start gap-6">
             <Link
-              href="/tech"
+              href={`/tech?lang=${currentLang}`}
               className="px-10 py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-lg flex items-center justify-center"
             >
               {exploreText}
             </Link>
             <Link
-              href="/about"
+              href={`/contact?lang=${currentLang}`}
               className="px-10 py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-lg flex items-center justify-center"
             >
               {videoText}
