@@ -35,7 +35,7 @@ export default function Footer({ t, currentLang }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-brand-yellow text-brand-deep-blue border-t border-brand-deep-blue pt-16 pb-8">
+    <footer className="bg-brand-white text-brand-deep-blue border-t border-brand-deep-blue/10 pt-16 pb-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Logo and About */}
@@ -46,7 +46,7 @@ export default function Footer({ t, currentLang }: FooterProps) {
                 alt={t.companyName}
                 width={200}
                 height={60}
-                className="h-12 w-auto object-contain brightness-0"
+                className="h-12 w-auto object-contain"
               />
             </Link>
             <div className="flex space-x-4">
