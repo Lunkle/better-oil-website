@@ -15,10 +15,31 @@ interface TabInfo {
 
 interface CarouselProps {
   tabs: TabInfo[];
-  item1Data: any;
-  item2Data: any;
-  item3Data: any;
-  item4Data: any;
+  item1Data: {
+    rows: { topic: string; detail: string }[];
+  };
+  item2Data: {
+    pois: {
+      id: string;
+      name: string;
+      location: string;
+      points: string[];
+    }[];
+  };
+  item3Data: {
+    leftPillars: {
+      header: string;
+      title: string;
+      sub: string;
+    }[];
+    rightCategories: {
+      title: string;
+      items: string[];
+    }[];
+  };
+  item4Data: {
+    departments: string[];
+  };
   autoSwitchInterval?: number; // in milliseconds
 }
 
