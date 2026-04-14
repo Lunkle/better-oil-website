@@ -30,19 +30,19 @@ export default function Item4({ data }: Item4Props) {
     <div className="relative w-full min-h-[600px] md:h-[600px] bg-brand-white flex flex-col border border-border">
       <style dangerouslySetInnerHTML={{__html: `
         /* 1 column: alternate rows */
-        .dept-btn { background-color: #fbfcff; color: #0a2b4e; }
-        .dept-btn:nth-child(even) { background-color: #0a2b4e; color: #fbfcff; }
+        .dept-btn { background-color: var(--brand-white); color: var(--brand-deep-blue); }
+        .dept-btn:nth-child(even) { background-color: var(--brand-deep-blue); color: var(--brand-white); }
 
         /* 2 columns (sm breakpoint and up) */
         @media (min-width: 640px) {
-          .dept-btn:nth-child(even) { background-color: #fbfcff; color: #0a2b4e; }
-          .dept-btn:nth-child(4n+2), .dept-btn:nth-child(4n+3) { background-color: #0a2b4e; color: #fbfcff; }
+          .dept-btn:nth-child(even) { background-color: var(--brand-white); color: var(--brand-deep-blue); }
+          .dept-btn:nth-child(4n+2), .dept-btn:nth-child(4n+3) { background-color: var(--brand-deep-blue); color: var(--brand-white); }
         }
 
         /* 4 columns (md breakpoint and up) */
         @media (min-width: 768px) {
-          .dept-btn:nth-child(4n+2), .dept-btn:nth-child(4n+3) { background-color: #fbfcff; color: #0a2b4e; }
-          .dept-btn:nth-child(8n+2), .dept-btn:nth-child(8n+4), .dept-btn:nth-child(8n+5), .dept-btn:nth-child(8n+7) { background-color: #0a2b4e; color: #fbfcff; }
+          .dept-btn:nth-child(4n+2), .dept-btn:nth-child(4n+3) { background-color: var(--brand-white); color: var(--brand-deep-blue); }
+          .dept-btn:nth-child(8n+2), .dept-btn:nth-child(8n+4), .dept-btn:nth-child(8n+5), .dept-btn:nth-child(8n+7) { background-color: var(--brand-deep-blue); color: var(--brand-white); }
         }
       `}} />
 
