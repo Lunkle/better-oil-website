@@ -18,30 +18,30 @@ interface Item2Props {
 }
 
 export default function Item2({ data }: Item2Props) {
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(true);
 
   // Hardcoded visual positioning for the 5 POIs to match the map aesthetic
   // Note: Using left/top coordinates relative to the map container for both dots and cards.
   const positions = [
     // 1. Headquarters (Chengdu, Sichuan)
-    { dotTop: "35%", dotLeft: "75%", cardTop: "10%", cardLeft: "75%", cardAlign: "right" },
+    { dotTop: "55%", dotLeft: "52%", cardTop: "15%", cardLeft: "85%", cardAlign: "right" },
     // 2. Overseas Market Expansion (Middle East / Russia / Central Asia)
-    { dotTop: "40%", dotLeft: "60%", cardTop: "5%", cardLeft: "5%", cardAlign: "left" },
+    { dotTop: "60%", dotLeft: "52%", cardTop: "65%", cardLeft: "90%", cardAlign: "right" },
     // 3. R&D Center (Chengdu, Sichuan)
-    { dotTop: "38%", dotLeft: "75%", cardTop: "80%", cardLeft: "60%", cardAlign: "left" },
+    { dotTop: "58%", dotLeft: "53%", cardTop: "82%", cardLeft: "45%", cardAlign: "left" },
     // 4. Production Base (Nanchong, Sichuan)
-    { dotTop: "36%", dotLeft: "76%", cardTop: "90%", cardLeft: "95%", cardAlign: "right" },
+    { dotTop: "56%", dotLeft: "54%", cardTop: "65%", cardLeft: "15%", cardAlign: "left" },
     // 5. Project Management Center (Xinjiang, Southwest Region)
-    { dotTop: "30%", dotLeft: "70%", cardTop: "50%", cardLeft: "10%", cardAlign: "left" }
+    { dotTop: "50%", dotLeft: "49%", cardTop: "15%", cardLeft: "20%", cardAlign: "left" }
   ];
 
   const displayPois = showAll ? data.pois : data.pois.slice(0, 2);
 
   return (
-    <div className="relative w-full flex flex-col md:block md:h-[600px] bg-brand-white border border-border">
+    <div className="relative w-full flex flex-col md:block md:h-[600px] bg-[#fdfdfe] border border-border">
 
       {/* Map Container (fixed height on mobile, full height absolute on desktop) */}
-      <div className="relative w-full h-[300px] md:h-full md:absolute md:inset-0 overflow-hidden bg-[#e0e0e0]/20">
+      <div className="relative w-full h-[300px] md:h-full md:absolute md:inset-0 overflow-hidden bg-[#fdfdfe]">
         <div
           className="absolute inset-0 opacity-40 bg-[url('/carousel/2-map/map.png')] bg-no-repeat bg-center bg-cover md:bg-contain"
         />
