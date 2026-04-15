@@ -45,32 +45,53 @@ export const en = {
     pois: [
       {
         id: "poi1",
-        name: "Production Base",
-        location: "Nanchong, Sichuan",
+        name: "Headquarters",
+        location: "Chengdu, Sichuan",
+        images: ["/carousel/2-map/hq-1.webp", "/carousel/2-map/hq-2.webp"],
         points: [
-          "Covers an area of over 16,000 square meters",
-          "Integrates modern production with advanced laboratories",
-          "Large-scale stable supply from raw materials to finished products"
+          "Bringing together 126 industry professionals, a highly skilled team with clear structure and rich experience",
+          "Class-A 5A office environment, providing a solid foundation for segmented project operations"
         ]
       },
       {
         id: "poi2",
-        name: "Overseas Service Center",
-        location: "Middle East",
+        name: "Overseas Market Expansion",
+        location: "",
+        images: ["/carousel/2-map/overseas-market-exp.jpg"],
         points: [
-          "Supporting international drilling operations",
-          "24/7 technical assistance and logistics",
-          "Deep local partnerships"
+          "Middle East (2025): UAE (Abu Dhabi), Saudi Arabia, Qatar",
+          "Russia and Central Asia (2026): Russia (Siberia), Kazakhstan, Uzbekistan"
         ]
       },
       {
         id: "poi3",
         name: "R&D Center",
-        location: "Southeast Asia",
+        location: "Chengdu, Sichuan",
+        images: ["/carousel/2-map/rnd-1.jpg", "/carousel/2-map/rnd-2.webp"],
         points: [
-          "Focusing on smart energy solutions",
-          "Collaborative research with top universities",
-          "Pioneering sustainable practices"
+          "The birthplace of breakthrough technologies, gathering top-tier teams to ensure efficient conversion of cutting-edge theories",
+          "Relying on a high-level innovation platform integrating industry, academia, and research to conduct advanced technology R&D and reserves"
+        ]
+      },
+      {
+        id: "poi4",
+        name: "Production Base",
+        location: "Nanchong, Sichuan",
+        images: ["/carousel/2-map/production-base.png"],
+        points: [
+          "Covering an area of over 16,000 square meters",
+          "Integrating modern production and advanced laboratories",
+          "Large-scale stable supply from raw materials to finished products"
+        ]
+      },
+      {
+        id: "poi5",
+        name: "Project Management Center",
+        location: "Xinjiang, Southwest Region",
+        images: ["/carousel/2-map/pm-center.webp"],
+        points: [
+          "A strategic pivot radiating across the domestic western market",
+          "Ensuring efficient supply of project materials and rapid technical response"
         ]
       }
     ]

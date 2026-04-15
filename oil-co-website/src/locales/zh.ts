@@ -45,8 +45,39 @@ export const zh = {
     pois: [
       {
         id: "poi1",
+        name: "总部",
+        location: "四川，成都",
+        images: ["/carousel/2-map/hq-1.webp", "/carousel/2-map/hq-2.webp"],
+        points: [
+          "汇聚126名领域专业人才，架构清晰、经验丰富的精锐之师",
+          "甲级5A办公环境，支撑细分项目运营基石"
+        ]
+      },
+      {
+        id: "poi2",
+        name: "海外市场拓展",
+        location: "",
+        images: ["/carousel/2-map/overseas-market-exp.jpg"],
+        points: [
+          "中东（2025）：阿联酋（阿布扎比）、沙特阿拉伯、卡塔尔",
+          "俄罗斯及中亚（2026）：俄罗斯（西伯利亚）、哈萨克斯坦、乌兹别克斯坦"
+        ]
+      },
+      {
+        id: "poi3",
+        name: "研发中心",
+        location: "四川，成都",
+        images: ["/carousel/2-map/rnd-1.jpg", "/carousel/2-map/rnd-2.webp"],
+        points: [
+          "突破性技术策源地，汇聚顶尖团队，确保将前沿理论高效转化",
+          "依托产学研融合高层次创新平台，进行超前技术研发与储备"
+        ]
+      },
+      {
+        id: "poi4",
         name: "生产基地",
         location: "四川，南充",
+        images: ["/carousel/2-map/production-base.png"],
         points: [
           "占地面积超 16,000 平方米",
           "集现代化生产与先进实验室于一体",
@@ -54,23 +85,13 @@ export const zh = {
         ]
       },
       {
-        id: "poi2",
-        name: "海外服务中心",
-        location: "中东地区",
+        id: "poi5",
+        name: "项目管理中心",
+        location: "新疆、西南片区",
+        images: ["/carousel/2-map/pm-center.webp"],
         points: [
-          "支持国际钻井作业",
-          "24/7全天候技术援助与物流",
-          "深厚的当地合作伙伴关系"
-        ]
-      },
-      {
-        id: "poi3",
-        name: "研发中心",
-        location: "东南亚",
-        points: [
-          "专注于智慧能源解决方案",
-          "与顶尖大学合作研究",
-          "引领可持续发展实践"
+          "辐射国内西部市场战略支点",
+          "确保项目物资高效供应与快速技术响应"
         ]
       }
     ]
