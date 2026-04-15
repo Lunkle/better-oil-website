@@ -134,7 +134,7 @@ export default function Carousel({
 
           <div
             ref={scrollContainerRef}
-            className="flex-1 flex overflow-x-auto snap-x snap-mandatory scrollbar-hide md:justify-between items-center"
+            className="flex-1 flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide md:justify-between items-center"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {tabs.map((tab, idx) => (
