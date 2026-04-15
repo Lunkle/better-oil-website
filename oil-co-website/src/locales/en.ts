@@ -125,6 +125,53 @@ export const en = {
   about: {
     breadcrumb: "Home > About Us",
     title: "5 minutes to understand Better Petroleum.",
+    sections: [
+      {
+        title: "Breaking Boundaries: Defining New Standards of Efficiency",
+        content: "Sichuan Better Petroleum Technology Co., Ltd. was established in April 2009. Rooted in the deep soil of oil drilling technical services, we remain focused on the subsurface, dedicated to solving the most complex and critical engineering challenges in oil and gas exploration and development. As a technology-driven high-tech enterprise, Better Petroleum adheres to a \"Trinity\" development model of \"Original Theory + Core Technology + Integrated Service.\"",
+        button: "Explore Diversified Solutions -->",
+        link: "/solutions",
+        image: "/logo/logo.png",
+        imageOnLeft: true,
+        buttonColor: "orange"
+      },
+      {
+        title: "Deep Research: \"Hardcore\" Tech Driven by Original Theory",
+        content: "Better Petroleum upholds the core value of \"Depth,\" advocating for starting from basic scientific principles like rock mechanics and transforming profound field experience into disruptive technological achievements. As of 2026, the company has applied for 42 patents, with 38 authorized, published 14 software copyrights, and 7 papers in core journals. The company has established 64 enterprise standards and deeply participated in national standard compilation.",
+        button: "Better Petroleum Wall of Honor -->",
+        link: "#",
+        image: "/about-us/about-us-image-1.png",
+        imageOnLeft: false,
+        buttonColor: "red"
+      },
+      {
+        title: "Smart Manufacturing: Integrated Layout from Lab to Global Market",
+        content: "Better Petroleum has built a global strategic layout consisting of Chengdu headquarters, Nanchong R&D and smart manufacturing, and regional rapid response. Our wholly-owned subsidiary, Sichuan Better Chemical Technology Co., Ltd., covers over 16,000 square meters. The base integrates modern production lines and advanced R&D labs, achieving digital and transparent management. With an annual capacity of 50,000 tons of chemical additives, our domestic market share is as high as 15.69%. International expansion: Starting in 2025, the company is deeply engaged in the Middle East market, and will further expand into Russia and Central Asia in 2026.",
+        button: "Better Chemical -->",
+        link: "#",
+        image: "/about-us/about-us-image-2.png",
+        imageOnLeft: true,
+        buttonColor: "orange"
+      },
+      {
+        title: "Sharp Innovation: An \"Elite Force\" of Industry Experts",
+        content: "We possess a high-end team of 127 experts led by national specialists and doctoral supervisors. The company maintains long-term deep cooperation with Southwest Petroleum University and the Chinese Academy of Sciences to ensure efficient conversion of cutting-edge theories. Our R&D investment has remained stable at around 8% of revenue, earning recognition as a National High-tech Enterprise and a Provincial-level \"Specialized and Innovative\" SME.",
+        button: "Join Our Team -->",
+        link: "/careers",
+        image: "/about-us/about-us-image-3.png",
+        imageOnLeft: false,
+        buttonColor: "red"
+      },
+      {
+        title: "Excellence in Value: Your Challenges, Our Focus",
+        content: "Our technology is widely applied in major oil and gas fields like CNPC, Sinopec, and CNOOC. In CNPC Changqing Oilfield, our services save 120 million RMB annually. In Yanchang Petroleum's tight oil project, precise technical intervention helped increase recovery by 12%, with an annual production value increase exceeding 80 million RMB.\n\nWe continue to invest in R&D, talent, and the future to provide safer, more efficient, and smarter energy solutions.\n\nBetter Petroleum: Looking forward to exploring the future of energy with you.",
+        button: "Contact Us -->",
+        link: "/contact",
+        image: "/about-us/about-us-image-4.png",
+        imageOnLeft: true,
+        buttonColor: "orange"
+      }
+    ]
   },
   carouselTabs: [
     { value: "3", label: "Main Theoretical Innovations" },
