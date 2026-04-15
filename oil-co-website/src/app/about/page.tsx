@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import { useTranslation } from "../../hooks/useTranslation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 function Content() {
   const { t, locale } = useTranslation();
@@ -95,6 +96,76 @@ function Content() {
             </div>
           </div>
         </section>
+
+        {/* Dynamic Horizontal Slices */}
+        {t.about.sections?.map((section, index) => (
+          <section
+            key={index}
+            className="py-12 md:py-20 bg-brand-white"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-20`}>
+
+                {/* Image portion (35%) */}
+                <div className="w-full md:w-[35%] flex justify-center">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="relative w-full max-w-[400px] aspect-square flex items-center justify-center"
+                  >
+                    <Image
+                      src={section.image}
+                      alt={section.title}
+                      width={400}
+                      height={400}
+                      className="object-contain max-h-full"
+                    />
+                  </motion.div>
+                </div>
+
+                {/* Content portion (65%) */}
+                <div className="w-full md:w-[65%] space-y-8">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    <h3 className="text-2xl md:text-3xl font-bold text-brand-deep-blue mb-6">
+                      {section.title}
+                    </h3>
+                    <div className="space-y-4">
+                      {section.content.split('\n\n').map((paragraph, pIndex) => (
+                        <p key={pIndex} className="text-brand-deep-blue/80 text-lg leading-relaxed">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    <Link
+                      href={section.link.startsWith('/') ? `${section.link}?lang=${locale}` : section.link}
+                      className={`inline-block px-8 py-3 font-bold text-white transition-transform hover:scale-105 ${
+                        section.buttonColor === 'red' ? 'bg-brand-red' : 'bg-brand-orange'
+                      }`}
+                    >
+                      {section.button}
+                    </Link>
+                  </motion.div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        ))}
       </main>
 
       <Footer t={t.footer} currentLang={locale} />
