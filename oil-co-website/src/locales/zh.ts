@@ -2,6 +2,28 @@ export const zh = {
   navToggle: "EN",
   nav: [
     {
+      name: "关于我们",
+      href: "/about",
+      dropdown: [
+        {
+          parent: "公司简介",
+          href: "/about/company-profile"
+        },
+        {
+          parent: "使命愿景",
+          href: "/about/mission-vision"
+        },
+        {
+          parent: "发展历程",
+          href: "/about/development-history"
+        },
+        {
+          parent: "荣誉资质",
+          href: "/about/honors-qualifications"
+        }
+      ]
+    },
+    {
       name: "核心技术",
       href: "/tech",
       dropdown: [
@@ -42,28 +64,6 @@ export const zh = {
           children: [
             { name: "老井二次治理新技术", href: "/tech/old-well-transformation" }
           ]
-        }
-      ]
-    },
-    {
-      name: "关于我们",
-      href: "/about",
-      dropdown: [
-        {
-          parent: "公司简介",
-          href: "/about/company-profile"
-        },
-        {
-          parent: "使命愿景",
-          href: "/about/mission-vision"
-        },
-        {
-          parent: "发展历程",
-          href: "/about/development-history"
-        },
-        {
-          parent: "荣誉资质",
-          href: "/about/honors-qualifications"
         }
       ]
     },

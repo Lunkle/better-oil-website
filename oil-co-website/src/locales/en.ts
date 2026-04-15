@@ -2,6 +2,28 @@ export const en = {
   navToggle: "中文",
   nav: [
     {
+      name: "About Us",
+      href: "/about",
+      dropdown: [
+        {
+          parent: "Company Profile",
+          href: "/about/company-profile"
+        },
+        {
+          parent: "Mission & Vision",
+          href: "/about/mission-vision"
+        },
+        {
+          parent: "Development History",
+          href: "/about/development-history"
+        },
+        {
+          parent: "Honors & Qualifications",
+          href: "/about/honors-qualifications"
+        }
+      ]
+    },
+    {
       name: "Technologies",
       href: "/tech",
       dropdown: [
@@ -46,29 +68,7 @@ export const en = {
       ]
     },
     {
-      name: "About Us",
-      href: "/about",
-      dropdown: [
-        {
-          parent: "Company Profile",
-          href: "/about/company-profile"
-        },
-        {
-          parent: "Mission & Vision",
-          href: "/about/mission-vision"
-        },
-        {
-          parent: "Development History",
-          href: "/about/development-history"
-        },
-        {
-          parent: "Honors & Qualifications",
-          href: "/about/honors-qualifications"
-        }
-      ]
-    },
-    {
-      name: "Products & Services",
+      name: "Services",
       href: "/products-and-services"
     },
     {
@@ -80,7 +80,7 @@ export const en = {
       href: "/news"
     },
     {
-      name: "Resource Cooperation",
+      name: "Resources",
       href: "/resource-cooperation"
     }
   ],
