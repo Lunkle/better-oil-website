@@ -95,20 +95,20 @@ export default function Carousel({
   };
 
   return (
-    <section className="w-full bg-white py-16">
+    <section className="w-full bg-brand-white py-16">
       <div className="container mx-auto px-6">
 
         {/* Tab Headers with Mobile Controls */}
         <div
           ref={tabListRef}
           role="tablist"
-          className="relative mb-8 md:mb-16 border-b-2 border-slate-200 flex items-center"
+          className="relative mb-8 md:mb-16 border-b-2 border-brand-deep-blue/10 flex items-center"
         >
 
           {/* Mobile Prev Button */}
           <button
             onClick={handlePrev}
-            className="md:hidden p-2 text-slate-500 hover:text-primary z-10"
+            className="md:hidden p-2 text-brand-deep-blue/40 hover:text-brand-orange z-10"
             aria-label="Previous tab"
           >
             <ChevronLeft size={24} />
@@ -132,7 +132,7 @@ export default function Carousel({
                 {activeIndex === idx && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-primary -top-2 -bottom-2 md:-top-4 md:-bottom-4 z-0"
+                    className="absolute inset-0 bg-brand-orange -top-2 -bottom-2 md:-top-4 md:-bottom-4 z-0"
                     initial={false}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
@@ -141,14 +141,14 @@ export default function Carousel({
                 <div className="relative z-10 flex items-end justify-center text-start gap-1 md:gap-2 px-2">
                   <span
                     className={`text-4xl md:text-7xl font-black transition-colors ${
-                      activeIndex === idx ? "text-white" : "text-slate-800 group-hover:text-primary"
+                      activeIndex === idx ? "text-brand-white" : "text-brand-deep-blue group-hover:text-brand-orange"
                     }`}
                   >
                     {tab.value}
                   </span>
                   <span
                     className={`text-sm md:text-2xl font-bold md:ml-2 transition-colors whitespace-normal ${
-                      activeIndex === idx ? "text-white" : "text-slate-800 group-hover:text-primary"
+                      activeIndex === idx ? "text-brand-white" : "text-brand-deep-blue group-hover:text-brand-orange"
                     }`}
                   >
                     {tab.label}
@@ -161,7 +161,7 @@ export default function Carousel({
           {/* Mobile Next Button */}
           <button
             onClick={handleNext}
-            className="md:hidden p-2 text-slate-500 hover:text-primary z-10"
+            className="md:hidden p-2 text-brand-deep-blue/40 hover:text-brand-orange z-10"
             aria-label="Next tab"
           >
             <ChevronRight size={24} />

@@ -25,91 +25,70 @@ export default function Item2({ data }: Item2Props) {
     { top: "40%", right: "30%", cardTop: "50%", cardRight: "50%" }  // 5. Project Mgmt
   ];
 
+  // Limit to 2 locations
+  const pois = data.pois.slice(0, 2);
+
   return (
-    <div className="relative w-full h-[600px] bg-[#f8f9fa] overflow-hidden border border-border">
-      {/* Minimalist World Map Background Placeholder */}
-      <div
-        className="absolute inset-0 opacity-20 bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')] bg-no-repeat bg-center bg-contain"
-      />
+    <div className="relative w-full flex flex-col md:block md:h-[600px] bg-brand-white border border-border">
 
-      {/* SVG Container for Curved Dotted Lines */}
-      <svg
-        className="absolute inset-0 w-full h-full pointer-events-none z-0"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="none"
-      >
-        <defs>
-          <marker id="dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5">
-            <circle cx="5" cy="5" r="5" fill="#ff6600" />
-          </marker>
-        </defs>
-        {data.pois.map((poi, idx) => {
-          if (!positions[idx]) return null;
-          const pos = positions[idx];
+      {/* Map Container (fixed height on mobile, full height absolute on desktop) */}
+      <div className="relative w-full h-[300px] md:h-full md:absolute md:inset-0 overflow-hidden">
+        {/* Minimalist World Map Background Placeholder */}
+        <div
+          className="absolute inset-0 opacity-10 bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')] bg-no-repeat bg-center bg-contain"
+        />
 
-          // Since we are using "right" in CSS, X coordinate from left is (100 - right).
-          const xStart = 100 - parseInt(pos.cardRight);
-          const yStart = parseInt(pos.cardTop);
-          const xEnd = 100 - parseInt(pos.right);
-          const yEnd = parseInt(pos.top);
+        {/* POI Dots only */}
+        <div className="absolute inset-0 pointer-events-none z-10">
+          {pois.map((poi, idx) => {
+            const pos = positions[idx];
+            if (!pos) return null;
 
-          // Control point for quadratic curve
-          const cx = (xStart + xEnd) / 2;
-          const cy = Math.min(yStart, yEnd) - 10;
+            return (
+              <div
+                key={poi.id}
+                className="absolute flex items-center justify-center pointer-events-auto"
+                style={{ top: pos.top, right: pos.right, transform: 'translate(50%, -50%)' }}
+              >
+                 <div className="w-4 h-4 rounded-full bg-brand-orange animate-pulse" />
+              </div>
+            );
+          })}
+        </div>
+      </div>
 
-          return (
-            <path
-              key={`path-${idx}`}
-              d={`M ${xStart} ${yStart} Q ${cx} ${cy} ${xEnd} ${yEnd}`}
-              fill="none"
-              stroke="#1a1a3a"
-              strokeWidth="0.5"
-              strokeDasharray="1 1"
-              className="opacity-40"
-            />
-          );
-        })}
-      </svg>
-
-      {/* Map Content Overlay */}
-      <div className="absolute inset-0 pointer-events-none z-10">
-
+      {/* Cards Container (listed vertically on mobile, absolute positioned on desktop) */}
+      <div className="relative flex flex-col gap-4 p-4 md:p-0 z-20 pointer-events-none md:absolute md:inset-0">
         {data.pois.map((poi, idx) => {
           const pos = positions[idx];
           if (!pos) return null;
 
           return (
             <div key={poi.id}>
-              {/* POI Dot */}
-              <div
-                className="absolute flex items-center justify-center pointer-events-auto"
-                style={{ top: pos.top, right: pos.right, transform: 'translate(50%, -50%)' }}
-              >
-                 <div className="w-4 h-4 rounded-full bg-primary animate-pulse" />
-              </div>
-
               {/* Descriptor Card */}
               <div
-                className="absolute bg-white p-6 shadow-2xl w-[320px] pointer-events-auto border border-border/50"
-                style={{ top: pos.cardTop, right: pos.cardRight, transform: 'translate(50%, -50%)' }}
+                className="bg-brand-white p-4 md:p-6 shadow-2xl w-full md:w-[320px] pointer-events-auto border-l-4 border-brand-orange md:absolute"
+                style={{
+                  top: typeof window !== 'undefined' && window.innerWidth >= 768 ? pos.cardTop : 'auto',
+                  right: typeof window !== 'undefined' && window.innerWidth >= 768 ? pos.cardRight : 'auto',
+                  transform: typeof window !== 'undefined' && window.innerWidth >= 768 ? 'translate(50%, -50%)' : 'none'
+                }}
               >
                 <div className="flex items-center gap-4 mb-4">
                   {/* Circular Image Placeholder */}
-                  <div className="w-16 h-16 border-4 border-slate-100 overflow-hidden shadow-inner flex-shrink-0">
-                     <div className="w-full h-full bg-slate-300 flex items-center justify-center">
-                       <MapPin className="text-slate-500" />
-                     </div>
+                  <div className="w-12 h-12 md:w-16 md:h-16 border-4 border-brand-white overflow-hidden shadow-inner flex-shrink-0 bg-brand-deep-blue/5 flex items-center justify-center">
+                      <MapPin className="text-brand-deep-blue w-6 h-6 md:w-8 md:h-8" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-black text-[#1a1a3a] mb-1">{poi.name}</h3>
-                    <p className="text-sm text-[#1a1a3a]/70 font-medium">{poi.location}</p>
+                    <h3 className="text-lg md:text-xl font-black text-brand-deep-blue mb-1">{poi.name}</h3>
+                    <p className="text-sm text-brand-deep-blue/70 font-medium">{poi.location}</p>
                   </div>
                 </div>
 
                 <ul className="space-y-2">
                   {poi.points.map((point, pIdx) => (
-                    <li key={pIdx} className="flex items-start gap-2 text-[#1a1a3a] font-bold text-sm leading-tight">
-                      <div className="w-1.5 h-1.5 bg-[#1a1a3a] mt-1.5 flex-shrink-0" />
+                    <li key={pIdx} className="flex items-start gap-2 text-brand-deep-blue font-bold text-sm leading-tight">
+                      <div className="w-1.5 h-1.5 bg-brand-red mt-1.5 flex-shrink-0" />
                       <span>{point}</span>
                     </li>
                   ))}
@@ -118,7 +97,6 @@ export default function Item2({ data }: Item2Props) {
             </div>
           );
         })}
-
       </div>
     </div>
   );

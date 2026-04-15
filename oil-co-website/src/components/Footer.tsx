@@ -35,7 +35,7 @@ export default function Footer({ t, currentLang }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-border pt-16 pb-8">
+    <footer className="bg-brand-white border-t border-brand-deep-blue/10 pt-16 pb-8">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Logo and About */}
@@ -50,16 +50,16 @@ export default function Footer({ t, currentLang }: FooterProps) {
               />
             </Link>
             <div className="flex space-x-4">
-              <Link href="#" className="text-foreground/40 hover:text-primary transition-colors">
+              <Link href="#" className="text-brand-deep-blue/40 hover:text-brand-orange transition-colors">
                 <Linkedin size={20} />
               </Link>
-              <Link href="#" className="text-foreground/40 hover:text-primary transition-colors">
+              <Link href="#" className="text-brand-deep-blue/40 hover:text-brand-orange transition-colors">
                 <Twitter size={20} />
               </Link>
-              <Link href="#" className="text-foreground/40 hover:text-primary transition-colors">
+              <Link href="#" className="text-brand-deep-blue/40 hover:text-brand-orange transition-colors">
                 <Facebook size={20} />
               </Link>
-              <Link href="#" className="text-foreground/40 hover:text-primary transition-colors">
+              <Link href="#" className="text-brand-deep-blue/40 hover:text-brand-orange transition-colors">
                 <Instagram size={20} />
               </Link>
             </div>
@@ -70,17 +70,17 @@ export default function Footer({ t, currentLang }: FooterProps) {
             <h3 className="text-sm font-black uppercase tracking-widest mb-6">{t.links.company}</h3>
             <ul className="space-y-4">
               <li>
-                <Link href={`/about?lang=${currentLang}`} className="text-foreground/60 hover:text-primary transition-colors text-sm font-medium">
+                <Link href={`/about?lang=${currentLang}`} className="text-brand-deep-blue/60 hover:text-brand-orange transition-colors text-sm font-medium">
                   {t.links.about}
                 </Link>
               </li>
               <li>
-                <Link href={`/news?lang=${currentLang}`} className="text-foreground/60 hover:text-primary transition-colors text-sm font-medium">
+                <Link href={`/news?lang=${currentLang}`} className="text-brand-deep-blue/60 hover:text-brand-orange transition-colors text-sm font-medium">
                   {t.links.news}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-foreground/60 hover:text-primary transition-colors text-sm font-medium">
+                <Link href="#" className="text-brand-deep-blue/60 hover:text-brand-orange transition-colors text-sm font-medium">
                   {t.links.careers}
                 </Link>
               </li>
@@ -92,17 +92,17 @@ export default function Footer({ t, currentLang }: FooterProps) {
             <h3 className="text-sm font-black uppercase tracking-widest mb-6">{t.links.resources}</h3>
             <ul className="space-y-4">
               <li>
-                <Link href={`/tech?lang=${currentLang}`} className="text-foreground/60 hover:text-primary transition-colors text-sm font-medium">
+                <Link href={`/tech?lang=${currentLang}`} className="text-brand-deep-blue/60 hover:text-brand-orange transition-colors text-sm font-medium">
                   {t.links.tech}
                 </Link>
               </li>
               <li>
-                <Link href={`/solutions?lang=${currentLang}`} className="text-foreground/60 hover:text-primary transition-colors text-sm font-medium">
+                <Link href={`/solutions?lang=${currentLang}`} className="text-brand-deep-blue/60 hover:text-brand-orange transition-colors text-sm font-medium">
                   {t.links.solutions}
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-foreground/60 hover:text-primary transition-colors text-sm font-medium">
+                <Link href="#" className="text-brand-deep-blue/60 hover:text-brand-orange transition-colors text-sm font-medium">
                   {t.links.support}
                 </Link>
               </li>
@@ -114,20 +114,20 @@ export default function Footer({ t, currentLang }: FooterProps) {
             <h3 className="text-sm font-black uppercase tracking-widest mb-6">{t.contactUs}</h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="text-primary shrink-0 mt-1" size={18} />
-                <span className="text-foreground/60 text-sm font-medium leading-relaxed">
+                <MapPin className="text-brand-orange shrink-0 mt-1" size={18} />
+                <span className="text-brand-deep-blue/60 text-sm font-medium leading-relaxed">
                   {t.address}
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Phone className="text-primary shrink-0" size={18} />
-                <span className="text-foreground/60 text-sm font-medium">
+                <Phone className="text-brand-orange shrink-0" size={18} />
+                <span className="text-brand-deep-blue/60 text-sm font-medium">
                   {t.phone}
                 </span>
               </li>
               <li className="flex items-center gap-3">
-                <Mail className="text-primary shrink-0" size={18} />
-                <span className="text-foreground/60 text-sm font-medium">
+                <Mail className="text-brand-orange shrink-0" size={18} />
+                <span className="text-brand-deep-blue/60 text-sm font-medium">
                   {t.email}
                 </span>
               </li>
@@ -136,17 +136,17 @@ export default function Footer({ t, currentLang }: FooterProps) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="text-foreground/40 text-xs font-medium space-x-4">
+        <div className="border-t border-brand-deep-blue/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="text-brand-deep-blue/40 text-xs font-medium space-x-4">
             <span>{t.copyright.replace("{{year}}", currentYear.toString())}</span>
             <span className="hidden md:inline">|</span>
             <span className="block md:inline mt-2 md:mt-0">{t.icp}</span>
           </div>
           <div className="flex gap-6">
-            <Link href="#" className="text-foreground/40 hover:text-primary transition-colors text-xs font-medium uppercase tracking-wider">
+            <Link href="#" className="text-brand-deep-blue/40 hover:text-brand-orange transition-colors text-xs font-medium uppercase tracking-wider">
               {t.links.privacy}
             </Link>
-            <Link href="#" className="text-foreground/40 hover:text-primary transition-colors text-xs font-medium uppercase tracking-wider">
+            <Link href="#" className="text-brand-deep-blue/40 hover:text-brand-orange transition-colors text-xs font-medium uppercase tracking-wider">
               {t.links.terms}
             </Link>
           </div>

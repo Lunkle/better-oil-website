@@ -1,12 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
-  --primary: #ff6600; /* Orange */
-  --primary-muted: #fff0e6;
-  --secondary: #f8f9fa;
-  --border: #e9ecef;
+  --background: #fbfcff;
+  --foreground: #0a2b4e; /* Deep blue for text */
+  --primary: #f0a13f; /* Yellow */
+  --primary-muted: #fef6ec;
+  --secondary: #f0f4f8; /* Muted deep blue */
+  --border: #d1d9e2; /* Muted deep blue border */
+
+  /* Brand Colors */
+  --brand-white: #fbfcff;
+  --brand-deep-blue: #0a2b4e;
+  --brand-red: #d34b2f;
+  --brand-orange: #f0a13f;
 }
 
 @theme inline {
@@ -16,6 +22,11 @@
   --color-primary-muted: var(--primary-muted);
   --color-secondary: var(--secondary);
   --color-border: var(--border);
+
+  --color-brand-white: var(--brand-white);
+  --color-brand-deep-blue: var(--brand-deep-blue);
+  --color-brand-red: var(--brand-red);
+  --color-brand-orange: var(--brand-orange);
 }
 
 body {
@@ -31,16 +42,17 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: var(--brand-white);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ccc;
+  background: var(--border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #bbb;
+  background: var(--brand-deep-blue);
+  opacity: 0.5;
 }
 
 .section-snap {
