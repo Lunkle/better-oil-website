@@ -7,6 +7,7 @@ export const en = {
     news: "News",
     contact: "Contact",
     lang: "中文",
+    companyName: "Better Petroleum Logo",
   },
   hero: {
     title: "BETTER PETROLEUM",
