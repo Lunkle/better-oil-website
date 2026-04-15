@@ -126,7 +126,7 @@ export default function Carousel({
           {/* Mobile Prev Button */}
           <button
             onClick={handlePrev}
-            className="md:hidden p-2 text-brand-deep-blue/40 hover:text-brand-yellow z-10"
+            className="md:hidden p-2 text-brand-deep-blue/40 hover:text-brand-orange z-10"
             aria-label="Previous tab"
           >
             <ChevronLeft size={24} />
@@ -150,7 +150,7 @@ export default function Carousel({
                 {activeIndex === idx && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 bg-brand-yellow -top-2 -bottom-2 md:-top-4 md:-bottom-4 z-0"
+                    className="absolute inset-0 bg-brand-orange -top-2 -bottom-2 md:-top-4 md:-bottom-4 z-0"
                     initial={false}
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
@@ -159,14 +159,14 @@ export default function Carousel({
                 <div className="relative z-10 flex items-end justify-center text-start gap-1 md:gap-2 px-2">
                   <span
                     className={`text-4xl md:text-7xl font-black transition-colors ${
-                      activeIndex === idx ? "text-brand-white" : "text-brand-deep-blue group-hover:text-brand-yellow"
+                      activeIndex === idx ? "text-brand-white" : "text-brand-deep-blue group-hover:text-brand-orange"
                     }`}
                   >
                     {tab.value}
                   </span>
                   <span
                     className={`text-sm md:text-2xl font-bold md:ml-2 transition-colors whitespace-normal ${
-                      activeIndex === idx ? "text-brand-white" : "text-brand-deep-blue group-hover:text-brand-yellow"
+                      activeIndex === idx ? "text-brand-white" : "text-brand-deep-blue group-hover:text-brand-orange"
                     }`}
                   >
                     {tab.label}
@@ -179,7 +179,7 @@ export default function Carousel({
           {/* Mobile Next Button */}
           <button
             onClick={handleNext}
-            className="md:hidden p-2 text-brand-deep-blue/40 hover:text-brand-yellow z-10"
+            className="md:hidden p-2 text-brand-deep-blue/40 hover:text-brand-orange z-10"
             aria-label="Next tab"
           >
             <ChevronRight size={24} />

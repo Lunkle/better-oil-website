@@ -33,7 +33,7 @@ export default function Item2({ data }: Item2Props) {
       <div className="relative w-full h-[300px] md:h-full md:absolute md:inset-0 overflow-hidden">
         {/* Minimalist World Map Background Placeholder */}
         <div
-          className="absolute inset-0 opacity-10 grayscale brightness-50 bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')] bg-no-repeat bg-center bg-contain"
+          className="absolute inset-0 opacity-10 bg-[url('https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg')] bg-no-repeat bg-center bg-contain"
         />
 
         {/* POI Dots only */}
@@ -48,7 +48,7 @@ export default function Item2({ data }: Item2Props) {
                 className="absolute flex items-center justify-center pointer-events-auto"
                 style={{ top: pos.top, right: pos.right, transform: 'translate(50%, -50%)' }}
               >
-                 <div className="w-4 h-4 rounded-full bg-brand-yellow animate-pulse" />
+                 <div className="w-4 h-4 rounded-full bg-brand-orange animate-pulse" />
               </div>
             );
           })}
@@ -64,7 +64,7 @@ export default function Item2({ data }: Item2Props) {
           return (
             <div
               key={poi.id}
-              className="bg-brand-white p-4 md:p-6 shadow-2xl w-full md:max-w-sm pointer-events-auto border-l-4 border-brand-yellow md:absolute"
+              className="bg-brand-white p-4 md:p-6 shadow-2xl w-full md:max-w-sm pointer-events-auto border-l-4 border-brand-orange md:absolute"
               style={{
                 top: typeof window !== 'undefined' && window.innerWidth >= 768 ? pos.cardTop : 'auto',
                 right: typeof window !== 'undefined' && window.innerWidth >= 768 ? pos.cardRight : 'auto',

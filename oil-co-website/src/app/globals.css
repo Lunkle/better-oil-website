@@ -12,7 +12,7 @@
   --brand-white: #fbfcff;
   --brand-deep-blue: #0a2b4e;
   --brand-red: #d34b2f;
-  --brand-yellow: #f0a13f;
+  --brand-orange: #f0a13f;
 }
 
 @theme inline {
@@ -26,7 +26,7 @@
   --color-brand-white: var(--brand-white);
   --color-brand-deep-blue: var(--brand-deep-blue);
   --color-brand-red: var(--brand-red);
-  --color-brand-yellow: var(--brand-yellow);
+  --color-brand-orange: var(--brand-orange);
 }
 
 body {

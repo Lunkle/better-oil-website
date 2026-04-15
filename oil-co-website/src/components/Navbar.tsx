@@ -41,7 +41,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
           <div className="flex items-center">
             <Link href={`/?lang=${currentLang}`} className="flex items-center space-x-2 group">
               <div className="w-10 h-10 bg-brand-deep-blue rounded-sm flex items-center justify-center transform transition-transform group-hover:rotate-45">
-                 <div className="w-5 h-5 bg-brand-yellow rounded-full" />
+                 <div className="w-5 h-5 bg-brand-orange rounded-full" />
               </div>
               <span className="font-bold text-xl tracking-wider text-brand-deep-blue uppercase">Better Petroleum</span>
             </Link>
