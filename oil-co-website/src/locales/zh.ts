@@ -1,13 +1,89 @@
 export const zh = {
-  nav: {
-    home: "首页",
-    about: "关于我们",
-    tech: "核心技术",
-    solutions: "解决方案",
-    news: "新闻中心",
-    contact: "联系我们",
-    lang: "EN",
-  },
+  navToggle: "EN",
+  nav: [
+    {
+      name: "核心技术",
+      href: "/tech",
+      dropdown: [
+        {
+          parent: "钻井提速技术",
+          children: [
+            { name: "钻井恒扭恒压提速技术", href: "/tech/drilling-acceleration" }
+          ]
+        },
+        {
+          parent: "超高难度成井技术",
+          children: [
+            { name: "微胶囊靶向润滑技术", href: "/tech/targeted-lubrication" }
+          ]
+        },
+        {
+          parent: "页岩油气改造技术",
+          children: [
+            { name: "低摩阻清洁变粘压裂液技术", href: "/tech/low-friction-fracturing" },
+            { name: "页岩油气低伤害多维度体积压裂技术", href: "/tech/multi-dimensional-fracturing" }
+          ]
+        },
+        {
+          parent: "非常规储层改造技术",
+          children: [
+            { name: "煤层气原位增能解吸压裂新技术", href: "/tech/cbm-fracturing" },
+            { name: "碳酸盐岩靶向控缝深度酸压技术", href: "/tech/carbonate-acid-fracturing" }
+          ]
+        },
+        {
+          parent: "油气管道防腐工程",
+          children: [
+            { name: "采输管道可视化智能腐蚀防治技术", href: "/tech/pipeline-anti-corrosion" }
+          ]
+        },
+        {
+          parent: "老井改造",
+          children: [
+            { name: "老井二次治理新技术", href: "/tech/old-well-transformation" }
+          ]
+        }
+      ]
+    },
+    {
+      name: "关于我们",
+      href: "/about",
+      dropdown: [
+        {
+          parent: "公司简介",
+          href: "/about/company-profile"
+        },
+        {
+          parent: "使命愿景",
+          href: "/about/mission-vision"
+        },
+        {
+          parent: "发展历程",
+          href: "/about/development-history"
+        },
+        {
+          parent: "荣誉资质",
+          href: "/about/honors-qualifications"
+        }
+      ]
+    },
+    {
+      name: "产品与服务",
+      href: "/products-and-services"
+    },
+    {
+      name: "业绩与案例",
+      href: "/performance"
+    },
+    {
+      name: "新闻与动态",
+      href: "/news"
+    },
+    {
+      name: "资源合作",
+      href: "/resource-cooperation"
+    }
+  ],
   hero: {
     title: "贝特石油",
     subtitle: "创新驱动能源未来",

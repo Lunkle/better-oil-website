@@ -1,13 +1,89 @@
 export const en = {
-  nav: {
-    home: "Home",
-    about: "About Us",
-    tech: "Technologies",
-    solutions: "Solutions",
-    news: "News",
-    contact: "Contact",
-    lang: "中文",
-  },
+  navToggle: "中文",
+  nav: [
+    {
+      name: "Technologies",
+      href: "/tech",
+      dropdown: [
+        {
+          parent: "Drilling Acceleration Tech",
+          children: [
+            { name: "Constant Torque and Pressure Drilling Acceleration Tech", href: "/tech/drilling-acceleration" }
+          ]
+        },
+        {
+          parent: "Ultra-High Difficulty Well Completion Tech",
+          children: [
+            { name: "Microcapsule Targeted Lubrication Tech", href: "/tech/targeted-lubrication" }
+          ]
+        },
+        {
+          parent: "Shale Oil & Gas Stimulation Tech",
+          children: [
+            { name: "Low Friction Clean Variable Viscosity Fracturing Fluid Tech", href: "/tech/low-friction-fracturing" },
+            { name: "Shale Oil & Gas Low Damage Multi-dimensional Volume Fracturing Tech", href: "/tech/multi-dimensional-fracturing" }
+          ]
+        },
+        {
+          parent: "Unconventional Reservoir Stimulation Tech",
+          children: [
+            { name: "CBM In-situ Energization Desorption Fracturing New Tech", href: "/tech/cbm-fracturing" },
+            { name: "Carbonate Rock Targeted Fracture Control Deep Acid Fracturing Tech", href: "/tech/carbonate-acid-fracturing" }
+          ]
+        },
+        {
+          parent: "Oil & Gas Pipeline Anti-Corrosion Engineering",
+          children: [
+            { name: "Gathering and Transportation Pipeline Visual Intelligent Corrosion Prevention Tech", href: "/tech/pipeline-anti-corrosion" }
+          ]
+        },
+        {
+          parent: "Old Well Transformation",
+          children: [
+            { name: "Old Well Secondary Treatment New Tech", href: "/tech/old-well-transformation" }
+          ]
+        }
+      ]
+    },
+    {
+      name: "About Us",
+      href: "/about",
+      dropdown: [
+        {
+          parent: "Company Profile",
+          href: "/about/company-profile"
+        },
+        {
+          parent: "Mission & Vision",
+          href: "/about/mission-vision"
+        },
+        {
+          parent: "Development History",
+          href: "/about/development-history"
+        },
+        {
+          parent: "Honors & Qualifications",
+          href: "/about/honors-qualifications"
+        }
+      ]
+    },
+    {
+      name: "Products & Services",
+      href: "/products-and-services"
+    },
+    {
+      name: "Performance",
+      href: "/performance"
+    },
+    {
+      name: "News",
+      href: "/news"
+    },
+    {
+      name: "Resource Cooperation",
+      href: "/resource-cooperation"
+    }
+  ],
   hero: {
     title: "BETTER PETROLEUM",
     subtitle: "Innovation Driving the Future of Energy",
