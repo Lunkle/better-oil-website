@@ -1,7 +1,7 @@
 export const en = {
   nav: {
     toggleLang: "中文",
-    companyName: "Better Petroleum Logo",
+    companyName: "Better Petroleum",
     items: [
       {
         name: "About Us",
