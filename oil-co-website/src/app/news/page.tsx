@@ -11,10 +11,10 @@ function Content() {
   const { t, locale } = useTranslation();
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Navbar nav={t.nav} currentLang={locale} />
+      <Navbar nav={t.nav} navToggle={t.navToggle} currentLang={locale} />
       <div className="flex-1 flex flex-col items-center justify-center text-center p-6 mt-20">
         <div className="space-y-8 max-w-lg">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tighter">{t.nav.news}</h1>
+          <h1 className="text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tighter">{t.nav.find((item) => item.href === "/news")?.name}</h1>
           <div className="h-1 w-20 bg-primary mx-auto" />
           <p className="text-foreground/40 font-mono text-sm tracking-widest">{t.placeholders.comingSoon}</p>
           <Link
