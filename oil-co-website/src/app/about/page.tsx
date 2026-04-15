@@ -51,35 +51,48 @@ function Content() {
           </motion.div>
         </section>
 
-        {/* About Video Section */}
-        <section className="py-20 bg-brand-white">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-3xl md:text-5xl font-bold text-[#000000] mb-12"
-            >
-              {t.about.title}
-            </motion.h2>
+        {/* About Title & Video Section */}
+        <section className="py-12 md:py-24 bg-brand-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row items-stretch gap-12 md:gap-16">
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-2xl"
-            >
-              <video
-                className="w-full h-full object-cover"
-                controls
-                poster="/about-us/about-us-banner.png"
-              >
-                <source src="/about-us/about-us-video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </video>
-            </motion.div>
+              {/* Left Column: Heading with orange background and red vertical line */}
+              <div className="flex-1 flex items-stretch">
+                <div className="w-2 bg-brand-red flex-shrink-0" /> {/* Red vertical line */}
+                <div className="bg-brand-orange p-8 md:p-16 flex items-center flex-1">
+                  <motion.h2
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#000000] leading-tight"
+                  >
+                    {t.about.title}
+                  </motion.h2>
+                </div>
+              </div>
+
+              {/* Right Column: Video */}
+              <div className="flex-1 flex flex-col justify-center">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-2xl"
+                >
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    poster="/about-us/about-us-banner.png"
+                  >
+                    <source src="/about-us/about-us-video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </motion.div>
+              </div>
+
+            </div>
           </div>
         </section>
       </main>
