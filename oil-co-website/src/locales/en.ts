@@ -19,6 +19,10 @@ export const en = {
     explore: "Explore Our Tech",
     video: "View Global Layout",
   },
+  about: {
+    breadcrumb: "Home > About Us",
+    title: "5 minutes to understand Better Petroleum.",
+  },
   carouselTabs: [
     { value: "3", label: "Main Theoretical Innovations" },
     { value: "4", label: "Major Strategic Layouts" },

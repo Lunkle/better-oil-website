@@ -19,6 +19,10 @@ export const zh = {
     explore: "探索我们的技术",
     video: "查看全球布局",
   },
+  about: {
+    breadcrumb: "首页 > 关于我们",
+    title: "5分钟，看懂贝特石油。",
+  },
   carouselTabs: [
     { value: "3", label: "大理论创新" },
     { value: "4", label: "大战略布局" },
