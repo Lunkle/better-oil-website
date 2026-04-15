@@ -16,6 +16,7 @@ interface NavbarProps {
     news: string;
     contact: string;
     lang: string;
+    companyName: string;
   };
   currentLang: 'en' | 'zh';
 }
@@ -43,7 +44,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
             <Link href={`/?lang=${currentLang}`} className="flex items-center">
               <Image
                 src="/logo/logo-with-company-name.png"
-                alt="Better Petroleum Logo"
+                alt={nav.companyName}
                 width={200}
                 height={50}
                 priority

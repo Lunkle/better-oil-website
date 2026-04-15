@@ -7,6 +7,7 @@ export const zh = {
     news: "新闻中心",
     contact: "联系我们",
     lang: "EN",
+    companyName: "贝特石油 Logo",
   },
   hero: {
     title: "贝特石油",
