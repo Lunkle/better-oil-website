@@ -8,13 +8,7 @@ interface Item1Props {
 
 export default function Item1({ data }: Item1Props) {
   return (
-    <div className="relative w-full min-h-[600px] bg-brand-deep-blue flex items-center justify-center p-8 overflow-hidden">
-      {/* Background Image Placeholder */}
-      <div
-        className="absolute inset-0 opacity-40 mix-blend-overlay bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1621687947404-e41b3113ef79?q=80&w=2000&auto=format&fit=crop")' }}
-      />
-
+    <div className="relative w-full min-h-[600px] bg-brand-deep-blue/99 bg-[url('/carousel/1-innovations/bg.webp')] bg-blend-overlay bg-cover bg-center flex items-center justify-center p-8 overflow-hidden">
       {/* 3 rows, 2 columns (Left: Topic, Right: Detail) */}
       <div className="relative z-10 max-w-5xl w-full flex flex-col gap-y-8 md:gap-y-12">
         {data.rows.map((row, idx) => (

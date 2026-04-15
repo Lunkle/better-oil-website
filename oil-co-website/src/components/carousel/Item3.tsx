@@ -53,8 +53,8 @@ export default function Item3({ data }: Item3Props) {
       </div>
 
       {/* Right Side: Product System Vertical List */}
-      <div className="hidden md:flex w-1/3 bg-brand-deep-blue p-8 text-brand-white flex-col justify-center">
-         <div className="space-y-8 overflow-y-auto">
+      <div className="hidden md:flex w-1/3 bg-brand-deep-blue p-4 overflow-y-clip text-brand-white flex-col justify-start">
+         <div className="space-y-8">
             {data.rightCategories.map((cat, idx) => (
               <div key={idx}>
                  <h4 className="text-lg font-bold text-brand-orange mb-3">{cat.title}</h4>

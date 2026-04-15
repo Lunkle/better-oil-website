@@ -1,30 +1,102 @@
 "use client";
 
-import { Suspense } from "react";
+import { Suspense, useRef } from "react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import { useTranslation } from "../../hooks/useTranslation";
-import Link from "next/link";
-import { MoveLeft } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 
 function Content() {
   const { t, locale } = useTranslation();
+  const bannerRef = useRef<HTMLElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: bannerRef,
+    offset: ["start start", "end start"]
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-16.6%"]);
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      <Navbar nav={t.nav} navToggle={t.navToggle} currentLang={locale} />
-      <div className="flex-1 flex flex-col items-center justify-center text-center p-6 mt-20">
-        <div className="space-y-8 max-w-lg">
-          <h1 className="text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tighter">{t.nav.find((item) => item.href === "/about")?.name}</h1>
-          <div className="h-1 w-20 bg-primary mx-auto" />
-          <p className="text-foreground/40 font-mono text-sm tracking-widest">{t.placeholders.comingSoon}</p>
-          <Link
-            href={`/?lang=${locale}`}
-            className="inline-flex items-center gap-2 text-primary border border-primary/20 px-6 py-3 hover:bg-primary hover:text-white transition-all font-bold"
+      <Navbar nav={t.nav} currentLang={locale} />
+
+      {/* Main Content */}
+      <main className="flex-1 mt-20">
+        {/* Breadcrumb Section */}
+        <section className="bg-brand-white py-4 border-b border-border/30">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav className="text-sm font-medium text-foreground/60 uppercase tracking-widest">
+              {t.about.breadcrumb}
+            </nav>
+          </div>
+        </section>
+
+        {/* Parallax Banner Section */}
+        <section ref={bannerRef} className="relative h-[40vh] md:h-[60vh] overflow-hidden">
+          <motion.div
+            style={{ y }}
+            className="absolute inset-0 w-full h-[120%]"
           >
-            <MoveLeft size={16} /> {t.placeholders.backHome}
-          </Link>
-        </div>
-      </div>
+            <Image
+              src="/about-us/about-us-banner.png"
+              alt="About Us Banner"
+              fill
+              className="object-cover"
+              priority
+            />
+            {/* Optional Overlay to ensure visibility if needed */}
+            <div className="absolute inset-0 bg-brand-deep-blue/10" />
+          </motion.div>
+        </section>
+
+        {/* About Title & Video Section */}
+        <section className="py-12 md:py-24 bg-brand-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row items-stretch gap-12 md:gap-16">
+
+              {/* Left Column: Heading with orange background and red vertical line */}
+              <div className="flex-1 flex items-stretch">
+                <div className="w-2 bg-brand-red flex-shrink-0" /> {/* Red vertical line */}
+                <div className="bg-brand-orange p-8 md:p-16 flex items-center flex-1">
+                  <motion.h2
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-3xl md:text-5xl lg:text-6xl font-bold text-[#000000] leading-tight"
+                  >
+                    {t.about.title}
+                  </motion.h2>
+                </div>
+              </div>
+
+              {/* Right Column: Video */}
+              <div className="flex-1 flex flex-col justify-center">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-2xl"
+                >
+                  <video
+                    className="w-full h-full object-cover"
+                    controls
+                    poster="/about-us/about-us-banner.png"
+                  >
+                    <source src="/about-us/about-us-video.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </motion.div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+      </main>
+
       <Footer t={t.footer} currentLang={locale} />
     </div>
   );

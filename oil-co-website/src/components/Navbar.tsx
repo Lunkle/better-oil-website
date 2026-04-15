@@ -1,20 +1,23 @@
 "use client";
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, Globe, Menu, X, ChevronRight } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { NavItem, NavItemParent } from '@/locales';
-import { useTranslation } from '@/hooks/useTranslation';
 
 interface NavbarProps {
-  nav: NavItem[];
-  navToggle: string;
+  nav: {
+    toggleLang: string;
+    companyName: string;
+    items: NavItem[];
+  };
   currentLang: 'en' | 'zh';
 }
 
-export default function Navbar({ nav, navToggle, currentLang }: NavbarProps) {
+export default function Navbar({ nav, currentLang }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [hoveredParent, setHoveredParent] = useState<NavItemParent | null>(null);
@@ -37,17 +40,21 @@ export default function Navbar({ nav, navToggle, currentLang }: NavbarProps) {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <Link href={`/?lang=${currentLang}`} className="flex items-center space-x-2 group">
-              <div className="w-10 h-10 bg-brand-deep-blue rounded-sm flex items-center justify-center transform transition-transform group-hover:rotate-45">
-                 <div className="w-5 h-5 bg-brand-orange rounded-full" />
-              </div>
-              <span className="font-bold text-xl tracking-wider text-brand-deep-blue uppercase">Better Petroleum</span>
+            <Link href={`/?lang=${currentLang}`} className="flex items-center">
+              <Image
+                src="/logo/logo-with-company-name.png"
+                alt={nav.companyName}
+                width={200}
+                height={50}
+                priority
+                className="h-12 w-auto object-contain"
+              />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center h-full">
-            {nav.map((item) => (
+            {nav.items.map((item) => (
               <div
                 key={item.name}
                 className="relative h-full flex items-center px-4"
@@ -128,7 +135,7 @@ export default function Navbar({ nav, navToggle, currentLang }: NavbarProps) {
               className="flex items-center space-x-2 text-foreground/70 hover:text-primary transition-colors border border-border rounded-full px-3 py-1 text-xs font-bold"
             >
               <Globe className="h-3 w-3" />
-              <span>{navToggle}</span>
+              <span>{nav.toggleLang}</span>
             </Link>
             <button className="text-foreground/70 hover:text-primary transition-colors">
               <Search className="h-5 w-5" />
@@ -158,7 +165,7 @@ export default function Navbar({ nav, navToggle, currentLang }: NavbarProps) {
             className="lg:hidden absolute top-20 left-0 right-0 bg-brand-white/95 border-b border-border p-4 shadow-xl overflow-y-auto max-h-[calc(100vh-80px)]"
           >
             <div className="flex flex-col space-y-4">
-              {nav.map((link) => (
+              {nav.items.map((link) => (
                 <div key={link.name} className="flex flex-col">
                   <Link
                     href={`${link.href}?lang=${currentLang}`}
@@ -212,7 +219,7 @@ export default function Navbar({ nav, navToggle, currentLang }: NavbarProps) {
                   className="flex items-center space-x-2 text-primary font-bold"
                 >
                   <Globe className="h-5 w-5" />
-                  <span>{navToggle}</span>
+                  <span>{nav.toggleLang}</span>
                 </Link>
                 <Search className="h-5 w-5 text-foreground/70" />
               </div>
