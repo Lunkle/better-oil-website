@@ -34,16 +34,16 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-white/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <div className="flex items-center">
             <Link href={`/?lang=${currentLang}`} className="flex items-center space-x-2 group">
-              <div className="w-10 h-10 bg-primary rounded-sm flex items-center justify-center transform transition-transform group-hover:rotate-45">
-                 <div className="w-5 h-5 bg-white rounded-full" />
+              <div className="w-10 h-10 bg-brand-deep-blue rounded-sm flex items-center justify-center transform transition-transform group-hover:rotate-45">
+                 <div className="w-5 h-5 bg-brand-orange rounded-full" />
               </div>
-              <span className="font-bold text-xl tracking-wider text-foreground uppercase">Better Petroleum</span>
+              <span className="font-bold text-xl tracking-wider text-brand-deep-blue uppercase">Better Petroleum</span>
             </Link>
           </div>
 
@@ -72,7 +72,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
             <button className="text-foreground/70 hover:text-primary transition-colors">
               <Search className="h-5 w-5" />
             </button>
-            <button className="bg-primary text-white px-5 py-2 text-xs font-bold uppercase tracking-widest hover:bg-black transition-colors">
+            <button className="bg-brand-red text-brand-white px-5 py-2 text-xs font-bold uppercase tracking-widest hover:bg-brand-deep-blue transition-colors cursor-pointer">
               Join Us
             </button>
           </div>
@@ -97,7 +97,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="lg:hidden absolute top-20 left-0 right-0 bg-white/95 border-b border-border p-4 shadow-xl"
+            className="lg:hidden absolute top-20 left-0 right-0 bg-brand-white/95 border-b border-border p-4 shadow-xl"
           >
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
