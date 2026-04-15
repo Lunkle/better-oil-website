@@ -57,7 +57,7 @@ export default function Item3({ data }: Item3Props) {
          <div className="space-y-8 overflow-y-auto">
             {data.rightCategories.map((cat, idx) => (
               <div key={idx}>
-                 <h4 className="text-lg font-bold text-brand-yellow mb-3">{cat.title}</h4>
+                 <h4 className="text-lg font-bold text-brand-orange mb-3">{cat.title}</h4>
                  <ul className="space-y-2">
                     {cat.items.map((item, i) => (
                       <li key={i} className="flex items-center gap-2 text-brand-white/80 text-sm font-medium">
