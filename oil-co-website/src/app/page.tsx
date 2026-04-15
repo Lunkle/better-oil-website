@@ -12,7 +12,7 @@ function HomeContent() {
 
   return (
     <main className="relative bg-background min-h-screen">
-      <Navbar nav={t.nav} navToggle={t.navToggle} currentLang={locale} />
+      <Navbar nav={t.nav} currentLang={locale} />
 
       <HeroVideo
         descriptionLines={t.hero.descriptionLines}
