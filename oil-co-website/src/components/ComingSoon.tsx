@@ -29,7 +29,7 @@ export default function ComingSoon({ t, locale }: ComingSoonProps) {
     }
   };
 
-  const pageName = findName(t.nav.items) || t.placeholders.comingSoon;
+  const pageName = findName(t.nav.items) || t.placeholders.comingSoonTitle;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
