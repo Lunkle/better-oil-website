@@ -126,7 +126,7 @@ function DynamicSection({ section, locale }: { section: AboutSection; locale: st
   return (
     <section className="py-12 md:py-20 bg-brand-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-10 md:gap-16`}>
+        <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-10 md:gap-16`}>
 
           {/* Image portion (50%) */}
           <div className="w-full md:w-1/2 flex justify-center">
