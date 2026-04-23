@@ -6,54 +6,30 @@ import Link from "next/link";
 import { MoveLeft } from "lucide-react";
 import { NavItem, LocaleKey } from "@/locales";
 import { dictionaries } from "@/locales";
+import { usePathname } from "next/navigation";
 
 type DictionaryType = typeof dictionaries.en;
 
 interface ComingSoonProps {
   t: DictionaryType;
   locale: LocaleKey;
-  currentPath: string;
 }
 
-export default function ComingSoon({ t, locale, currentPath }: ComingSoonProps) {
-  // Try to find the name of the current path from the nav items
-  let pageName = "Coming Soon";
-  if (locale === "zh") {
-    pageName = "敬请期待";
-  }
+export default function ComingSoon({ t, locale }: ComingSoonProps) {
+  const pathname = usePathname();
 
-  let foundName = "";
-
-  const findName = (items: NavItem[]) => {
+  const findName = (items: NavItem[]): string | undefined => {
     for (const item of items) {
-      if (item.href === currentPath) {
-        foundName = item.name;
-        return;
-      }
-      if (item.dropdown) {
-        for (const parent of item.dropdown) {
-          if (parent.href === currentPath) {
-            foundName = parent.parent; // the name for parent items is stored in `parent`
-            return;
-          }
-          if (parent.children) {
-            for (const child of parent.children) {
-              if (child.href === currentPath) {
-                foundName = child.name;
-                return;
-              }
-            }
-          }
-        }
+      if (item.href === pathname) return item.name;
+      for (const parent of item.dropdown || []) {
+        if (parent.href === pathname) return parent.parent;
+        const child = parent.children?.find((c) => c.href === pathname);
+        if (child) return child.name;
       }
     }
   };
 
-  findName(t.nav.items);
-
-  if (foundName) {
-    pageName = foundName;
-  }
+  const pageName = findName(t.nav.items) || t.placeholders.comingSoon;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">

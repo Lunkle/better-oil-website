@@ -6,7 +6,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 
 function Content() {
   const { t, locale } = useTranslation();
-  return <ComingSoon t={t} locale={locale} currentPath="/news" />;
+  return <ComingSoon t={t} locale={locale} />;
 }
 
 export default function NewsPage() {
