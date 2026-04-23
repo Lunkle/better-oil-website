@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@heroui/styles";
 
 :root {
   --background: #fbfcff;
@@ -13,6 +14,9 @@
   --brand-deep-blue: #0a2b4e;
   --brand-red: #d34b2f;
   --brand-orange: #f0a13f;
+
+  /* HeroUI radius override (0px) */
+  --radius: 0px;
 }
 
 @theme inline {

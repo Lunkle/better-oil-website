@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "@heroui/react";
 
 interface POI {
   id: string;
@@ -86,7 +87,7 @@ export default function Item2({ data }: Item2Props) {
                 className="absolute flex items-center justify-center pointer-events-auto hidden md:flex"
                 style={{ top: pos.dotTop, left: pos.dotLeft, transform: 'translate(-50%, -50%)' }}
               >
-                 <div className="w-4 h-4 rounded-full bg-brand-orange shadow-[0_0_10px_rgba(241,90,36,0.8)] animate-pulse" />
+                 <div className="w-4 h-4 bg-brand-orange shadow-[0_0_10px_rgba(241,90,36,0.8)] animate-pulse" />
               </div>
             );
           })}
@@ -119,7 +120,7 @@ export default function Item2({ data }: Item2Props) {
                     poi.images.map((imgSrc, imgIdx) => (
                       <div
                         key={imgIdx}
-                        className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-brand-white overflow-hidden shadow-md bg-brand-deep-blue/5"
+                        className="w-12 h-12 md:w-14 md:h-14 border-2 border-brand-white overflow-hidden shadow-md bg-brand-deep-blue/5"
                         style={{ zIndex: poi.images!.length - imgIdx }}
                       >
                         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -127,8 +128,8 @@ export default function Item2({ data }: Item2Props) {
                       </div>
                     ))
                   ) : (
-                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border-2 border-brand-white overflow-hidden shadow-md flex items-center justify-center bg-brand-deep-blue/10">
-                      <div className="w-6 h-6 bg-brand-deep-blue/30 rounded-full" />
+                    <div className="w-12 h-12 md:w-14 md:h-14 border-2 border-brand-white overflow-hidden shadow-md flex items-center justify-center bg-brand-deep-blue/10">
+                      <div className="w-6 h-6 bg-brand-deep-blue/30" />
                     </div>
                   )}
                 </div>
@@ -143,7 +144,7 @@ export default function Item2({ data }: Item2Props) {
               <ul className="space-y-1.5">
                 {poi.points.map((point, pIdx) => (
                   <li key={pIdx} className="flex items-start gap-2 text-brand-deep-blue font-semibold text-xs leading-snug">
-                    <div className="w-1.5 h-1.5 rounded-full bg-brand-red mt-1 flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-brand-red mt-1 flex-shrink-0" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -154,16 +155,16 @@ export default function Item2({ data }: Item2Props) {
 
         {/* Mobile "Show More/Less" button */}
         {data.pois.length > 2 && (
-          <button
+          <Button
             onClick={() => setShowAll(!showAll)}
-            className="md:hidden mt-2 pointer-events-auto flex items-center justify-center gap-2 bg-brand-white border border-border py-2 px-4 rounded-full text-brand-deep-blue font-bold text-sm shadow-sm active:bg-gray-50"
+            className="md:hidden mt-2 pointer-events-auto flex items-center justify-center gap-2 bg-brand-white border border-border py-2 px-4 text-brand-deep-blue font-bold text-sm shadow-sm active:bg-gray-50"
           >
             {showAll ? (
               <>Show Less <ChevronUp className="w-4 h-4" /></>
             ) : (
               <>Show More Locations <ChevronDown className="w-4 h-4" /></>
             )}
-          </button>
+          </Button>
         )}
       </div>
     </div>

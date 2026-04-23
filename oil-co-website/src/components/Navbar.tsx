@@ -1,12 +1,13 @@
 "use client";
 
-import Link from 'next/link';
-import Image from 'next/image';
-import { Search, Globe, Menu, X, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import { NavItem, NavItemParent } from '@/locales';
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Globe, Search, ChevronRight } from "lucide-react";
+import { NavItem } from "@/locales";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection, Button } from "@heroui/react";
 
 interface NavbarProps {
   nav: {
@@ -14,25 +15,13 @@ interface NavbarProps {
     companyName: string;
     items: NavItem[];
   };
-  currentLang: 'en' | 'zh';
+  currentLang: "en" | "zh";
 }
 
 export default function Navbar({ nav, currentLang }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
-  const [hoveredParent, setHoveredParent] = useState<NavItemParent | null>(null);
   const pathname = usePathname();
-  const toggleLang = currentLang === 'en' ? 'zh' : 'en';
-
-  const handleNavEnter = (name: string) => {
-    setHoveredNav(name);
-    setHoveredParent(null);
-  };
-
-  const handleNavLeave = () => {
-    setHoveredNav(null);
-    setHoveredParent(null);
-  };
+  const toggleLang = currentLang === "en" ? "zh" : "en";
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-white/80 backdrop-blur-md border-b border-border">
@@ -53,104 +42,85 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center h-full">
-            {nav.items.map((item) => (
-              <div
-                key={item.name}
-                className="relative h-full flex items-center px-4"
-                onMouseEnter={() => handleNavEnter(item.name)}
-                onMouseLeave={handleNavLeave}
-              >
+          <div className="hidden lg:flex items-center h-full gap-4">
+            {nav.items.map((item) => {
+              if (item.dropdown) {
+                return (
+                  <Dropdown key={item.name}>
+                    <DropdownTrigger>
+                      <Button variant="ghost" className="text-foreground/70 hover:text-primary transition-colors text-sm font-bold tracking-wide uppercase">
+                        {item.name}
+                      </Button>
+                    </DropdownTrigger>
+                    <DropdownMenu aria-label={item.name}>
+                      {item.dropdown.map((parentItem) => {
+                        const hasChildren = parentItem.children && parentItem.children.length > 0;
+                        if (hasChildren) {
+                          return (
+                            <DropdownSection key={parentItem.parent} aria-label={parentItem.parent}>
+                              {parentItem.children!.map((child) => (
+                                <DropdownItem key={child.name} textValue={child.name}>
+                                  <Link href={`${child.href}?lang=${currentLang}`} className="block w-full">
+                                    {child.name}
+                                  </Link>
+                                </DropdownItem>
+                              ))}
+                            </DropdownSection>
+                          );
+                        }
+                        return (
+                          <DropdownItem key={parentItem.parent} textValue={parentItem.parent}>
+                            <Link
+                              href={`${parentItem.href}?lang=${currentLang}`}
+                              className="block w-full font-medium"
+                            >
+                              {parentItem.parent}
+                            </Link>
+                          </DropdownItem>
+                        );
+                      })}
+                    </DropdownMenu>
+                  </Dropdown>
+                );
+              }
+
+              return (
                 <Link
+                  key={item.name}
                   href={`${item.href}?lang=${currentLang}`}
-                  className="text-foreground/70 hover:text-primary transition-colors text-sm font-bold tracking-wide uppercase"
+                  className="px-4 text-foreground/70 hover:text-primary transition-colors text-sm font-bold tracking-wide uppercase"
                 >
                   {item.name}
                 </Link>
-
-                {/* Dropdown Menu */}
-                {item.dropdown && hoveredNav === item.name && (
-                  <div className="absolute top-full left-0 mt-0 pt-2 min-w-[240px]">
-                    <div className="bg-brand-white border border-border shadow-lg overflow-hidden flex">
-                      {/* Left Column (or single column) */}
-                      <div className="flex-1 w-full min-w-[200px]">
-                        {item.dropdown.map((parentItem) => {
-                          const hasChildren = parentItem.children && parentItem.children.length > 0;
-                          return (
-                            <div
-                              key={parentItem.parent}
-                              className="relative group bg-gray-50 hover:bg-gray-50 text-foreground hover:text-brand-red"
-                              onMouseEnter={() => setHoveredParent(parentItem)}
-                            >
-                              {parentItem.href ? (
-                                <Link
-                                  href={`${parentItem.href}?lang=${currentLang}`}
-                                  className="block px-6 py-4 text-sm font-medium transition-colors"
-                                >
-                                  {parentItem.parent}
-                                </Link>
-                              ) : (
-                                <div className="px-6 py-4 flex items-center justify-between font-medium cursor-default transition-colors">
-                                  {parentItem.parent}
-                                  {hasChildren && <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover:text-brand-red transition-colors" />}
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      {/* Right Column (for two-column dropdowns) */}
-                      {item.dropdown.some(p => p.children) && (
-                        <div className="w-[300px] border-l border-border bg-gray-50/50 p-4">
-                           {hoveredParent && hoveredParent.children ? (
-                             <div className="flex flex-col space-y-4">
-                               {hoveredParent.children.map(child => (
-                                 <Link
-                                   key={child.name}
-                                   href={`${child.href}?lang=${currentLang}`}
-                                   className="group flex items-center gap-2 text-sm text-foreground/80 hover:text-brand-red transition-colors"
-                                 >
-                                   <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover:text-brand-red transition-colors" />
-                                   <span>{child.name}</span>
-                                 </Link>
-                               ))}
-                             </div>
-                           ) : (
-                             <div className="text-sm text-gray-400 italic" />
-                           )}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           {/* Right Side Icons */}
           <div className="hidden lg:flex items-center space-x-6">
             <Link
               href={`${pathname}?lang=${toggleLang}`}
-              className="flex items-center space-x-2 text-foreground/70 hover:text-primary transition-colors border border-border rounded-full px-3 py-1 text-xs font-bold"
+              className="flex items-center space-x-2 text-foreground/70 hover:text-primary transition-colors border border-border px-3 py-1 text-xs font-bold"
             >
               <Globe className="h-3 w-3" />
               <span>{nav.toggleLang}</span>
             </Link>
-            <button className="text-foreground/70 hover:text-primary transition-colors">
+            <Button isIconOnly variant="ghost" aria-label="Search" className="text-foreground/70 hover:text-primary transition-colors">
               <Search className="h-5 w-5" />
-            </button>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
-            <button
+            <Button
+              isIconOnly
+              variant="ghost"
               onClick={() => setIsOpen(!isOpen)}
-              className={`transition-colors ${isOpen ? 'text-primary' : 'text-foreground hover:text-primary'}`}
+              className={`transition-colors ${isOpen ? "text-primary" : "text-foreground hover:text-primary"}`}
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </button>
+            </Button>
           </div>
         </div>
       </div>

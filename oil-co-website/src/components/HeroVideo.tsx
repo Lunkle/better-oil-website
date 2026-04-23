@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Button } from "@heroui/react";
 
 interface HeroVideoProps {
   descriptionLines: string[];
@@ -55,15 +56,23 @@ export default function HeroVideo({
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 md:gap-6">
             <Link
               href={`/tech?lang=${currentLang}`}
-              className="px-6 py-4 md:px-10 md:py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-base md:text-lg flex items-center justify-center text-center"
+              className="flex items-center justify-center"
             >
-              {exploreText}
+              <Button
+                className="px-6 py-4 md:px-10 md:py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-base md:text-lg flex items-center justify-center text-center h-auto"
+              >
+                {exploreText}
+              </Button>
             </Link>
             <Link
               href={`/contact?lang=${currentLang}`}
-              className="px-6 py-4 md:px-10 md:py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-base md:text-lg flex items-center justify-center text-center"
+              className="flex items-center justify-center"
             >
-              {videoText}
+              <Button
+                className="px-6 py-4 md:px-10 md:py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-base md:text-lg flex items-center justify-center text-center h-auto"
+              >
+                {videoText}
+              </Button>
             </Link>
           </div>
         </motion.div>

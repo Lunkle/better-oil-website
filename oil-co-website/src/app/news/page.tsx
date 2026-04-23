@@ -7,6 +7,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";
 import { NavItem } from "@/locales";
+import { Button } from "@heroui/react";
 
 function Content() {
   const { t, locale } = useTranslation();
@@ -20,9 +21,13 @@ function Content() {
           <p className="text-foreground/40 font-mono text-sm tracking-widest">{t.placeholders.comingSoon}</p>
           <Link
             href={`/?lang=${locale}`}
-            className="inline-flex items-center gap-2 text-primary border border-primary/20 px-6 py-3 hover:bg-primary hover:text-white transition-all font-bold"
+            className="inline-flex items-center justify-center"
           >
-            <MoveLeft size={16} /> {t.placeholders.backHome}
+            <Button
+              className="inline-flex items-center gap-2 text-primary border border-primary/20 px-6 py-3 hover:bg-primary hover:text-white transition-all font-bold h-auto bg-transparent"
+            >
+              <MoveLeft size={16} /> {t.placeholders.backHome}
+            </Button>
           </Link>
         </div>
       </div>

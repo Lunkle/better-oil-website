@@ -7,6 +7,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@heroui/react";
 
 function Content() {
   const { t, locale } = useTranslation();
@@ -80,7 +81,7 @@ function Content() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="relative aspect-video bg-black rounded-lg overflow-hidden shadow-2xl"
+                  className="relative aspect-video bg-black overflow-hidden shadow-2xl"
                 >
                   <video
                     className="w-full h-full object-cover"
@@ -153,11 +154,15 @@ function Content() {
                   >
                     <Link
                       href={section.link.startsWith('/') ? `${section.link}?lang=${locale}` : section.link}
-                      className={`inline-block px-8 py-3 font-bold text-white transition-transform hover:scale-105 ${
-                        section.buttonColor === 'red' ? 'bg-brand-red' : 'bg-brand-orange'
-                      }`}
+                      className="inline-block"
                     >
-                      {section.button}
+                      <Button
+                        className={`px-8 py-3 font-bold text-white transition-transform hover:scale-105 h-auto ${
+                          section.buttonColor === 'red' ? 'bg-brand-red' : 'bg-brand-orange'
+                        }`}
+                      >
+                        {section.button}
+                      </Button>
                     </Link>
                   </motion.div>
                 </div>
