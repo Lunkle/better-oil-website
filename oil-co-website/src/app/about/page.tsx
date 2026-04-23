@@ -126,29 +126,29 @@ function DynamicSection({ section, locale }: { section: AboutSection; locale: st
   return (
     <section className="py-12 md:py-20 bg-brand-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-20`}>
+        <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-10 md:gap-16`}>
 
-          {/* Image portion (45%) */}
-          <div className="w-full md:w-[45%] flex justify-center">
+          {/* Image portion (50%) */}
+          <div className="w-full md:w-1/2 flex justify-center">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative w-full max-w-[600px] aspect-square flex items-center justify-center"
+              className="relative w-full max-w-[700px] aspect-square flex items-center justify-center"
             >
               <Image
                 src={section.image}
                 alt={section.title}
-                width={600}
-                height={600}
+                width={700}
+                height={700}
                 className="object-contain max-h-full"
               />
             </motion.div>
           </div>
 
-          {/* Content portion (55%) */}
-          <div className="w-full md:w-[55%] space-y-8">
+          {/* Content portion (50%) */}
+          <div className="w-full md:w-1/2 space-y-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
