@@ -110,72 +110,7 @@ function Content() {
 
         {/* Dynamic Horizontal Slices */}
         {t.about.sections?.map((section, index) => (
-          <section
-            key={index}
-            className="py-12 md:py-20 bg-brand-white"
-          >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-20`}>
-
-                {/* Image portion (45%) */}
-                <div className="w-full md:w-[45%] flex justify-center">
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="relative w-full max-w-[600px] aspect-square flex items-center justify-center"
-                  >
-                    <Image
-                      src={section.image}
-                      alt={section.title}
-                      width={600}
-                      height={600}
-                      className="object-contain max-h-full"
-                    />
-                  </motion.div>
-                </div>
-
-                {/* Content portion (55%) */}
-                <div className="w-full md:w-[55%] space-y-8">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <h3 className="text-xl md:text-2xl font-bold text-brand-deep-blue mb-6">
-                      {section.title}
-                    </h3>
-                    <div className="space-y-4">
-                      {section.content.split('\n\n').map((paragraph, pIndex) => (
-                        <p key={pIndex} className="text-brand-deep-blue/80 text-lg leading-relaxed">
-                          {paragraph}
-                        </p>
-                      ))}
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                  >
-                    <Link
-                      href={section.link.startsWith('/') ? `${section.link}?lang=${locale}` : section.link}
-                      className={`inline-block px-8 py-3 font-bold text-white transition-transform hover:scale-105 ${
-                        section.buttonColor === 'red' ? 'bg-brand-red' : 'bg-brand-orange'
-                      }`}
-                    >
-                      {section.button}
-                    </Link>
-                  </motion.div>
-                </div>
-
-              </div>
-            </div>
-          </section>
+          <DynamicSection key={index} section={section} locale={locale} />
         ))}
       </main>
 
@@ -183,6 +118,78 @@ function Content() {
     </div>
   );
 }
+
+// --- Local Components ---
+
+function DynamicSection({ section, locale }: { section: any; locale: string }) {
+  return (
+    <section className="py-12 md:py-20 bg-brand-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-center gap-12 md:gap-20`}>
+
+          {/* Image portion (45%) */}
+          <div className="w-full md:w-[45%] flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative w-full max-w-[600px] aspect-square flex items-center justify-center"
+            >
+              <Image
+                src={section.image}
+                alt={section.title}
+                width={600}
+                height={600}
+                className="object-contain max-h-full"
+              />
+            </motion.div>
+          </div>
+
+          {/* Content portion (55%) */}
+          <div className="w-full md:w-[55%] space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-xl md:text-2xl font-bold text-brand-deep-blue mb-6">
+                {section.title}
+              </h3>
+              <div className="space-y-4">
+                {section.content.split('\n\n').map((paragraph: string, pIndex: number) => (
+                  <p key={pIndex} className="text-brand-deep-blue/80 text-lg leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Link
+                href={section.link.startsWith('/') ? `${section.link}?lang=${locale}` : section.link}
+                className={`inline-block px-8 py-3 font-bold text-white transition-transform hover:scale-105 ${
+                  section.buttonColor === 'red' ? 'bg-brand-red' : 'bg-brand-orange'
+                }`}
+              >
+                {section.button}
+              </Link>
+            </motion.div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// --- Main Page Export ---
 
 export default function AboutPage() {
   return (
