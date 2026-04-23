@@ -313,6 +313,66 @@ export const zh = {
       terms: "服务条款",
     },
   },
+
+  drillingAcceleration: {
+    hero: {
+      title: "恒能恒压, 定义钻井速度新标准",
+    },
+    kpi: {
+      items: [
+        { value: "52%", label: "机械钻速平均提升" },
+        { value: "45%", label: "建井周期平均缩短" },
+        { value: "300+", label: "井次成功应用" },
+        { value: "500", label: "100米下钻井平均寿命" },
+      ],
+    },
+    problemSolution: {
+      leftTitle: "常规钻井三大难题",
+      leftPoints: ["效率低", "成本高", "风险大"],
+      rightTitle: "New-Drill 集成技术工艺",
+      rightSummary: "提供卓越的高速稳定性和极低的能量损失，解决常规难题，定义钻井新标准。",
+    },
+    comparison: {
+      headers: ["评估指标", "传统单一方式", "NEW-DRILL 集成技术"],
+      rows: [
+        { metric: "结构刚度&效率", trad: "中等", new: "高稳定性与高传输效率" },
+        { metric: "能量损失模式", trad: "较高损耗", new: "极低损耗" },
+        { metric: "地层适应性保护", trad: "有限", new: "全面适应并保护地层" },
+        { metric: "系统整合程度", trad: "低，多部件独立", new: "高度整合，一体化设计" },
+      ],
+    },
+    drillBit: {
+      title: "高转速稳定性与钻头长寿命",
+      description: "New-Drill 钻头技术在高速旋转中保持极致稳定，显著提升钻头寿命，确保高效钻井作业。",
+    },
+    diagram: {
+      labels: ["高品质液力单元", "旋转电磁阀", "脉动过滤器"],
+    },
+    workflow: {
+      steps: [
+        { number: "01", label: "岩性模型" },
+        { number: "02", label: "工况匹配" },
+        { number: "03", label: "水力优化" },
+        { number: "04", label: "参数确定" },
+        { number: "05", label: "钻速模型" },
+      ],
+    },
+    businessScope: {
+      rows: [
+        { category: "钻前建模与分析", desc: "软件与数据服务" },
+        { category: "随钻优化与控制", desc: "实时硬件监控" },
+        { category: "钻后评价与总结", desc: "报告与数据分析" },
+      ]
+    },
+    validation: {
+      cards: [
+        "机械钻速提高平均 52%",
+        "300+ 井次成功应用",
+        "整体技术水平达到国际先进水平"
+      ]
+    }
+  },
+
   placeholders: {
     comingSoon: "内容正在建设中...",
     comingSoonTitle: "敬请期待",

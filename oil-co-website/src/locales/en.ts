@@ -346,6 +346,66 @@ export const en = {
       terms: "Terms of Service",
     },
   },
+
+  drillingAcceleration: {
+    hero: {
+      title: "Constant Energy & Pressure, Defining New Standards in Drilling Speed",
+    },
+    kpi: {
+      items: [
+        { value: "52%", label: "Average ROP Increase" },
+        { value: "45%", label: "Average Well Construction Cycle Reduction" },
+        { value: "300+", label: "Successful Well Applications" },
+        { value: "500", label: "Avg. Life for 100m Tripping" },
+      ],
+    },
+    problemSolution: {
+      leftTitle: "Three Major Challenges in Conventional Drilling",
+      leftPoints: ["Low Efficiency", "High Cost", "High Risk"],
+      rightTitle: "New-Drill Integrated Technology Process",
+      rightSummary: "Delivers exceptional high-speed stability and minimal energy loss, overcoming conventional challenges and setting new drilling standards.",
+    },
+    comparison: {
+      headers: ["Evaluation Metric", "Traditional Single Method", "NEW-DRILL Integrated Technology"],
+      rows: [
+        { metric: "Structural Rigidity & Efficiency", trad: "Moderate", new: "High Stability & Transmission Efficiency" },
+        { metric: "Energy Loss Pattern", trad: "Higher Loss", new: "Ultra-low Loss" },
+        { metric: "Formation Adaptability & Protection", trad: "Limited", new: "Comprehensive Adaptability & Protection" },
+        { metric: "System Integration Level", trad: "Low, independent components", new: "Highly Integrated Design" },
+      ],
+    },
+    drillBit: {
+      title: "High-Speed Stability & Extended Bit Longevity",
+      description: "The New-Drill bit technology maintains absolute stability during high-speed rotation, significantly enhancing bit lifespan and ensuring highly efficient drilling operations.",
+    },
+    diagram: {
+      labels: ["Premium Hydraulic Unit", "Rotary Solenoid Valve", "Pulsation Filter"],
+    },
+    workflow: {
+      steps: [
+        { number: "01", label: "Lithology Modeling" },
+        { number: "02", label: "Condition Matching" },
+        { number: "03", label: "Hydraulic Optimization" },
+        { number: "04", label: "Parameter Determination" },
+        { number: "05", label: "ROP Modeling" },
+      ],
+    },
+    businessScope: {
+      rows: [
+        { category: "Pre-drilling Modeling & Analysis", desc: "Software & Data Services" },
+        { category: "MWD Optimization & Control", desc: "Real-time Hardware Monitoring" },
+        { category: "Post-drilling Evaluation & Summary", desc: "Reporting & Data Analytics" },
+      ]
+    },
+    validation: {
+      cards: [
+        "Average ROP Increase of 52%",
+        "Over 300 Successful Applications",
+        "Overall Technology at International Advanced Level"
+      ]
+    }
+  },
+
   placeholders: {
     comingSoon: "Content is coming soon...",
     comingSoonTitle: "Coming Soon",
