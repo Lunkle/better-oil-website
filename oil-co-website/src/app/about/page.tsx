@@ -129,20 +129,20 @@ function DynamicSection({ section, locale }: { section: AboutSection; locale: st
         <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-10 md:gap-16`}>
 
           {/* Image portion (50%) */}
-          <div className="w-full md:w-1/2 flex justify-center">
+          <div className="w-full md:w-1/2 flex justify-center items-start">
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative w-full max-w-[700px] aspect-square flex items-center justify-center"
+              className="relative w-full max-w-[700px] aspect-square flex items-start justify-center"
             >
               <Image
                 src={section.image}
                 alt={section.title}
                 width={700}
                 height={700}
-                className="object-contain max-h-full"
+                className="object-contain object-top max-h-full"
               />
             </motion.div>
           </div>
