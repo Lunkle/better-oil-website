@@ -315,7 +315,6 @@ export const zh = {
   },
   placeholders: {
     comingSoon: "内容正在建设中...",
-    comingSoonTitle: "敬请期待",
     backHome: "返回首页",
   },
 };

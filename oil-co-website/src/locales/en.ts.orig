@@ -348,7 +348,6 @@ export const en = {
   },
   placeholders: {
     comingSoon: "Content is coming soon...",
-    comingSoonTitle: "Coming Soon",
     backHome: "Back to Home",
   },
 };
