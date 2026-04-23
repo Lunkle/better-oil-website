@@ -58,7 +58,7 @@ function Content() {
               transition={{ duration: 0.8 }}
               className="text-5xl md:text-7xl font-bold text-white text-left tracking-wider shadow-sm"
             >
-              贝特石油
+              {t.nav.companyName}
             </motion.h1>
           </div>
         </section>
