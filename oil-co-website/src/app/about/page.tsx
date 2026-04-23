@@ -7,6 +7,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { AboutSection } from "../../locales";
 
 function Content() {
   const { t, locale } = useTranslation();
@@ -56,7 +57,7 @@ function Content() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="text-5xl md:text-7xl font-bold text-white text-left tracking-wider shadow-sm"
+              className="text-5xl md:text-7xl font-bold text-white text-left tracking-wider text-shadow-sm"
             >
               {t.nav.companyName}
             </motion.h1>
@@ -121,7 +122,7 @@ function Content() {
 
 // --- Local Components ---
 
-function DynamicSection({ section, locale }: { section: any; locale: string }) {
+function DynamicSection({ section, locale }: { section: AboutSection; locale: string }) {
   return (
     <section className="py-12 md:py-20 bg-brand-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
