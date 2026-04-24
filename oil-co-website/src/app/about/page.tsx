@@ -110,11 +110,13 @@ function Content() {
         </section>
 
         {/* Dynamic Horizontal Slices */}
+        
+        {/* This logo becomes too big on mobile, so we hide it */}
         <DynamicSection
           section={t.about.sections.boundaries}
           locale={locale}
-          imageWidthClass="md:basis-[30%] shrink-0"
-          textWidthClass="md:basis-[70%] shrink-0"
+          imageWidthClass="md:basis-[30%] shrink hidden md:block"
+          textWidthClass="md:basis-[70%] shrink"
         />
         <DynamicSection
           section={t.about.sections.research}
@@ -144,8 +146,8 @@ function Content() {
 function DynamicSection({
   section,
   locale,
-  imageWidthClass = "md:basis-1/2 shrink-0",
-  textWidthClass = "md:basis-1/2 shrink-0"
+  imageWidthClass = "md:basis-1/2 shrink",
+  textWidthClass = "md:basis-1/2 shrink"
 }: {
   section: AboutSection;
   locale: string;
@@ -155,7 +157,7 @@ function DynamicSection({
   return (
     <section className="py-12 md:py-20 bg-brand-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-10 md:gap-16`}>
+        <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-8 md:gap-16`}>
 
           {/* Image portion */}
           <div className={`w-full ${imageWidthClass} flex justify-center items-start`}>
@@ -164,7 +166,7 @@ function DynamicSection({
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="relative w-full max-w-[700px] aspect-square flex items-start justify-center"
+              className="relative w-full max-w-[700px] flex items-start justify-center"
             >
               <Image
                 src={section.image}
