@@ -20,7 +20,7 @@ export default function HeroVideo({
   currentLang,
 }: HeroVideoProps) {
   return (
-    <section className="relative px-4 w-full min-h-screen flex items-center justify-start overflow-hidden bg-black">
+    <section className="relative px-4 w-full min-h-[70vh] flex items-center justify-start overflow-hidden bg-black">
       {/* Autoplay Background Video */}
       <video
         autoPlay
