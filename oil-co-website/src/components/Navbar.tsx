@@ -116,23 +116,17 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center h-full">
-            {nav.items.map((item) => {
-              if (!item.dropdown) {
-                return (
-                  <Link
-                    key={item.name}
-                    href={`${item.href}?lang=${currentLang}`}
-                    className={cn(navigationMenuTriggerStyle, "h-20")}
-                  >
-                    {item.name}
-                  </Link>
-                );
-              }
-
-              return (
-                <NavDropdownItem key={item.name} item={item as NavItem & { dropdown: NavItemParent[] }} currentLang={currentLang} />
-              );
-            })}
+            {nav.items.map((item) => item.dropdown ? (
+              <NavDropdownItem key={item.name} item={item as NavItem & { dropdown: NavItemParent[] }} currentLang={currentLang} />
+            ) : (
+              <Link
+                key={item.name}
+                href={`${item.href}?lang=${currentLang}`}
+                className={cn(navigationMenuTriggerStyle, "h-20")}
+              >
+                {item.name}
+              </Link>
+            ))}
           </div>
 
           {/* Right Side Icons */}
