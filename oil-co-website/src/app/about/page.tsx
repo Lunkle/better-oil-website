@@ -110,9 +110,28 @@ function Content() {
         </section>
 
         {/* Dynamic Horizontal Slices */}
-        {t.about.sections?.map((section, index) => (
-          <DynamicSection key={index} section={section} locale={locale} />
-        ))}
+        <DynamicSection
+          section={t.about.sections.boundaries}
+          locale={locale}
+          imageWidthClass="md:w-[30%]"
+          textWidthClass="md:w-[70%]"
+        />
+        <DynamicSection
+          section={t.about.sections.research}
+          locale={locale}
+        />
+        <DynamicSection
+          section={t.about.sections.manufacturing}
+          locale={locale}
+        />
+        <DynamicSection
+          section={t.about.sections.innovation}
+          locale={locale}
+        />
+        <DynamicSection
+          section={t.about.sections.value}
+          locale={locale}
+        />
       </main>
 
       <Footer t={t.footer} currentLang={locale} />
@@ -122,14 +141,24 @@ function Content() {
 
 // --- Local Components ---
 
-function DynamicSection({ section, locale }: { section: AboutSection; locale: string }) {
+function DynamicSection({
+  section,
+  locale,
+  imageWidthClass = "md:w-1/2",
+  textWidthClass = "md:w-1/2"
+}: {
+  section: AboutSection;
+  locale: string;
+  imageWidthClass?: string;
+  textWidthClass?: string;
+}) {
   return (
     <section className="py-12 md:py-20 bg-brand-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className={`flex flex-col ${section.imageOnLeft ? 'md:flex-row' : 'md:flex-row-reverse'} items-start gap-10 md:gap-16`}>
 
-          {/* Image portion (50%) */}
-          <div className="w-full md:w-1/2 flex justify-center items-start">
+          {/* Image portion */}
+          <div className={`w-full ${imageWidthClass} flex justify-center items-start`}>
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -147,8 +176,8 @@ function DynamicSection({ section, locale }: { section: AboutSection; locale: st
             </motion.div>
           </div>
 
-          {/* Content portion (50%) */}
-          <div className="w-full md:w-1/2 space-y-8">
+          {/* Content portion */}
+          <div className={`w-full ${textWidthClass} space-y-8`}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

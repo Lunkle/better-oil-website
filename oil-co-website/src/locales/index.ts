@@ -14,6 +14,14 @@ export type AboutSection = {
   buttonColor: string;
 };
 
+export type AboutSections = {
+  boundaries: AboutSection;
+  research: AboutSection;
+  manufacturing: AboutSection;
+  innovation: AboutSection;
+  value: AboutSection;
+};
+
 export type NavItemChild = {
   name: string;
   href: string;
