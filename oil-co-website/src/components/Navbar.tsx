@@ -33,7 +33,7 @@ const DROPDOWN_CLOSE_DELAY_MS = 150;
 
 function NavDropdownItem({ item, currentLang }: { item: NavItem & { dropdown: NavItemParent[] }; currentLang: string }) {
   const [open, setOpen] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout>>();
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
 
   useEffect(() => () => clearTimeout(closeTimer.current), []);
 
