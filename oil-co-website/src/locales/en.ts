@@ -382,6 +382,7 @@ export const en = {
       labels: ["Premium Hydraulic Unit", "Rotary Solenoid Valve", "Pulsation Filter"],
     },
     workflow: {
+      title: 'Full-Process Optimization Workflow',
       steps: [
         { number: "01", label: "Lithology Selection", desc: "Precise selection and matching of lithology and matched bits for different formations." },
         { number: "02", label: "Tool Matching", desc: "Ensure matched bits for different formations are compatible with NEW-DRILL tools." },
@@ -391,6 +392,7 @@ export const en = {
       ],
     },
     businessScope: {
+      title: 'Business Scope',
       mainCategory: "Directional Wells",
       subGroups: [
         {

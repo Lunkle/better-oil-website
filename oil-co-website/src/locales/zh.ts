@@ -349,6 +349,7 @@ export const zh = {
       labels: ["高品质液力单元", "旋转电磁阀", "脉动过滤器"],
     },
     workflow: {
+      title: '全流程配套优化工艺',
       steps: [
         { number: "01", label: "岩性选型", desc: "针对不同地层的岩性与配套钻头进行精准选型匹配." },
         { number: "02", label: "工具匹配", desc: "确保不同地层配套钻头和 NEW-DRILL 工具匹配." },
@@ -358,6 +359,7 @@ export const zh = {
       ],
     },
     businessScope: {
+      title: '业务范围',
       mainCategory: "定向井",
       subGroups: [
         {
