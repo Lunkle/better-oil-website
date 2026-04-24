@@ -65,10 +65,15 @@ function Content() {
       </section>
 
       {/* 3. Problem vs. Solution */}
-      <section className="py-20 px-0 max-w-full w-full">
-        <div className="w-full flex flex-col md:flex-row items-stretch">
+      <section className="py-20 px-6 max-w-full w-full bg-white relative">
+         {/* Background splits: left gray, right white */}
+         <div className="absolute inset-0 flex">
+           <div className="w-1/2 bg-gray-100"></div>
+           <div className="w-1/2 bg-white"></div>
+         </div>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch relative z-10">
 
-          <div className="bg-gray-100 p-12 md:p-20 md:w-1/2 flex flex-col justify-center relative shadow-2xl z-20">
+          <div className="bg-gray-100 p-12 md:p-20 md:w-1/2 flex flex-col justify-center relative z-20">
             <h3 className="text-3xl font-bold text-brand-deep-blue mb-8">{content.problemSolution.leftTitle}</h3>
             <ul className="space-y-6">
               {content.problemSolution.leftPoints.map((point, idx) => (
@@ -246,7 +251,7 @@ function Content() {
                          <tr key={`${groupIdx}-${itemIdx}`} className="border-b border-gray-100 last:border-0 hover:bg-gray-50/50">
                            {isFirstOverall && (
                              <td rowSpan={totalItems} className="p-6 font-bold text-xl text-white bg-brand-deep-blue w-48 text-center border-r border-brand-deep-blue/20 align-middle">
-                               <div className="mx-auto" style={{ writingMode: 'vertical-rl', letterSpacing: '0.2em' }}>
+                               <div className="mx-auto">
                                  {content.businessScope.mainCategory}
                                </div>
                              </td>
@@ -273,23 +278,34 @@ function Content() {
       </section>
 
       {/* 9. Validation & Social Proof */}
-      <section className="py-20 px-6 bg-brand-white">
+      <section className="py-20 px-6 bg-brand-deep-blue text-white">
         <div className="max-w-7xl mx-auto">
-           <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue mb-12 text-left">
+           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-left">
              {content.validation.title}
            </h2>
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {content.validation.cards.map((card, idx) => (
-                <div key={idx} className="relative bg-brand-deep-blue text-white p-10 flex items-center min-h-[160px] shadow-xl">
-                   {/* Top Left Rotated L (Square positioned to overflow) */}
-                   <div className="absolute -top-3 -left-3 w-8 h-8 bg-brand-white border-b border-r border-gray-200"></div>
+           <div className="flex flex-col md:flex-row gap-12 items-stretch">
+              {/* Left Column: 60% */}
+              <div className="basis-[60%] shrink-0">
+                 <div className="w-full h-full min-h-[300px] md:min-h-[400px] bg-white/5 border border-white/10 flex items-center justify-center">
+                    <span className="text-gray-400 font-mono">Certificate Image Placeholder</span>
+                 </div>
+              </div>
 
-                   {/* Bottom Right Rotated L */}
-                   <div className="absolute -bottom-3 -right-3 w-8 h-8 bg-brand-white border-t border-l border-gray-200"></div>
+              {/* Right Column: 40% */}
+              <div className="basis-[40%] shrink-0 flex flex-col gap-6">
+                {content.validation.cards.map((card, idx) => (
+                  <div key={idx} className="relative flex-1 flex flex-col">
+                     {/* White Rectangles Behind */}
+                     <div className="absolute -top-2 -left-2 w-6 h-6 bg-brand-white z-0"></div>
+                     <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-brand-white z-0"></div>
 
-                   <p className="text-lg font-medium leading-relaxed relative z-10">{card}</p>
-                </div>
-              ))}
+                     {/* Main Card */}
+                     <div className="relative z-10 bg-white/10 border border-white/20 p-8 flex-1 flex items-center shadow-lg">
+                        <p className="text-lg font-medium leading-relaxed">{card}</p>
+                     </div>
+                  </div>
+                ))}
+              </div>
            </div>
         </div>
       </section>
