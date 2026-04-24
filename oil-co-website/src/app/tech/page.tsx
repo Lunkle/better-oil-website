@@ -7,6 +7,7 @@ import { useTranslation } from "../../hooks/useTranslation";
 import Link from "next/link";
 import { MoveLeft } from "lucide-react";
 import { NavItem } from "@/locales";
+import { Button } from "@/components/ui/button";
 
 function Content() {
   const { t, locale } = useTranslation();
@@ -18,12 +19,11 @@ function Content() {
           <h1 className="text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tighter">{t.nav.items.find((item: NavItem) => item.href === "/tech")?.name}</h1>
           <div className="h-1 w-20 bg-primary mx-auto" />
           <p className="text-foreground/40 font-mono text-sm tracking-widest">{t.placeholders.comingSoon}</p>
-          <Link
-            href={`/?lang=${locale}`}
-            className="inline-flex items-center gap-2 text-primary border border-primary/20 px-6 py-3 hover:bg-primary hover:text-white transition-all font-bold"
-          >
-            <MoveLeft size={16} /> {t.placeholders.backHome}
-          </Link>
+          <Button asChild variant="outline" className="text-primary border-primary/20 hover:bg-primary hover:text-white">
+            <Link href={`/?lang=${locale}`}>
+              <MoveLeft size={16} /> {t.placeholders.backHome}
+            </Link>
+          </Button>
         </div>
       </div>
       <Footer t={t.footer} currentLang={locale} />

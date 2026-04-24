@@ -27,7 +27,9 @@ Welcome! This document provides crucial context, architectural guidelines, and r
 
 ## Dependencies
 - **Use External Libraries:** It is encouraged to add new dependencies to avoid writing hard-to-maintain custom code. However, you **must** always request permission from the user before installing any new external dependencies.
+- **Prefer Reuse:** In general, prefer reusing well-maintained external code (e.g., UI libraries, utility libraries) over rolling custom implementations. External libraries often provide better accessibility, test coverage, and maintenance.
 - **Existing Libraries:** The project already uses `framer-motion` for UI animations and `lucide-react` for icons. Utilize these when appropriate.
+- **Shadcn UI:** The project uses [Shadcn/ui](https://ui.shadcn.com/) for UI primitives (buttons, navigation menus, etc.). Install components **lazily as needed** — only add a component when it is required. Components live in `src/components/ui/`. The base utilities are in `src/lib/utils.ts`. Because the sandbox has no internet access to ui.shadcn.com, new Shadcn components must be created manually by copying the standard component source from the Shadcn docs and installing required `@radix-ui/*` npm packages. All Shadcn components use our brand color palette (see `globals.css`) and `--radius: 0rem` (zero border radius).
 
 ## Pre-commit & Testing Checklist
 - **Compile Check:** Use `cd oil-co-website && npm run build` to verify that the Next.js static export compiles successfully without typing or build errors prior to submitting code.

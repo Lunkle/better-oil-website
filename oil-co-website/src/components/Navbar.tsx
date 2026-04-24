@@ -2,11 +2,22 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Globe, Menu, X, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { Search, Globe, Menu, X, ChevronDown } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { NavItem, NavItemParent } from '@/locales';
+import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { cn } from '@/lib/utils';
 
 interface NavbarProps {
   nav: {
@@ -17,22 +28,73 @@ interface NavbarProps {
   currentLang: 'en' | 'zh';
 }
 
+/** Desktop dropdown nav item that opens/closes on hover. */
+const DROPDOWN_CLOSE_DELAY_MS = 150;
+
+function NavDropdownItem({ item, currentLang }: { item: NavItem & { dropdown: NavItemParent[] }; currentLang: string }) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
+
+  const openMenu = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), DROPDOWN_CLOSE_DELAY_MS);
+  };
+
+  return (
+    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
+      <DropdownMenuTrigger
+        className={cn(navigationMenuTriggerStyle, "h-20 gap-1")}
+        onMouseEnter={openMenu}
+        onMouseLeave={scheduleClose}
+      >
+        {item.name}
+        <ChevronDown className={cn("size-3 transition-transform duration-300", open && "rotate-180")} />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="p-1 min-w-[220px]"
+        sideOffset={0}
+        onMouseEnter={openMenu}
+        onMouseLeave={scheduleClose}
+      >
+        {item.dropdown.map((parentItem) =>
+          parentItem.children && parentItem.children.length > 0 ? (
+            <DropdownMenuSub key={parentItem.parent}>
+              <DropdownMenuSubTrigger className="text-sm font-medium text-foreground/70 data-[state=open]:text-brand-red data-[state=open]:bg-accent px-4 py-3">
+                {parentItem.parent}
+              </DropdownMenuSubTrigger>
+              <DropdownMenuSubContent className="p-1 min-w-[220px]">
+                {parentItem.children.map((child) => (
+                  <DropdownMenuItem key={child.name} asChild className="text-sm text-foreground/70 focus:text-brand-red focus:bg-accent px-4 py-2.5 cursor-pointer">
+                    <Link href={`${child.href}?lang=${currentLang}`}>
+                      {child.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+          ) : (
+            <DropdownMenuItem key={parentItem.parent} asChild className="text-sm font-medium text-foreground/70 focus:text-brand-red focus:bg-accent px-4 py-3 cursor-pointer">
+              <Link href={`${parentItem.href ?? item.href}?lang=${currentLang}`}>
+                {parentItem.parent}
+              </Link>
+            </DropdownMenuItem>
+          )
+        )}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
 export default function Navbar({ nav, currentLang }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
-  const [hoveredParent, setHoveredParent] = useState<NavItemParent | null>(null);
   const pathname = usePathname();
   const toggleLang = currentLang === 'en' ? 'zh' : 'en';
-
-  const handleNavEnter = (name: string) => {
-    setHoveredNav(name);
-    setHoveredParent(null);
-  };
-
-  const handleNavLeave = () => {
-    setHoveredNav(null);
-    setHoveredParent(null);
-  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-white/80 backdrop-blur-md border-b border-border">
@@ -54,77 +116,16 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center h-full">
-            {nav.items.map((item) => (
-              <div
+            {nav.items.map((item) => item.dropdown ? (
+              <NavDropdownItem key={item.name} item={item as NavItem & { dropdown: NavItemParent[] }} currentLang={currentLang} />
+            ) : (
+              <Link
                 key={item.name}
-                className="relative h-full flex items-center px-4"
-                onMouseEnter={() => handleNavEnter(item.name)}
-                onMouseLeave={handleNavLeave}
+                href={`${item.href}?lang=${currentLang}`}
+                className={cn(navigationMenuTriggerStyle, "h-20")}
               >
-                <Link
-                  href={`${item.href}?lang=${currentLang}`}
-                  className="text-foreground/70 hover:text-primary transition-colors text-sm font-bold tracking-wide uppercase"
-                >
-                  {item.name}
-                </Link>
-
-                {/* Dropdown Menu */}
-                {item.dropdown && hoveredNav === item.name && (
-                  <div className="absolute top-full left-0 mt-0 pt-2 min-w-[240px]">
-                    <div className="bg-brand-white border border-border shadow-lg overflow-hidden flex">
-                      {/* Left Column (or single column) */}
-                      <div className="flex-1 w-full min-w-[200px]">
-                        {item.dropdown.map((parentItem) => {
-                          const hasChildren = parentItem.children && parentItem.children.length > 0;
-                          return (
-                            <div
-                              key={parentItem.parent}
-                              className="relative group bg-gray-50 hover:bg-gray-50 text-foreground hover:text-brand-red"
-                              onMouseEnter={() => setHoveredParent(parentItem)}
-                            >
-                              {parentItem.href ? (
-                                <Link
-                                  href={`${parentItem.href}?lang=${currentLang}`}
-                                  className="block px-6 py-4 text-sm font-medium transition-colors"
-                                >
-                                  {parentItem.parent}
-                                </Link>
-                              ) : (
-                                <div className="px-6 py-4 flex items-center justify-between font-medium cursor-default transition-colors">
-                                  {parentItem.parent}
-                                  {hasChildren && <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover:text-brand-red transition-colors" />}
-                                </div>
-                              )}
-                            </div>
-                          );
-                        })}
-                      </div>
-
-                      {/* Right Column (for two-column dropdowns) */}
-                      {item.dropdown.some(p => p.children) && (
-                        <div className="w-[300px] border-l border-border bg-gray-50/50 p-4">
-                           {hoveredParent && hoveredParent.children ? (
-                             <div className="flex flex-col space-y-4">
-                               {hoveredParent.children.map(child => (
-                                 <Link
-                                   key={child.name}
-                                   href={`${child.href}?lang=${currentLang}`}
-                                   className="group flex items-center gap-2 text-sm text-foreground/80 hover:text-brand-red transition-colors"
-                                 >
-                                   <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover:text-brand-red transition-colors" />
-                                   <span>{child.name}</span>
-                                 </Link>
-                               ))}
-                             </div>
-                           ) : (
-                             <div className="text-sm text-gray-400 italic" />
-                           )}
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
+                {item.name}
+              </Link>
             ))}
           </div>
 
@@ -132,7 +133,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
           <div className="hidden lg:flex items-center space-x-6">
             <Link
               href={`${pathname}?lang=${toggleLang}`}
-              className="flex items-center space-x-2 text-foreground/70 hover:text-primary transition-colors border border-border rounded-full px-3 py-1 text-xs font-bold"
+              className="flex items-center space-x-2 text-foreground/70 hover:text-primary transition-colors border border-border px-3 py-1 text-xs font-bold"
             >
               <Globe className="h-3 w-3" />
               <span>{nav.toggleLang}</span>
@@ -193,17 +194,17 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
                           )}
                           {parent.children && (
                             <div className="pl-4 flex flex-col mt-1 space-y-1">
-                               {parent.children.map(child => (
-                                 <Link
-                                   key={child.name}
-                                   href={`${child.href}?lang=${currentLang}`}
-                                   onClick={() => setIsOpen(false)}
-                                   className="text-foreground/50 hover:text-primary text-xs py-1 flex items-center"
-                                 >
-                                    <span className="mr-1 text-primary">•</span>
-                                    {child.name}
-                                 </Link>
-                               ))}
+                              {parent.children.map(child => (
+                                <Link
+                                  key={child.name}
+                                  href={`${child.href}?lang=${currentLang}`}
+                                  onClick={() => setIsOpen(false)}
+                                  className="text-foreground/50 hover:text-primary text-xs py-1 flex items-center"
+                                >
+                                  <span className="mr-1 text-primary">•</span>
+                                  {child.name}
+                                </Link>
+                              ))}
                             </div>
                           )}
                         </div>
