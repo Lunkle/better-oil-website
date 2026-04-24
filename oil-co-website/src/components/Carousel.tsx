@@ -26,17 +26,6 @@ interface CarouselProps {
       points: string[];
     }[];
   };
-  item3Data: {
-    leftPillars: {
-      header: string;
-      title: string;
-      sub: string;
-    }[];
-    rightCategories: {
-      title: string;
-      items: string[];
-    }[];
-  };
   item4Data: {
     departments: string[];
   };
@@ -47,7 +36,6 @@ export default function Carousel({
   tabs,
   item1Data,
   item2Data,
-  item3Data,
   item4Data,
   autoSwitchInterval = 5000,
 }: CarouselProps) {
@@ -104,7 +92,7 @@ export default function Carousel({
       case 1:
         return <Item2 data={item2Data} />;
       case 2:
-        return <Item3 data={item3Data} />;
+        return <Item3 />;
       case 3:
         return <Item4 data={item4Data} />;
       default:
