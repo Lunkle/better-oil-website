@@ -51,7 +51,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
 
           {/* Desktop Navigation using shadcn NavigationMenu */}
           <div className="hidden lg:flex items-center h-full">
-            <NavigationMenu>
+            <NavigationMenu viewport={false}>
               <NavigationMenuList className="h-full space-x-2">
                 {nav.items.map((item) => (
                   <NavigationMenuItem key={item.name} className="h-full flex items-center">
@@ -60,51 +60,39 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
                         <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent text-foreground/70 hover:text-primary transition-colors text-sm font-bold tracking-wide uppercase px-4 focus:bg-transparent shadow-none border-none hover:shadow-none hover:border-none focus:shadow-none focus:border-none ring-0 focus-visible:ring-0 outline-none">
                           {item.name}
                         </NavigationMenuTrigger>
-                        <NavigationMenuContent>
-                          <div className="flex w-max min-w-[240px] bg-brand-white border-0 shadow-none overflow-visible rounded-none">
-                            {/* Left Column */}
-                            <div className="flex-1 w-full min-w-[200px]">
-                              {item.dropdown.map((parentItem, idx) => {
-                                const hasChildren = parentItem.children && parentItem.children.length > 0;
-                                return (
-                                  <div key={idx} className="relative group/nav-dropdown bg-gray-50 hover:bg-gray-100 text-foreground hover:text-brand-red transition-colors duration-200">
-                                    {parentItem.href ? (
-                                      <Link
-                                        href={`${parentItem.href}?lang=${currentLang}`}
-                                        className="block px-6 py-4 text-sm font-medium transition-colors"
-                                      >
-                                        {parentItem.parent}
-                                      </Link>
-                                    ) : (
-                                      <div className="px-6 py-4 flex items-center justify-between font-medium cursor-default transition-colors">
-                                        {parentItem.parent}
-                                        {hasChildren && <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover/nav-dropdown:text-brand-red transition-colors" />}
-                                      </div>
-                                    )}
-                                    {/* Right Column content shows on hover of this item using CSS group-hover */}
-                                    {hasChildren && (
-                                      <div className="hidden group-hover/nav-dropdown:flex absolute left-full top-0 h-full min-h-[100%] w-[300px] border-l border-border bg-gray-100/80 p-4 flex-col space-y-4">
-                                        {parentItem.children!.map((child) => (
-                                          <Link
-                                            key={child.name}
-                                            href={`${child.href}?lang=${currentLang}`}
-                                            className="group/child flex items-center gap-2 text-sm text-foreground/80 hover:text-brand-red transition-colors"
-                                          >
-                                            <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover/child:text-brand-red transition-colors" />
-                                            <span>{child.name}</span>
-                                          </Link>
-                                        ))}
-                                      </div>
-                                    )}
+                        <NavigationMenuContent className="min-w-[200px] bg-brand-white border border-border shadow-lg rounded-none">
+                          {item.dropdown.map((parentItem, idx) => {
+                            const hasChildren = parentItem.children && parentItem.children.length > 0;
+                            return (
+                              <div key={idx} className="relative group/nav-dropdown bg-brand-white hover:bg-gray-50 text-foreground hover:text-brand-red transition-colors duration-200">
+                                {parentItem.href ? (
+                                  <Link href={`${parentItem.href}?lang=${currentLang}`} legacyBehavior passHref>
+                                    <NavigationMenuLink className="block px-6 py-4 text-sm font-medium transition-colors hover:bg-gray-50 rounded-none w-full text-left">
+                                      {parentItem.parent}
+                                    </NavigationMenuLink>
+                                  </Link>
+                                ) : (
+                                  <div className="px-6 py-4 flex items-center justify-between font-medium cursor-default transition-colors">
+                                    {parentItem.parent}
+                                    {hasChildren && <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover/nav-dropdown:text-brand-red transition-colors" />}
                                   </div>
-                                );
-                              })}
-                            </div>
-                            {/* Empty space reservation to ensure the NavigationMenuContent size allows for the absolute right column without clipping */}
-                            {item.dropdown.some(p => p.children) && (
-                              <div className="w-[300px] opacity-0 pointer-events-none" />
-                            )}
-                          </div>
+                                )}
+                                {/* Submenu flyout shows on hover of this item using CSS group-hover */}
+                                {hasChildren && (
+                                  <div className="hidden group-hover/nav-dropdown:flex absolute left-full top-0 h-auto min-h-full min-w-[240px] border border-l-0 border-border bg-brand-white shadow-lg p-2 flex-col gap-1 rounded-none">
+                                    {parentItem.children!.map((child) => (
+                                      <Link key={child.name} href={`${child.href}?lang=${currentLang}`} legacyBehavior passHref>
+                                        <NavigationMenuLink className="group/child flex items-center gap-2 text-sm text-foreground/80 hover:text-brand-red transition-colors p-3 hover:bg-gray-50 rounded-none w-full">
+                                          <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover/child:text-brand-red transition-colors" />
+                                          <span>{child.name}</span>
+                                        </NavigationMenuLink>
+                                      </Link>
+                                    ))}
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          })}
                         </NavigationMenuContent>
                       </>
                     ) : (
