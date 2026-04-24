@@ -168,54 +168,123 @@ function Content() {
       </section>
 
       {/* 7. Circular Process Workflow */}
-      <section className="py-32 px-6 bg-gray-50">
-        <div className="max-w-4xl mx-auto relative h-[400px] flex items-center justify-center">
-          <div className="w-32 h-32 rounded-full bg-brand-deep-blue text-white flex items-center justify-center z-10 shadow-2xl font-bold text-xl ring-8 ring-brand-deep-blue/20">
-             CORE
+      <section className="py-24 px-6 bg-gray-50 overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue">
+              {locale === 'zh' ? '全流程配套优化工艺' : 'Full-Process Optimization Workflow'}
+            </h2>
           </div>
+          <div className="relative max-w-5xl mx-auto flex flex-col items-center justify-center">
+            {/* The circular SVG hub */}
+            <div className="relative w-full aspect-square md:aspect-[16/9] flex items-center justify-center mb-16 md:mb-0">
+               <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                 {/* Decorative background orbits */}
+                 <div className="w-full h-full rounded-full border-[1px] border-brand-deep-blue animate-[spin_40s_linear_infinite]"></div>
+                 <div className="absolute w-[80%] h-[80%] rounded-full border-[1px] border-brand-orange animate-[spin_30s_linear_infinite_reverse]"></div>
+               </div>
 
-          {content.workflow.steps.map((step, idx) => {
-            const angle = (idx * 360) / 5 - 90;
-            const radius = 160;
-            const x = Math.cos((angle * Math.PI) / 180) * radius;
-            const y = Math.sin((angle * Math.PI) / 180) * radius;
+               <div className="relative w-40 h-40 rounded-full bg-brand-deep-blue shadow-2xl flex items-center justify-center z-10 border-4 border-white/10 text-white font-bold text-2xl text-center leading-tight">
+                  NEW<br/>DRILL
+               </div>
 
-            return (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.2, type: "spring" }}
-                className="absolute flex flex-col items-center justify-center gap-2"
-                style={{ transform: `translate(${x}px, ${y}px)` }}
-              >
-                <div className="w-12 h-12 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold shadow-lg border-2 border-white">
-                  {step.number}
-                </div>
-                <div className="bg-white px-3 py-1 rounded-full text-sm font-semibold text-brand-deep-blue shadow-sm border border-gray-100 whitespace-nowrap">
-                  {step.label}
-                </div>
-              </motion.div>
-            )
-          })}
+               {/* Orbital segments wrapping the core */}
+               {content.workflow.steps.map((step, idx) => {
+                 const angle = (idx * 360) / 5 - 90;
+                 const radiusX = 350; // Elliptical orbit X
+                 const radiusY = 200; // Elliptical orbit Y
+                 const x = Math.cos((angle * Math.PI) / 180) * radiusX;
+                 const y = Math.sin((angle * Math.PI) / 180) * radiusY;
+
+                 return (
+                   <motion.div
+                     key={idx}
+                     initial={{ opacity: 0, x: x * 0.5, y: y * 0.5, scale: 0.8 }}
+                     whileInView={{ opacity: 1, x: x, y: y, scale: 1 }}
+                     viewport={{ once: true, margin: "-100px" }}
+                     transition={{ delay: idx * 0.15, type: "spring", stiffness: 50, damping: 15 }}
+                     className="absolute z-20 w-64 hidden md:flex flex-col items-center justify-center"
+                   >
+                     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-5 relative group hover:-translate-y-2 transition-transform duration-300">
+                        <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold shadow-lg border-2 border-white">
+                          {step.number}
+                        </div>
+                        <h4 className="text-xl font-bold text-brand-deep-blue mb-2 ml-4">{step.label}</h4>
+                        <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+                     </div>
+                   </motion.div>
+                 );
+               })}
+            </div>
+
+            {/* Mobile View for workflow */}
+            <div className="flex md:hidden flex-col gap-6 w-full">
+              {content.workflow.steps.map((step, idx) => (
+                 <motion.div
+                   key={idx}
+                   initial={{ opacity: 0, y: 20 }}
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   transition={{ delay: idx * 0.1 }}
+                   className="bg-white rounded-2xl shadow-md border border-gray-100 p-6 relative flex gap-4"
+                 >
+                   <div className="w-12 h-12 shrink-0 rounded-full bg-brand-orange text-white flex items-center justify-center font-bold shadow-lg text-lg">
+                      {step.number}
+                   </div>
+                   <div>
+                     <h4 className="text-xl font-bold text-brand-deep-blue mb-2">{step.label}</h4>
+                     <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+                   </div>
+                 </motion.div>
+               ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 8. Business Scope Table */}
       <section className="py-20 px-6">
-         <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
-               {content.businessScope.rows.map((row, idx) => (
-                 <div key={idx} className="flex flex-col md:flex-row border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors">
-                    <div className="md:w-1/3 bg-gray-50/50 p-6 font-bold text-brand-deep-blue flex items-center border-r border-gray-100">
-                      {row.category}
-                    </div>
-                    <div className="md:w-2/3 p-6 text-gray-600 flex items-center">
-                      {row.desc}
-                    </div>
-                 </div>
-               ))}
+         <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+               <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue">
+                 {locale === 'zh' ? '业务范围' : 'Business Scope'}
+               </h2>
+            </div>
+            <div className="bg-white rounded-2xl border border-gray-200 overflow-x-auto shadow-sm">
+               <table className="w-full text-left border-collapse min-w-[700px]">
+                 <tbody>
+                   {content.businessScope.subGroups.map((subGroup, groupIdx) => (
+                     subGroup.items.map((item, itemIdx) => {
+                       const isFirstItemInGroup = itemIdx === 0;
+                       const isFirstOverall = groupIdx === 0 && itemIdx === 0;
+                       const totalItems = content.businessScope.subGroups.reduce((acc, g) => acc + g.items.length, 0);
+
+                       return (
+                         <tr key={`${groupIdx}-${itemIdx}`} className="border-b border-gray-100 last:border-0 hover:bg-gray-50/50">
+                           {isFirstOverall && (
+                             <td rowSpan={totalItems} className="p-6 font-bold text-xl text-white bg-brand-deep-blue w-48 text-center border-r border-brand-deep-blue/20">
+                               <div className="mx-auto flex flex-col items-center justify-center gap-2 text-2xl tracking-widest">
+                                 {content.businessScope.mainCategory.split('').map((char: string, i: number) => <span key={i}>{char}</span>)}
+                               </div>
+                             </td>
+                           )}
+                           {isFirstItemInGroup && (
+                             <td rowSpan={subGroup.items.length} className="p-6 font-bold text-brand-deep-blue bg-blue-50/30 border-r border-gray-100 w-56">
+                               {subGroup.name}
+                             </td>
+                           )}
+                           <td className="p-6 font-semibold text-gray-800 border-r border-gray-100 w-64">
+                             {item.tech}
+                           </td>
+                           <td className="p-6 text-gray-600">
+                             {item.detail || <span className="text-gray-300">-</span>}
+                           </td>
+                         </tr>
+                       );
+                     })
+                   ))}
+                 </tbody>
+               </table>
             </div>
          </div>
       </section>

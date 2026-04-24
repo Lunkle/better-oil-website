@@ -383,18 +383,36 @@ export const en = {
     },
     workflow: {
       steps: [
-        { number: "01", label: "Lithology Modeling" },
-        { number: "02", label: "Condition Matching" },
-        { number: "03", label: "Hydraulic Optimization" },
-        { number: "04", label: "Parameter Determination" },
-        { number: "05", label: "ROP Modeling" },
+        { number: "01", label: "Lithology Selection", desc: "Precise selection and matching of lithology and matched bits for different formations." },
+        { number: "02", label: "Tool Matching", desc: "Ensure matched bits for different formations are compatible with NEW-DRILL tools." },
+        { number: "03", label: "Hydraulic Optimization", desc: "Effective optimization of hydraulic parameters for matched bits in different formations." },
+        { number: "04", label: "Parameter Setting", desc: "Scientifically set the initial parameters of NEW-DRILL and matched bits." },
+        { number: "05", label: "MWD Adjustment", desc: "Real-time dynamic adjustment of drilling parameters as downhole use time progresses." },
       ],
     },
     businessScope: {
-      rows: [
-        { category: "Pre-drilling Modeling & Analysis", desc: "Software & Data Services" },
-        { category: "MWD Optimization & Control", desc: "Real-time Hardware Monitoring" },
-        { category: "Post-drilling Evaluation & Summary", desc: "Reporting & Data Analytics" },
+      mainCategory: "Directional Wells",
+      subGroups: [
+        {
+          name: "Proprietary Technical Services",
+          items: [
+            { tech: "HTHP MWD Technology", detail: "MWD Measurement While Drilling" },
+            { tech: "Horizontal Well Technology", detail: "Conventional Directional/Horizontal Well Tech / HTHP Horizontal Well Tech" },
+            { tech: "Gyro Measurement Technology", detail: "" },
+            { tech: "Sidetracking Technology", detail: "Deep Well Sidetracking Horizontal Tech / Hard Formation & Casing Window Sidetracking / Slim Hole Sidetracking" },
+            { tech: "Vertical Section Acceleration", detail: "NEW-DRILL + High Efficiency PDC / Impregnated Diamond Bit + High Speed Motor" },
+          ]
+        },
+        {
+          name: "Cooperative Technical Services",
+          items: [
+            { tech: "Rotary Steerable System (RSS)", detail: "Continuous Rotary Steering / High Trajectory Control Accuracy / Avoid Drag" },
+            { tech: "Geosteering Technology", detail: "" },
+            { tech: "Vertical Drilling Technology", detail: "" },
+            { tech: "Multilateral Well Technology", detail: "Multilateral Drilling & Completion Tool System" },
+            { tech: "Logging Technology", detail: "Logging While Drilling (LWD)" },
+          ]
+        }
       ]
     },
     validation: {

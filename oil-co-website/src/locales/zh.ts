@@ -350,18 +350,36 @@ export const zh = {
     },
     workflow: {
       steps: [
-        { number: "01", label: "岩性模型" },
-        { number: "02", label: "工况匹配" },
-        { number: "03", label: "水力优化" },
-        { number: "04", label: "参数确定" },
-        { number: "05", label: "钻速模型" },
+        { number: "01", label: "岩性选型", desc: "针对不同地层的岩性与配套钻头进行精准选型匹配." },
+        { number: "02", label: "工具匹配", desc: "确保不同地层配套钻头和 NEW-DRILL 工具匹配." },
+        { number: "03", label: "水力优化", desc: "对不同地层配套钻头水力参数进行有效优化." },
+        { number: "04", label: "参数设定", desc: "科学地设置 NEW-DRILL 与配套钻头的初始参数." },
+        { number: "05", label: "随钻调整", desc: "随入井使用时间, 对钻井参数进行实时动态调整." },
       ],
     },
     businessScope: {
-      rows: [
-        { category: "钻前建模与分析", desc: "软件与数据服务" },
-        { category: "随钻优化与控制", desc: "实时硬件监控" },
-        { category: "钻后评价与总结", desc: "报告与数据分析" },
+      mainCategory: "定向井",
+      subGroups: [
+        {
+          name: "自主技术服务",
+          items: [
+            { tech: "高温高压随钻测量技术", detail: "MWD 随钻测量" },
+            { tech: "水平井技术", detail: "常规定向井水平井技术 / 高温高压水平井技术" },
+            { tech: "陀螺测量技术", detail: "" },
+            { tech: "侧钻工艺技术", detail: "深井侧钻水平井技术 / 硬地层、套管开窗侧钻技术 / 小井眼侧钻技术" },
+            { tech: "直井段提速", detail: "NEW-DRILL+高效 PDC / 孕镶金刚石钻头 + 高速马达" },
+          ]
+        },
+        {
+          name: "合作技术服务",
+          items: [
+            { tech: "旋转导向技术", detail: "连续旋转造斜 / 轨迹控制精度高 / 避免托压" },
+            { tech: "地质导向技术", detail: "" },
+            { tech: "垂直钻井技术", detail: "" },
+            { tech: "分支井技术", detail: "分支井钻完井工具系统" },
+            { tech: "测井技术", detail: "随钻测井" },
+          ]
+        }
       ]
     },
     validation: {
