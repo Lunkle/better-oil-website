@@ -26,7 +26,6 @@ function HomeContent() {
         tabs={t.carouselTabs}
         item1Data={t.carouselItem1}
         item2Data={t.carouselItem2}
-        item3Data={t.carouselItem3}
         item4Data={t.carouselItem4}
         autoSwitchInterval={5000}
       />
