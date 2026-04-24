@@ -3,13 +3,22 @@
 import { Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Breadcrumb from "@/components/Breadcrumb";
 import { useTranslation } from "@/hooks/useTranslation";
-import { motion } from "framer-motion";
-import { MoveRight, CheckCircle2 } from "lucide-react";
+
+import { CheckCircle2, TrendingUp, Clock, Target, ShieldCheck } from "lucide-react";
 
 function Content() {
   const { t, locale } = useTranslation();
   const content = t.drillingAcceleration;
+
+  const breadcrumbItems = [
+    { label: content.breadcrumb[0], href: '/' },
+    { label: content.breadcrumb[1], href: '/tech' },
+    { label: content.breadcrumb[2] }
+  ];
+
+  const kpiIcons = [TrendingUp, Clock, Target, ShieldCheck];
 
   return (
     <div className="min-h-screen bg-brand-white flex flex-col font-sans">
@@ -18,13 +27,12 @@ function Content() {
       {/* 1. Hero Section */}
       <section className="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
+          <Breadcrumb items={breadcrumbItems} lang={locale} className="mb-8" />
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-deep-blue leading-tight">
             {content.hero.title}
           </h1>
         </div>
-        <motion.div
-          animate={{ y: [0, -15, 0] }}
-          transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+        <div
           className="relative aspect-video w-full overflow-hidden shadow-2xl bg-gray-100 flex items-center justify-center border border-gray-200"
         >
           {/* Placeholder for Isometric Rig */}
@@ -32,48 +40,51 @@ function Content() {
             <span className="text-4xl mb-2">🏗️</span>
             Isometric Rig Illustration
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* 2. KPI Stats Grid */}
-      <section className="bg-brand-white py-12 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
-          {content.kpi.items.map((item, idx) => (
-            <div
-              key={idx}
-              className={`p-8 flex flex-col items-center justify-center text-center shadow-lg transition-transform hover:scale-105 ${
-                idx % 2 === 0 ? "bg-brand-red text-white" : "bg-brand-orange text-white"
-              }`}
-            >
-              <div className="text-4xl md:text-5xl font-black mb-2">{item.value}</div>
-              <div className="text-sm md:text-base font-medium opacity-90">{item.label}</div>
-            </div>
-          ))}
+      <section className="bg-brand-white py-12 px-0 max-w-full w-full">
+        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-0">
+          {content.kpi.items.map((item, idx) => {
+            const Icon = kpiIcons[idx];
+            return (
+              <div
+                key={idx}
+                className={`p-12 md:p-16 flex flex-col items-center justify-center text-center shadow-lg ${
+                  idx % 2 === 0 ? "bg-brand-red text-white" : "bg-brand-orange text-white"
+                }`}
+              >
+                <Icon className="w-10 h-10 mb-4 opacity-90" />
+                <div className="text-5xl md:text-7xl font-black mb-4">{item.value}</div>
+                <div className="text-base md:text-xl font-medium opacity-90 whitespace-pre-wrap">{item.label}</div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
       {/* 3. Problem vs. Solution */}
-      <section className="py-20 px-6">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch overflow-hidden shadow-xl border border-gray-100">
-          <div className="bg-gray-100 p-12 md:w-5/12 flex flex-col justify-center">
-            <h3 className="text-2xl font-bold text-brand-deep-blue mb-6">{content.problemSolution.leftTitle}</h3>
-            <ul className="space-y-4">
+      <section className="py-20 px-0 max-w-full w-full">
+        <div className="w-full flex flex-col md:flex-row items-stretch">
+
+          <div className="bg-gray-100 p-12 md:p-20 md:w-1/2 flex flex-col justify-center relative shadow-2xl z-20">
+            <h3 className="text-3xl font-bold text-brand-deep-blue mb-8">{content.problemSolution.leftTitle}</h3>
+            <ul className="space-y-6">
               {content.problemSolution.leftPoints.map((point, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-brand-red font-medium text-lg">
-                  <span className="w-2 h-2 bg-brand-red"></span>
-                  {point}
+                <li key={idx} className="flex items-start gap-4 text-brand-red font-medium text-lg">
+                  <span className="w-3 h-3 bg-brand-red mt-2 shrink-0"></span>
+                  <span className="text-gray-700 leading-relaxed">{point}</span>
                 </li>
               ))}
             </ul>
+            {/* The CSS Triangle pointing right */}
+            <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0 border-y-[60px] border-y-transparent border-l-[60px] border-l-gray-100 drop-shadow-xl z-30"></div>
           </div>
 
-          <div className="bg-brand-deep-blue text-white flex items-center justify-center p-4 md:w-16 z-10 relative">
-             <MoveRight className="w-8 h-8 md:rotate-0 rotate-90" />
-          </div>
-
-          <div className="bg-white p-12 md:w-7/12 flex flex-col justify-center relative">
-            <h3 className="text-2xl font-bold text-brand-orange mb-4">{content.problemSolution.rightTitle}</h3>
-            <p className="text-gray-600 text-lg leading-relaxed">{content.problemSolution.rightSummary}</p>
+          <div className="bg-white p-12 md:p-20 md:w-1/2 flex flex-col justify-center relative z-10 pl-12 md:pl-28">
+            <h3 className="text-3xl font-bold text-brand-orange mb-6">{content.problemSolution.rightTitle}</h3>
+            <p className="text-gray-600 text-xl leading-relaxed">{content.problemSolution.rightSummary}</p>
           </div>
         </div>
       </section>
@@ -94,11 +105,11 @@ function Content() {
                 {content.comparison.rows.map((row, idx) => (
                   <tr key={idx} className="border-b border-gray-100 last:border-0 hover:bg-gray-50 transition-colors">
                     <td className="p-6 font-medium text-gray-800">{row.metric}</td>
-                    <td className="p-6 text-gray-500">{row.trad}</td>
+                    <td className="p-6 text-gray-500 whitespace-pre-wrap">{row.trad}</td>
                     <td className="p-6 text-brand-deep-blue font-semibold bg-blue-50/50 border-l border-r border-brand-orange/20 relative">
                        <div className="flex items-center gap-2">
-                         <CheckCircle2 className="w-5 h-5 text-brand-orange" />
-                         {row.new}
+                         <CheckCircle2 className="w-5 h-5 text-brand-orange shrink-0" />
+                         <span>{row.new}</span>
                        </div>
                     </td>
                   </tr>
@@ -125,44 +136,31 @@ function Content() {
             <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue mb-6">
               {content.drillBit.title}
             </h2>
-            <p className="text-lg text-gray-600 leading-relaxed">
+            <p className="text-lg text-gray-600 leading-relaxed whitespace-pre-wrap">
               {content.drillBit.description}
             </p>
           </div>
         </div>
       </section>
 
-      {/* 6. Interactive Cutaway Diagram */}
+      {/* 6. Blueprint Diagram & 3 Rectangles */}
       <section className="py-20 bg-brand-deep-blue text-white px-6 overflow-hidden">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="relative aspect-[21/9] w-full max-w-5xl mx-auto bg-gray-800 overflow-hidden border border-gray-700 shadow-2xl flex items-center justify-center">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-left">
+             {content.diagram.title}
+          </h2>
+          <div className="relative aspect-[21/9] w-full max-w-5xl mx-auto bg-gray-800 overflow-hidden border border-gray-700 shadow-2xl flex items-center justify-center mb-16">
              {/* Blueprint Placeholder */}
              <div className="text-gray-500 font-mono">Mechanical Tool Blueprint / Cutaway</div>
+          </div>
 
-             {/* Hotspots */}
-             <div className="absolute top-1/2 left-1/4 -translate-y-1/2 group">
-                <div className="w-6 h-6 bg-brand-orange animate-pulse absolute -left-3 -top-3"></div>
-                <div className="w-3 h-3 bg-white relative z-10"></div>
-                <div className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white text-brand-deep-blue px-3 py-1 shadow-lg text-sm font-bold">
-                  {content.diagram.labels[0]}
-                </div>
-             </div>
-
-             <div className="absolute top-1/2 left-1/2 -translate-y-1/2 group">
-                <div className="w-6 h-6 bg-brand-orange animate-pulse absolute -left-3 -top-3"></div>
-                <div className="w-3 h-3 bg-white relative z-10"></div>
-                <div className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white text-brand-deep-blue px-3 py-1 shadow-lg text-sm font-bold">
-                  {content.diagram.labels[1]}
-                </div>
-             </div>
-
-             <div className="absolute top-1/2 left-3/4 -translate-y-1/2 group">
-                <div className="w-6 h-6 bg-brand-orange animate-pulse absolute -left-3 -top-3"></div>
-                <div className="w-3 h-3 bg-white relative z-10"></div>
-                <div className="absolute top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white text-brand-deep-blue px-3 py-1 shadow-lg text-sm font-bold">
-                  {content.diagram.labels[2]}
-                </div>
-             </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {content.diagram.items.map((item, idx) => (
+              <div key={idx} className="bg-white/10 border border-white/20 p-8 flex flex-col gap-4">
+                 <h4 className="text-xl font-bold text-brand-orange">{item.title}</h4>
+                 <p className="text-gray-300 leading-relaxed text-sm md:text-base">{item.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -170,7 +168,7 @@ function Content() {
       {/* 7. Circular Process Workflow */}
       <section className="py-24 px-6 bg-gray-50 overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-left mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue">
               {content.workflow.title}
             </h2>
@@ -197,22 +195,16 @@ function Content() {
                  const y = Math.sin((angle * Math.PI) / 180) * radiusY;
 
                  return (
-                   <motion.div
+                   <div
                      key={idx}
-                     initial={{ opacity: 0, x: x * 0.5, y: y * 0.5, scale: 0.8 }}
-                     whileInView={{ opacity: 1, x: x, y: y, scale: 1 }}
-                     viewport={{ once: true, margin: "-100px" }}
-                     transition={{ delay: idx * 0.15, type: "spring", stiffness: 50, damping: 15 }}
                      className="absolute z-20 w-64 hidden md:flex flex-col items-center justify-center"
+                     style={{ transform: `translate(${x}px, ${y}px)` }}
                    >
-                     <div className="bg-white shadow-xl border border-gray-100 p-5 relative group hover:-translate-y-2 transition-transform duration-300">
-                        <div className="absolute -top-4 -left-4 w-10 h-10 bg-brand-orange text-white flex items-center justify-center font-bold shadow-lg border-2 border-white">
-                          {step.number}
-                        </div>
-                        <h4 className="text-xl font-bold text-brand-deep-blue mb-2 ml-4">{step.label}</h4>
+                     <div className="bg-white shadow-xl border border-gray-100 p-5 relative">
+                        <h4 className="text-xl font-bold text-brand-deep-blue mb-2">{step.label}</h4>
                         <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
                      </div>
-                   </motion.div>
+                   </div>
                  );
                })}
             </div>
@@ -220,22 +212,13 @@ function Content() {
             {/* Mobile View for workflow */}
             <div className="flex md:hidden flex-col gap-6 w-full">
               {content.workflow.steps.map((step, idx) => (
-                 <motion.div
+                 <div
                    key={idx}
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ delay: idx * 0.1 }}
-                   className="bg-white shadow-md border border-gray-100 p-6 relative flex gap-4"
+                   className="bg-white shadow-md border border-gray-100 p-6 relative flex flex-col gap-2"
                  >
-                   <div className="w-12 h-12 shrink-0 bg-brand-orange text-white flex items-center justify-center font-bold shadow-lg text-lg">
-                      {step.number}
-                   </div>
-                   <div>
-                     <h4 className="text-xl font-bold text-brand-deep-blue mb-2">{step.label}</h4>
-                     <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
-                   </div>
-                 </motion.div>
+                   <h4 className="text-xl font-bold text-brand-deep-blue mb-2">{step.label}</h4>
+                   <p className="text-sm text-gray-600 leading-relaxed">{step.desc}</p>
+                 </div>
                ))}
             </div>
           </div>
@@ -262,21 +245,21 @@ function Content() {
                        return (
                          <tr key={`${groupIdx}-${itemIdx}`} className="border-b border-gray-100 last:border-0 hover:bg-gray-50/50">
                            {isFirstOverall && (
-                             <td rowSpan={totalItems} className="p-6 font-bold text-xl text-white bg-brand-deep-blue w-48 text-center border-r border-brand-deep-blue/20">
-                               <div className="mx-auto flex flex-col items-center justify-center gap-2 text-2xl tracking-widest">
-                                 {content.businessScope.mainCategory.split('').map((char: string, i: number) => <span key={i}>{char}</span>)}
+                             <td rowSpan={totalItems} className="p-6 font-bold text-xl text-white bg-brand-deep-blue w-48 text-center border-r border-brand-deep-blue/20 align-middle">
+                               <div className="mx-auto" style={{ writingMode: 'vertical-rl', letterSpacing: '0.2em' }}>
+                                 {content.businessScope.mainCategory}
                                </div>
                              </td>
                            )}
                            {isFirstItemInGroup && (
-                             <td rowSpan={subGroup.items.length} className="p-6 font-bold text-brand-deep-blue bg-blue-50/30 border-r border-gray-100 w-56">
+                             <td rowSpan={subGroup.items.length} className="p-6 font-bold text-brand-deep-blue bg-blue-50/30 border-r border-gray-100 w-56 align-middle">
                                {subGroup.name}
                              </td>
                            )}
-                           <td className="p-6 font-semibold text-gray-800 border-r border-gray-100 w-64">
+                           <td className="p-6 font-semibold text-gray-800 border-r border-gray-100 w-64 align-middle">
                              {item.tech}
                            </td>
-                           <td className="p-6 text-gray-600">
+                           <td className="p-6 text-gray-600 align-middle">
                              {item.detail || <span className="text-gray-300">-</span>}
                            </td>
                          </tr>
@@ -290,25 +273,21 @@ function Content() {
       </section>
 
       {/* 9. Validation & Social Proof */}
-      <section className="py-20 px-6 bg-brand-deep-blue text-white">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-           <div className="aspect-[4/3] bg-white/10 border border-white/20 p-2 flex items-center justify-center relative overflow-hidden">
-             {/* Award Certificate Placeholder */}
-             <div className="absolute inset-0 bg-gradient-to-tr from-brand-orange/20 to-transparent"></div>
-             <div className="text-center">
-                <div className="text-6xl mb-4">🏆</div>
-                <div className="font-bold text-xl text-brand-orange">一等奖</div>
-                <div className="text-sm opacity-60 font-mono mt-2">First Prize Award Certificate</div>
-             </div>
-           </div>
-
-           <div className="space-y-4">
+      <section className="py-20 px-6 bg-brand-white">
+        <div className="max-w-7xl mx-auto">
+           <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue mb-12 text-left">
+             {content.validation.title}
+           </h2>
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {content.validation.cards.map((card, idx) => (
-                <div key={idx} className="bg-white/5 border border-white/10 p-8 backdrop-blur-sm flex items-center gap-4 hover:bg-white/10 transition-colors">
-                   <div className="w-12 h-12 bg-brand-orange/20 flex items-center justify-center text-brand-orange font-bold text-xl shrink-0">
-                     0{idx + 1}
-                   </div>
-                   <div className="text-xl font-medium">{card}</div>
+                <div key={idx} className="relative bg-brand-deep-blue text-white p-10 flex items-center min-h-[160px] shadow-xl">
+                   {/* Top Left Rotated L (Square positioned to overflow) */}
+                   <div className="absolute -top-3 -left-3 w-8 h-8 bg-brand-white border-b border-r border-gray-200"></div>
+
+                   {/* Bottom Right Rotated L */}
+                   <div className="absolute -bottom-3 -right-3 w-8 h-8 bg-brand-white border-t border-l border-gray-200"></div>
+
+                   <p className="text-lg font-medium leading-relaxed relative z-10">{card}</p>
                 </div>
               ))}
            </div>
