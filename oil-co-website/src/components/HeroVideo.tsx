@@ -20,7 +20,7 @@ export default function HeroVideo({
   currentLang,
 }: HeroVideoProps) {
   return (
-    <section className="relative px-4 w-full flex items-center justify-start overflow-hidden bg-black">
+    <section className="relative px-4 w-full min-h-[600px] flex items-center justify-start overflow-hidden bg-black">
       {/* Autoplay Background Video */}
       <video
         autoPlay
@@ -29,7 +29,7 @@ export default function HeroVideo({
         playsInline
         className="absolute inset-0 w-full h-full object-cover opacity-50 pointer-events-none"
       >
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+        <source src="/hero-video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
