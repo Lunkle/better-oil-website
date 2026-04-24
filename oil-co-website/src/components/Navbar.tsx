@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, Globe, Menu, X, ChevronDown } from 'lucide-react';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
 import { NavItem, NavItemParent } from '@/locales';
@@ -29,9 +29,13 @@ interface NavbarProps {
 }
 
 /** Desktop dropdown nav item that opens/closes on hover. */
+const DROPDOWN_CLOSE_DELAY_MS = 150;
+
 function NavDropdownItem({ item, currentLang }: { item: NavItem & { dropdown: NavItemParent[] }; currentLang: string }) {
   const [open, setOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(closeTimer.current), []);
 
   const openMenu = () => {
     clearTimeout(closeTimer.current);
@@ -39,7 +43,7 @@ function NavDropdownItem({ item, currentLang }: { item: NavItem & { dropdown: Na
   };
 
   const scheduleClose = () => {
-    closeTimer.current = setTimeout(() => setOpen(false), 150);
+    closeTimer.current = setTimeout(() => setOpen(false), DROPDOWN_CLOSE_DELAY_MS);
   };
 
   return (
