@@ -113,8 +113,8 @@ function Content() {
         <DynamicSection
           section={t.about.sections.boundaries}
           locale={locale}
-          imageWidthClass="md:w-[30%]"
-          textWidthClass="md:w-[70%]"
+          imageWidthClass="md:basis-[30%] shrink-0"
+          textWidthClass="md:basis-[70%] shrink-0"
         />
         <DynamicSection
           section={t.about.sections.research}
@@ -144,8 +144,8 @@ function Content() {
 function DynamicSection({
   section,
   locale,
-  imageWidthClass = "md:w-1/2",
-  textWidthClass = "md:w-1/2"
+  imageWidthClass = "md:basis-1/2 shrink-0",
+  textWidthClass = "md:basis-1/2 shrink-0"
 }: {
   section: AboutSection;
   locale: string;
