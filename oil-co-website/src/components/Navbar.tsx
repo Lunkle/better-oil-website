@@ -6,7 +6,7 @@ import { Search, Globe, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { NavItem } from '@/locales';
+import { NavItem, NavItemParent } from '@/locales';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -25,6 +25,57 @@ interface NavbarProps {
     items: NavItem[];
   };
   currentLang: 'en' | 'zh';
+}
+
+/** Two-panel split menu: left = parent category list, right = children of the active parent. */
+function SplitDropdownContent({
+  dropdown,
+  currentLang,
+}: {
+  dropdown: NavItemParent[];
+  currentLang: string;
+}) {
+  const [activeParent, setActiveParent] = useState<NavItemParent>(dropdown[0]);
+
+  return (
+    <div className="flex">
+      {/* Left panel: parent category list */}
+      <ul className="flex flex-col min-w-[220px] p-2 border-r border-border">
+        {dropdown.map((parentItem) => (
+          <li key={parentItem.parent}>
+            <button
+              type="button"
+              onMouseEnter={() => setActiveParent(parentItem)}
+              className={cn(
+                "w-full text-left px-4 py-3 text-sm font-medium transition-colors",
+                activeParent.parent === parentItem.parent
+                  ? "text-brand-red bg-accent"
+                  : "text-foreground/70 hover:text-brand-red hover:bg-accent"
+              )}
+            >
+              {parentItem.parent}
+            </button>
+          </li>
+        ))}
+      </ul>
+
+      {/* Right panel: children of the active parent */}
+      <ul className="flex flex-col p-4 w-[300px] gap-1">
+        {activeParent.children?.map((child) => (
+          <li key={child.name}>
+            <NavigationMenuLink asChild>
+              <Link
+                href={`${child.href}?lang=${currentLang}`}
+                className="block text-sm text-foreground/70 hover:text-brand-red transition-colors py-1.5 leading-snug"
+              >
+                {child.name}
+              </Link>
+            </NavigationMenuLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default function Navbar({ nav, currentLang }: NavbarProps) {
@@ -76,30 +127,11 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
                         {isGrouped ? (
-                          /* Mega-menu: section headers with child links shown in a grid */
-                          <ul className="grid grid-cols-2 gap-x-6 gap-y-4 p-6 w-[580px]">
-                            {item.dropdown.map((parentItem) => (
-                              <li key={parentItem.parent}>
-                                <p className="text-[10px] font-black uppercase tracking-widest text-foreground/40 mb-2">
-                                  {parentItem.parent}
-                                </p>
-                                <ul className="space-y-1">
-                                  {parentItem.children?.map((child) => (
-                                    <li key={child.name}>
-                                      <NavigationMenuLink asChild>
-                                        <Link
-                                          href={`${child.href}?lang=${currentLang}`}
-                                          className="block text-sm text-foreground/70 hover:text-brand-red transition-colors py-0.5 leading-snug"
-                                        >
-                                          {child.name}
-                                        </Link>
-                                      </NavigationMenuLink>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </li>
-                            ))}
-                          </ul>
+                          /* Split-panel: left = parent list, right = children of active parent */
+                          <SplitDropdownContent
+                            dropdown={item.dropdown}
+                            currentLang={currentLang}
+                          />
                         ) : (
                           /* Flat list: parent items are direct links */
                           <ul className="flex flex-col p-2 w-[240px]">
