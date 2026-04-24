@@ -19,7 +19,7 @@ function Content() {
           <h1 className="text-4xl md:text-6xl font-bold text-foreground uppercase tracking-tighter">{t.nav.items.find((item: NavItem) => item.href === "/tech")?.name}</h1>
           <div className="h-1 w-20 bg-primary mx-auto" />
           <p className="text-foreground/40 font-mono text-sm tracking-widest">{t.placeholders.comingSoon}</p>
-          <Button asChild variant="outline" className="inline-flex items-center gap-2 text-primary border-primary/20 hover:bg-primary hover:text-white">
+          <Button asChild variant="outline" className="text-primary border-primary/20 hover:bg-primary hover:text-white">
             <Link href={`/?lang=${locale}`}>
               <MoveLeft size={16} /> {t.placeholders.backHome}
             </Link>
