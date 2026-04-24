@@ -1,18 +1,36 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 :root {
-  --background: #fbfcff;
-  --foreground: #0a2b4e; /* Deep blue for text */
-  --primary: #f0a13f; /* Yellow */
-  --primary-muted: #fef6ec;
-  --secondary: #f0f4f8; /* Muted deep blue */
-  --border: #d1d9e2; /* Muted deep blue border */
-
   /* Brand Colors */
   --brand-white: #fbfcff;
   --brand-deep-blue: #0a2b4e;
   --brand-red: #d34b2f;
   --brand-orange: #f0a13f;
+
+  /* shadcn/ui variables mapped to brand colors */
+  --background: var(--brand-white);
+  --foreground: var(--brand-deep-blue);
+  --card: var(--brand-white);
+  --card-foreground: var(--brand-deep-blue);
+  --popover: var(--brand-white);
+  --popover-foreground: var(--brand-deep-blue);
+  --primary: var(--brand-orange);
+  --primary-foreground: var(--brand-white);
+  --primary-muted: #fef6ec;
+  --secondary: #f0f4f8; /* Muted deep blue */
+  --secondary-foreground: var(--brand-deep-blue);
+  --muted: #f0f4f8;
+  --muted-foreground: #6b7280; /* Gray for muted text */
+  --accent: #f0f4f8;
+  --accent-foreground: var(--brand-deep-blue);
+  --destructive: var(--brand-red);
+  --input: #d1d9e2;
+  --border: #d1d9e2;
+  --ring: var(--brand-orange);
+
+  --radius: 0; /* 0 radius requirement */
 }
 
 @theme inline {
@@ -27,11 +45,46 @@
   --color-brand-deep-blue: var(--brand-deep-blue);
   --color-brand-red: var(--brand-red);
   --color-brand-orange: var(--brand-orange);
+
+  --font-heading: var(--font-sans);
+  --font-sans: var(--font-sans);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --radius-sm: var(--radius);
+  --radius-md: var(--radius);
+  --radius-lg: var(--radius);
+  --radius-xl: var(--radius);
+  --radius-2xl: var(--radius);
+  --radius-3xl: var(--radius);
+  --radius-4xl: var(--radius);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
 }
