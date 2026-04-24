@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { Button } from "../ui/button";
 
 interface POI {
   id: string;
@@ -154,16 +155,17 @@ export default function Item2({ data }: Item2Props) {
 
         {/* Mobile "Show More/Less" button */}
         {data.pois.length > 2 && (
-          <button
+          <Button
+            variant="outline"
             onClick={() => setShowAll(!showAll)}
-            className="md:hidden mt-2 pointer-events-auto flex items-center justify-center gap-2 bg-brand-white border border-border py-2 px-4 rounded-full text-brand-deep-blue font-bold text-sm shadow-sm active:bg-gray-50"
+            className="md:hidden mt-2 pointer-events-auto flex items-center justify-center gap-2 rounded-full text-brand-deep-blue font-bold text-sm shadow-sm"
           >
             {showAll ? (
               <>Show Less <ChevronUp className="w-4 h-4" /></>
             ) : (
               <>Show More Locations <ChevronDown className="w-4 h-4" /></>
             )}
-          </button>
+          </Button>
         )}
       </div>
     </div>

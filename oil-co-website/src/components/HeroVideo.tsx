@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Button } from "./ui/button";
 
 interface HeroVideoProps {
   descriptionLines: string[];
@@ -52,19 +53,25 @@ export default function HeroVideo({
             {companyName}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 md:gap-6">
-            <Link
-              href={`/tech?lang=${currentLang}`}
-              className="px-6 py-4 md:px-10 md:py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-base md:text-lg flex items-center justify-center text-center"
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-start gap-4 md:gap-6 pt-4">
+            <Button
+              size="lg"
+              className="h-16 px-10 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all shadow-xl text-base md:text-lg rounded-none"
+              asChild
             >
-              {exploreText}
-            </Link>
-            <Link
-              href={`/contact?lang=${currentLang}`}
-              className="px-6 py-4 md:px-10 md:py-5 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all transform hover:-translate-y-1 shadow-xl text-base md:text-lg flex items-center justify-center text-center"
+              <Link href={`/tech?lang=${currentLang}`}>
+                {exploreText}
+              </Link>
+            </Button>
+            <Button
+              size="lg"
+              className="h-16 px-10 bg-white text-black font-black tracking-widest hover:bg-primary hover:text-white transition-all shadow-xl text-base md:text-lg rounded-none"
+              asChild
             >
-              {videoText}
-            </Link>
+              <Link href={`/contact?lang=${currentLang}`}>
+                {videoText}
+              </Link>
+            </Button>
           </div>
         </motion.div>
       </div>
