@@ -8,6 +8,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { AboutSection } from "../../locales";
+import { Button } from "@/components/ui/button";
 
 function Content() {
   const { t, locale } = useTranslation();
@@ -204,14 +205,16 @@ function DynamicSection({
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <Link
-                href={section.link.startsWith('/') ? `${section.link}?lang=${locale}` : section.link}
-                className={`inline-block px-8 py-3 font-bold text-white transition-transform hover:scale-105 ${
-                  section.buttonColor === 'red' ? 'bg-brand-red' : 'bg-brand-orange'
-                }`}
+              <Button
+                asChild
+                className={`${section.buttonColor === 'red' ? 'bg-brand-red hover:bg-brand-red/90' : 'bg-brand-orange hover:bg-brand-orange/90'} text-white`}
               >
-                {section.button}
-              </Link>
+                <Link
+                  href={section.link.startsWith('/') ? `${section.link}?lang=${locale}` : section.link}
+                >
+                  {section.button}
+                </Link>
+              </Button>
             </motion.div>
           </div>
 

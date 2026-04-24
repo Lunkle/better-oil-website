@@ -7,6 +7,7 @@ import { MoveLeft } from "lucide-react";
 import { NavItem, LocaleKey } from "@/locales";
 import { dictionaries } from "@/locales";
 import { usePathname } from "next/navigation";
+import { Button } from "@/components/ui/button";
 
 type DictionaryType = typeof dictionaries.en;
 
@@ -43,12 +44,11 @@ export default function ComingSoon({ t, locale }: ComingSoonProps) {
           <p className="text-foreground/40 font-mono text-sm tracking-widest">
             {t.placeholders.comingSoon}
           </p>
-          <Link
-            href={`/?lang=${locale}`}
-            className="inline-flex items-center gap-2 text-primary border border-primary/20 px-6 py-3 hover:bg-primary hover:text-white transition-all font-bold"
-          >
-            <MoveLeft size={16} /> {t.placeholders.backHome}
-          </Link>
+          <Button asChild variant="outline" className="text-primary border-primary/20 hover:bg-primary hover:text-white">
+            <Link href={`/?lang=${locale}`}>
+              <MoveLeft size={16} /> {t.placeholders.backHome}
+            </Link>
+          </Button>
         </div>
       </div>
       <Footer t={t.footer} currentLang={locale} />
