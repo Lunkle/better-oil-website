@@ -25,7 +25,8 @@ function Content() {
       <Navbar nav={t.nav} currentLang={locale} />
 
       {/* 1. Hero Section */}
-      <section className="pt-32 pb-20 px-6 md:px-12 max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="pt-32 pb-20 px-6 w-full">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <Breadcrumb items={breadcrumbItems} lang={locale} className="mb-8" />
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-deep-blue leading-tight">
@@ -41,11 +42,12 @@ function Content() {
             Isometric Rig Illustration
           </div>
         </div>
+        </div>
       </section>
 
       {/* 2. KPI Stats Grid */}
-      <section className="bg-brand-white py-12 px-0 max-w-full w-full">
-        <div className="w-full grid grid-cols-2 md:grid-cols-4 gap-0">
+      <section className="bg-brand-white py-12 px-6 w-full">
+        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-0">
           {content.kpi.items.map((item, idx) => {
             const Icon = kpiIcons[idx];
             return (
@@ -65,15 +67,15 @@ function Content() {
       </section>
 
       {/* 3. Problem vs. Solution */}
-      <section className="py-20 px-6 max-w-full w-full bg-white relative">
+      <section className="py-20 px-6 w-full bg-white relative">
          {/* Background splits: left gray, right white */}
          <div className="absolute inset-0 flex">
            <div className="w-1/2 bg-gray-100"></div>
            <div className="w-1/2 bg-white"></div>
          </div>
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch relative z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 relative z-10">
 
-          <div className="bg-gray-100 p-12 md:p-20 md:w-1/2 flex flex-col justify-center relative z-20">
+          <div className="flex flex-col justify-center pr-0 md:pr-12 py-12 relative z-20">
             <h3 className="text-3xl font-bold text-brand-deep-blue mb-8">{content.problemSolution.leftTitle}</h3>
             <ul className="space-y-6">
               {content.problemSolution.leftPoints.map((point, idx) => (
@@ -172,7 +174,7 @@ function Content() {
 
       {/* 7. Circular Process Workflow */}
       <section className="py-24 px-6 bg-gray-50 overflow-hidden">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-left mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue">
               {content.workflow.title}
@@ -232,8 +234,8 @@ function Content() {
 
       {/* 8. Business Scope Table */}
       <section className="py-20 px-6">
-         <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-left mb-12">
                <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue">
                  {content.businessScope.title}
                </h2>
