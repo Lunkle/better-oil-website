@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, Globe, Menu, X, ChevronRight } from 'lucide-react';
+import { Search, Globe, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { NavItem, NavItemParent } from '@/locales';
+import { NavItem } from '@/locales';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -25,82 +25,6 @@ interface NavbarProps {
     items: NavItem[];
   };
   currentLang: 'en' | 'zh';
-}
-
-/** Content panel for dropdowns that have nested parent → children structure */
-function NestedDropdownContent({
-  dropdown,
-  currentLang,
-}: {
-  dropdown: NavItemParent[];
-  currentLang: string;
-}) {
-  const [activeParent, setActiveParent] = useState<NavItemParent | null>(null);
-  const hasChildren = dropdown.some((p) => p.children && p.children.length > 0);
-
-  return (
-    <div className="flex">
-      {/* Left column: parent items */}
-      <div className="flex-1 min-w-[200px]">
-        {dropdown.map((parentItem) => {
-          const itemHasChildren = parentItem.children && parentItem.children.length > 0;
-          return (
-            <div
-              key={parentItem.parent}
-              className={cn(
-                "group text-foreground hover:text-brand-red transition-colors",
-                activeParent?.parent === parentItem.parent && itemHasChildren
-                  ? "text-brand-red bg-gray-100"
-                  : "bg-gray-50 hover:bg-gray-100"
-              )}
-              onMouseEnter={() => setActiveParent(parentItem)}
-            >
-              {parentItem.href ? (
-                <NavigationMenuLink asChild>
-                  <Link
-                    href={`${parentItem.href}?lang=${currentLang}`}
-                    className="block px-6 py-4 text-sm font-medium"
-                  >
-                    {parentItem.parent}
-                  </Link>
-                </NavigationMenuLink>
-              ) : (
-                <div className="px-6 py-4 flex items-center justify-between font-medium cursor-default text-sm">
-                  {parentItem.parent}
-                  {itemHasChildren && (
-                    <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover:text-brand-red transition-colors" />
-                  )}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Right column: children of active parent */}
-      {hasChildren && (
-        <div className="w-[300px] border-l border-border bg-gray-50/50 p-4">
-          {activeParent && activeParent.children ? (
-            <div className="flex flex-col space-y-4">
-              {activeParent.children.map((child) => (
-                <NavigationMenuLink key={child.name} asChild>
-                  <Link
-                    href={`${child.href}?lang=${currentLang}`}
-                    className="group flex items-center gap-2 text-sm text-foreground/80 hover:text-brand-red transition-colors"
-                  >
-                    <ChevronRight className="size-4 shrink-0 text-gray-400 group-hover:text-brand-red transition-colors" />
-                    <span>{child.name}</span>
-                  </Link>
-                </NavigationMenuLink>
-              ))}
-            </div>
-          ) : (
-            <div />
-          )}
-        </div>
-      )}
-    </div>
-  );
 }
 
 export default function Navbar({ nav, currentLang }: NavbarProps) {
@@ -130,29 +54,73 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
           <div className="hidden lg:flex items-center h-full">
             <NavigationMenu>
               <NavigationMenuList className="h-20 gap-0">
-                {nav.items.map((item) =>
-                  item.dropdown ? (
+                {nav.items.map((item) => {
+                  if (!item.dropdown) {
+                    return (
+                      <NavigationMenuItem key={item.name}>
+                        <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle, "h-20")}>
+                          <Link href={`${item.href}?lang=${currentLang}`}>
+                            {item.name}
+                          </Link>
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                    );
+                  }
+
+                  const isGrouped = item.dropdown.some((p) => p.children && p.children.length > 0);
+
+                  return (
                     <NavigationMenuItem key={item.name}>
                       <NavigationMenuTrigger className="h-20">
                         {item.name}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent>
-                        <NestedDropdownContent
-                          dropdown={item.dropdown}
-                          currentLang={currentLang}
-                        />
+                        {isGrouped ? (
+                          /* Mega-menu: section headers with child links shown in a grid */
+                          <ul className="grid grid-cols-2 gap-x-6 gap-y-4 p-6 w-[580px]">
+                            {item.dropdown.map((parentItem) => (
+                              <li key={parentItem.parent}>
+                                <p className="text-[10px] font-black uppercase tracking-widest text-foreground/40 mb-2">
+                                  {parentItem.parent}
+                                </p>
+                                <ul className="space-y-1">
+                                  {parentItem.children?.map((child) => (
+                                    <li key={child.name}>
+                                      <NavigationMenuLink asChild>
+                                        <Link
+                                          href={`${child.href}?lang=${currentLang}`}
+                                          className="block text-sm text-foreground/70 hover:text-brand-red transition-colors py-0.5 leading-snug"
+                                        >
+                                          {child.name}
+                                        </Link>
+                                      </NavigationMenuLink>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          /* Flat list: parent items are direct links */
+                          <ul className="flex flex-col p-2 w-[240px]">
+                            {item.dropdown.map((parentItem) => (
+                              <li key={parentItem.parent}>
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    href={`${parentItem.href ?? item.href}?lang=${currentLang}`}
+                                    className="block px-4 py-3 text-sm font-medium text-foreground/70 hover:text-brand-red hover:bg-accent transition-colors"
+                                  >
+                                    {parentItem.parent}
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                       </NavigationMenuContent>
                     </NavigationMenuItem>
-                  ) : (
-                    <NavigationMenuItem key={item.name}>
-                      <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle, "h-20")}>
-                        <Link href={`${item.href}?lang=${currentLang}`}>
-                          {item.name}
-                        </Link>
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  )
-                )}
+                  );
+                })}
               </NavigationMenuList>
             </NavigationMenu>
           </div>
