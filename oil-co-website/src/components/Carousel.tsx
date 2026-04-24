@@ -77,11 +77,24 @@ export default function Carousel({
   }, [tabs.length, autoSwitchInterval, activeIndex]);
 
   useEffect(() => {
-    // Scroll active tab into view for mobile
-    if (scrollContainerRef.current) {
-      const activeTabElement = scrollContainerRef.current.children[activeIndex] as HTMLElement;
+    // Only scroll horizontally within the scroll container when the active tab changes
+    const scrollContainer = scrollContainerRef.current;
+    if (scrollContainer) {
+      const activeTabElement = scrollContainer.children[activeIndex] as HTMLElement;
       if (activeTabElement) {
-        activeTabElement.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+        const tabRect = activeTabElement.getBoundingClientRect();
+        const containerRect = scrollContainer.getBoundingClientRect();
+
+        // Calculate the horizontal scroll offset required to center the active tab
+        const tabCenter = tabRect.left + tabRect.width / 2;
+        const containerCenter = containerRect.left + containerRect.width / 2;
+        const scrollOffset = tabCenter - containerCenter;
+
+        // Only change scrollLeft (horizontal scroll)
+        scrollContainer.scrollTo({
+          left: scrollContainer.scrollLeft + scrollOffset,
+          behavior: "smooth"
+        });
       }
     }
   }, [activeIndex]);
