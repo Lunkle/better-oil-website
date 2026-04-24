@@ -3,10 +3,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Search, Globe, Menu, X, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { NavItem } from '@/locales';
+import { NavItem, NavItemParent } from '@/locales';
 import { navigationMenuTriggerStyle } from '@/components/ui/navigation-menu';
 import {
   DropdownMenu,
@@ -26,6 +26,65 @@ interface NavbarProps {
     items: NavItem[];
   };
   currentLang: 'en' | 'zh';
+}
+
+/** Desktop dropdown nav item that opens/closes on hover. */
+function NavDropdownItem({ item, currentLang }: { item: NavItem & { dropdown: NavItemParent[] }; currentLang: string }) {
+  const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout>>();
+
+  const openMenu = () => {
+    clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+
+  const scheduleClose = () => {
+    closeTimer.current = setTimeout(() => setOpen(false), 150);
+  };
+
+  return (
+    <DropdownMenu open={open} onOpenChange={setOpen} modal={false}>
+      <DropdownMenuTrigger
+        className={cn(navigationMenuTriggerStyle, "h-20 gap-1")}
+        onMouseEnter={openMenu}
+        onMouseLeave={scheduleClose}
+      >
+        {item.name}
+        <ChevronDown className={cn("size-3 transition-transform duration-300", open && "rotate-180")} />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent
+        className="p-1 min-w-[220px]"
+        sideOffset={0}
+        onMouseEnter={openMenu}
+        onMouseLeave={scheduleClose}
+      >
+        {item.dropdown.map((parentItem) =>
+          parentItem.children && parentItem.children.length > 0 ? (
+            <DropdownMenuSub key={parentItem.parent}>
+              <DropdownMenuSubTrigger className="text-sm font-medium text-foreground/70 data-[state=open]:text-brand-red data-[state=open]:bg-accent px-4 py-3">
+                {parentItem.parent}
+              </DropdownMenuSubTrigger>
+              <DropdownMenuSubContent className="p-1 min-w-[220px]">
+                {parentItem.children.map((child) => (
+                  <DropdownMenuItem key={child.name} asChild className="text-sm text-foreground/70 focus:text-brand-red focus:bg-accent px-4 py-2.5 cursor-pointer">
+                    <Link href={`${child.href}?lang=${currentLang}`}>
+                      {child.name}
+                    </Link>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+          ) : (
+            <DropdownMenuItem key={parentItem.parent} asChild className="text-sm font-medium text-foreground/70 focus:text-brand-red focus:bg-accent px-4 py-3 cursor-pointer">
+              <Link href={`${parentItem.href ?? item.href}?lang=${currentLang}`}>
+                {parentItem.parent}
+              </Link>
+            </DropdownMenuItem>
+          )
+        )}
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 }
 
 export default function Navbar({ nav, currentLang }: NavbarProps) {
@@ -67,38 +126,7 @@ export default function Navbar({ nav, currentLang }: NavbarProps) {
               }
 
               return (
-                <DropdownMenu key={item.name}>
-                  <DropdownMenuTrigger className={cn(navigationMenuTriggerStyle, "h-20 group gap-1")}>
-                    {item.name}
-                    <ChevronDown className="size-3 transition-transform duration-300 group-data-[state=open]:rotate-180" />
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="p-1 min-w-[220px]" sideOffset={0}>
-                    {item.dropdown.map((parentItem) =>
-                      parentItem.children && parentItem.children.length > 0 ? (
-                        <DropdownMenuSub key={parentItem.parent}>
-                          <DropdownMenuSubTrigger className="text-sm font-medium text-foreground/70 data-[state=open]:text-brand-red data-[state=open]:bg-accent px-4 py-3">
-                            {parentItem.parent}
-                          </DropdownMenuSubTrigger>
-                          <DropdownMenuSubContent className="p-1 min-w-[220px]">
-                            {parentItem.children.map((child) => (
-                              <DropdownMenuItem key={child.name} asChild className="text-sm text-foreground/70 focus:text-brand-red focus:bg-accent px-4 py-2.5 cursor-pointer">
-                                <Link href={`${child.href}?lang=${currentLang}`}>
-                                  {child.name}
-                                </Link>
-                              </DropdownMenuItem>
-                            ))}
-                          </DropdownMenuSubContent>
-                        </DropdownMenuSub>
-                      ) : (
-                        <DropdownMenuItem key={parentItem.parent} asChild className="text-sm font-medium text-foreground/70 focus:text-brand-red focus:bg-accent px-4 py-3 cursor-pointer">
-                          <Link href={`${parentItem.href ?? item.href}?lang=${currentLang}`}>
-                            {parentItem.parent}
-                          </Link>
-                        </DropdownMenuItem>
-                      )
-                    )}
-                  </DropdownMenuContent>
-                </DropdownMenu>
+                <NavDropdownItem key={item.name} item={item as NavItem & { dropdown: NavItemParent[] }} currentLang={currentLang} />
               );
             })}
           </div>
