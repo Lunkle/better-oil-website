@@ -86,10 +86,10 @@ function Content() {
               ))}
             </ul>
             {/* The CSS Triangle pointing right */}
-            <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0 border-y-[60px] border-y-transparent border-l-[60px] border-l-gray-100 drop-shadow-xl z-30"></div>
+            <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0 border-y-[60px] border-y-transparent border-l-[60px] border-l-gray-100 z-30"></div>
           </div>
 
-          <div className="bg-white p-12 md:p-20 md:w-1/2 flex flex-col justify-center relative z-10 pl-12 md:pl-28">
+          <div className="bg-white p-12 md:p-20 flex flex-col justify-center relative z-10 pl-12 md:pl-28">
             <h3 className="text-3xl font-bold text-brand-orange mb-6">{content.problemSolution.rightTitle}</h3>
             <p className="text-gray-600 text-xl leading-relaxed">{content.problemSolution.rightSummary}</p>
           </div>
