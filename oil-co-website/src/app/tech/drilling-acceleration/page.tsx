@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Breadcrumb from "@/components/Breadcrumb";
 import { useTranslation } from "@/hooks/useTranslation";
+import Image from "next/image";
 
 import { CheckCircle2, TrendingUp, Clock, Target, ShieldCheck } from "lucide-react";
 
@@ -26,7 +27,7 @@ function Content() {
 
       {/* 1. Hero Section */}
       <section
-        className="pt-24 pb-32 px-6 w-full bg-white bg-cover bg-center bg-no-repeat min-h-[70vh] flex items-start"
+        className="pt-24 pb-32 px-6 w-full bg-white bg-cover bg-center bg-no-repeat aspect-video flex items-start"
         style={{ backgroundImage: "url('/tech/drill/hero.webp')" }}
       >
         <div className="max-w-7xl mx-auto w-full pt-12 md:pt-20">
@@ -279,10 +280,13 @@ function Content() {
            </h2>
            <div className="flex flex-col md:flex-row gap-12 items-stretch">
               {/* Left Column: 60% */}
-              <div className="basis-[60%] shrink-0">
-                 <div className="w-full h-full min-h-[300px] md:min-h-[400px] bg-white/5 border border-white/10 flex items-center justify-center">
-                    <span className="text-gray-400 font-mono">Certificate Image Placeholder</span>
-                 </div>
+              <div className="basis-[60%] shrink-0 relative min-h-[300px] md:min-h-[400px]">
+                 <Image
+                    src="/tech/drill/certificate.jpg"
+                    alt="Certification"
+                    fill
+                    className="object-contain"
+                 />
               </div>
 
               {/* Right Column: 40% */}
