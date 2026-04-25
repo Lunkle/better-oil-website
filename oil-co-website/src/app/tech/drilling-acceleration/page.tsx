@@ -46,18 +46,18 @@ function Content() {
       </section>
 
       {/* 2. KPI Stats Grid */}
-      <section className="bg-brand-white py-12 px-6 w-full">
+      <section className="bg-brand-white w-full bg-linear-to-r from-brand-red from-50% to-brand-orange to-50%">
         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-0">
           {content.kpi.items.map((item, idx) => {
             const Icon = kpiIcons[idx];
             return (
               <div
                 key={idx}
-                className={`p-12 md:p-16 flex flex-col items-center justify-center text-center shadow-lg ${
+                className={`py-24 md:py-36 px-1 flex flex-col items-center justify-start text-center ${
                   idx % 2 === 0 ? "bg-brand-red text-white" : "bg-brand-orange text-white"
                 }`}
               >
-                <Icon className="w-10 h-10 mb-4 opacity-90" />
+                <Icon className="size-16 mb-4 opacity-90" />
                 <div className="text-5xl md:text-7xl font-black mb-4">{item.value}</div>
                 <div className="text-base md:text-xl font-medium opacity-90 whitespace-pre-wrap">{item.label}</div>
               </div>
@@ -67,15 +67,9 @@ function Content() {
       </section>
 
       {/* 3. Problem vs. Solution */}
-      <section className="py-20 px-6 w-full bg-white relative">
-         {/* Background splits: left gray, right white */}
-         <div className="absolute inset-0 flex">
-           <div className="w-1/2 bg-gray-100"></div>
-           <div className="w-1/2 bg-white"></div>
-         </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 relative z-10">
-
-          <div className="flex flex-col justify-center pr-0 md:pr-12 py-12 relative z-20">
+      <section className="py-20 md:py-36 px-6 w-full relative bg-gray-100 md:bg-linear-to-r from-gray-100 from-[50.5%] to-brand-white to-[50.5%]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 relative z-10 gap-16 md:gap-0">
+          <div className="flex flex-col justify-center pr-0 md:pr-12 relative z-20">
             <h3 className="text-3xl font-bold text-brand-deep-blue mb-8">{content.problemSolution.leftTitle}</h3>
             <ul className="space-y-6">
               {content.problemSolution.leftPoints.map((point, idx) => (
@@ -86,10 +80,10 @@ function Content() {
               ))}
             </ul>
             {/* The CSS Triangle pointing right */}
-            <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-full w-0 h-0 border-y-[60px] border-y-transparent border-l-[60px] border-l-gray-100 z-30"></div>
+            <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 translate-x-full size-0 border-y-60 border-y-transparent border-l-60 border-l-gray-100 z-30"></div>
           </div>
 
-          <div className="bg-white p-12 md:p-20 flex flex-col justify-center relative z-10 pl-12 md:pl-28">
+          <div className="md:pl-28 md:pr-0 flex flex-col justify-start relative z-10">
             <h3 className="text-3xl font-bold text-brand-orange mb-6">{content.problemSolution.rightTitle}</h3>
             <p className="text-gray-600 text-xl leading-relaxed">{content.problemSolution.rightSummary}</p>
           </div>
@@ -156,17 +150,17 @@ function Content() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-left">
              {content.diagram.title}
           </h2>
-          <div className="relative aspect-[21/9] w-full max-w-5xl mx-auto bg-gray-800 overflow-hidden border border-gray-700 shadow-2xl flex items-center justify-center mb-16">
+          <div className="relative aspect-21/9 w-full max-w-5xl mx-auto bg-gray-800 overflow-hidden border border-gray-700 shadow-2xl flex items-center justify-center mb-16">
              {/* Blueprint Placeholder */}
              <div className="text-gray-500 font-mono">Mechanical Tool Blueprint / Cutaway</div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {content.diagram.items.map((item, idx) => (
-              <div key={idx} className="bg-white/10 border border-white/20 p-8 flex flex-col gap-4">
+              <DecoratedRectangle key={idx} className="bg-brand-deep-blue space-y-2">
                  <h4 className="text-xl font-bold text-brand-orange">{item.title}</h4>
                  <p className="text-gray-300 leading-relaxed text-sm md:text-base">{item.desc}</p>
-              </div>
+              </DecoratedRectangle>
             ))}
           </div>
         </div>
@@ -182,15 +176,15 @@ function Content() {
           </div>
           <div className="relative max-w-5xl mx-auto flex flex-col items-center justify-center">
             {/* The circular SVG hub */}
-            <div className="relative w-full aspect-square md:aspect-[16/9] flex items-center justify-center mb-16 md:mb-0">
+            <div className="relative w-full aspect-square md:aspect-video flex items-center justify-center mb-16 md:mb-0">
                <div className="absolute inset-0 flex items-center justify-center opacity-10">
                  {/* Decorative background orbits */}
-                 <div className="w-full h-full border-[1px] border-brand-deep-blue animate-[spin_40s_linear_infinite]"></div>
-                 <div className="absolute w-[80%] h-[80%] border-[1px] border-brand-orange animate-[spin_30s_linear_infinite_reverse]"></div>
+                 <div className="w-full h-full border border-brand-deep-blue animate-[spin_40s_linear_infinite]"></div>
+                 <div className="absolute w-[80%] h-[80%] border border-brand-orange animate-[spin_30s_linear_infinite_reverse]"></div>
                </div>
 
-               <div className="relative w-40 h-40 bg-brand-deep-blue shadow-2xl flex items-center justify-center z-10 border-4 border-white/10 text-white font-bold text-2xl text-center leading-tight">
-                  NEW<br/>DRILL
+               <div className="relative z-10">
+                  Add image here
                </div>
 
                {/* Orbital segments wrapping the core */}
@@ -279,8 +273,8 @@ function Content() {
          </div>
       </section>
 
-      {/* 9. Validation & Social Proof */}
-      <section className="py-20 px-6 bg-brand-deep-blue text-white">
+       {/* 9. Validation & Social Proof */}
+       <section className="py-20 px-6 bg-brand-deep-blue text-white">
         <div className="max-w-7xl mx-auto">
            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-left">
              {content.validation.title}
@@ -296,16 +290,9 @@ function Content() {
               {/* Right Column: 40% */}
               <div className="basis-[40%] shrink-0 flex flex-col gap-6">
                 {content.validation.cards.map((card, idx) => (
-                  <div key={idx} className="relative flex-1 flex flex-col">
-                     {/* White Rectangles Behind */}
-                     <div className="absolute -top-2 -left-2 w-6 h-6 bg-brand-white z-0"></div>
-                     <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-brand-white z-0"></div>
-
-                     {/* Main Card */}
-                     <div className="relative z-10 bg-white/10 border border-white/20 p-8 flex-1 flex items-center shadow-lg">
-                        <p className="text-lg font-medium leading-relaxed">{card}</p>
-                     </div>
-                  </div>
+                  <DecoratedRectangle key={idx} className="bg-brand-deep-blue">
+                      <p className="text-lg font-medium leading-relaxed">{card}</p>
+                  </DecoratedRectangle>
                 ))}
               </div>
            </div>
@@ -313,6 +300,21 @@ function Content() {
       </section>
 
       <Footer t={t.footer} currentLang={locale} />
+    </div>
+  );
+}
+
+function DecoratedRectangle({ children, className }: { children: React.ReactNode, className?: string }) {
+  return (
+    <div className="relative flex-1 flex flex-col group">
+        {/* White Rectangles Behind */}
+        <div className="absolute -top-0.5 -left-0.5 size-10 group-hover:size-16 transition-all duration-300 bg-brand-white z-0"></div>
+        <div className="absolute -bottom-0.5 -right-0.5 size-10 group-hover:size-16 transition-all duration-300 bg-brand-white z-0"></div>
+
+        {/* Main Card */}
+        <div className={`relative z-10 border border-brand-white/50 p-8 size-full shadow-lg ${className ?? ''}`}>
+          {children}
+        </div>
     </div>
   );
 }
