@@ -9,7 +9,7 @@ export const zh = {
         dropdown: [
           {
             parent: "公司简介",
-            href: "/about/company-profile",
+            href: "/about",
           },
           {
             parent: "使命愿景",

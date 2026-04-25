@@ -9,7 +9,7 @@ export const en = {
         dropdown: [
           {
             parent: "Company Profile",
-            href: "/about/company-profile",
+            href: "/about",
           },
           {
             parent: "Mission & Vision",
