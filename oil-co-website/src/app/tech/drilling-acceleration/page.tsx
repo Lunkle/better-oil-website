@@ -25,23 +25,17 @@ function Content() {
       <Navbar nav={t.nav} currentLang={locale} />
 
       {/* 1. Hero Section */}
-      <section className="pt-32 pb-20 px-6 w-full">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        <div className="space-y-6">
-          <Breadcrumb items={breadcrumbItems} lang={locale} className="mb-8" />
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-deep-blue leading-tight">
-            {content.hero.title}
-          </h1>
-        </div>
-        <div
-          className="relative aspect-video w-full overflow-hidden shadow-2xl bg-gray-100 flex items-center justify-center border border-gray-200"
-        >
-          {/* Placeholder for Isometric Rig */}
-          <div className="text-brand-deep-blue/40 font-mono flex flex-col items-center">
-            <span className="text-4xl mb-2">🏗️</span>
-            Isometric Rig Illustration
+      <section
+        className="pt-24 pb-32 px-6 w-full bg-white bg-cover bg-center bg-no-repeat min-h-[70vh] flex items-start"
+        style={{ backgroundImage: "url('/tech/drill/hero.webp')" }}
+      >
+        <div className="max-w-7xl mx-auto w-full pt-12 md:pt-20">
+          <div className="max-w-2xl space-y-6">
+            <Breadcrumb items={breadcrumbItems} lang={locale} className="mb-8" />
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-deep-blue leading-tight">
+              {content.hero.title}
+            </h1>
           </div>
-        </div>
         </div>
       </section>
 
@@ -124,14 +118,15 @@ function Content() {
       {/* 5. Drill Bit Feature */}
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          <div className="relative aspect-square w-full bg-gray-100 border-8 border-white shadow-2xl flex items-center justify-center">
-            {/* Placeholder for 3D Drill Bit */}
-            <div className="text-brand-orange font-mono flex flex-col items-center">
-               <span className="text-4xl mb-2">🔄</span>
-               3D Drill Bit Render
-            </div>
-            {/* Decorative arrow element */}
-            <div className="absolute inset-0 border-4 border-dashed border-brand-orange/30 animate-[spin_20s_linear_infinite]"></div>
+          <div className="relative aspect-square w-full bg-brand-white border-8 border-white shadow-2xl flex items-center justify-center overflow-visible">
+            {/* 3D Drill Bit Image */}
+            <img
+              src="/tech/drill/drill_closeup.webp"
+              alt="3D Drill Bit Render"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            {/* Decorative rotating element */}
+            <div className="absolute -inset-8 border-4 border-dashed border-brand-orange/50 animate-[spin_40s_linear_infinite] z-10 pointer-events-none"></div>
           </div>
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-brand-deep-blue mb-6">
@@ -151,8 +146,11 @@ function Content() {
              {content.diagram.title}
           </h2>
           <div className="relative aspect-21/9 w-full max-w-5xl mx-auto bg-gray-800 overflow-hidden border border-gray-700 shadow-2xl flex items-center justify-center mb-16">
-             {/* Blueprint Placeholder */}
-             <div className="text-gray-500 font-mono">Mechanical Tool Blueprint / Cutaway</div>
+             <img
+               src="/tech/drill/blueprint.webp"
+               alt="Mechanical Tool Blueprint / Cutaway"
+               className="w-full h-full object-contain"
+             />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -183,8 +181,8 @@ function Content() {
                  <div className="absolute w-[80%] h-[80%] border border-brand-orange animate-[spin_30s_linear_infinite_reverse]"></div>
                </div>
 
-               <div className="relative z-10">
-                  Add image here
+               <div className="relative z-10 w-48 h-48 border-4 border-brand-white shadow-2xl bg-brand-white p-2">
+                 <img src="/tech/drill/drill_closeup.webp" alt="Drill Bit Core" className="w-full h-full object-cover" />
                </div>
 
                {/* Orbital segments wrapping the core */}
