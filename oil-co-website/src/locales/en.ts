@@ -346,6 +346,97 @@ export const en = {
       terms: "Terms of Service",
     },
   },
+
+  drillingAcceleration: {
+    breadcrumb: ["Home", "Technologies", "Constant Torque and Pressure Drilling Acceleration Tech"],
+    hero: {
+      title: "Constant Energy & Pressure, Defining New Standards in Drilling Speed",
+    },
+    kpi: {
+      items: [
+        { value: "52%", label: "Average ROP Increase" },
+        { value: "45%", label: "Average Well Construction Cycle Reduction" },
+        { value: "300+", label: "Successful Well Applications" },
+        { value: "500h", label: "Downhole Service Life" },
+      ],
+    },
+    problemSolution: {
+      leftTitle: "Three Major Bottlenecks in Conventional Drilling",
+      leftPoints: [
+        "Stick-Slip & Sticking: Drill string torsional vibration leading to bit tooth damage and tool fatigue.",
+        "WOB Instability: Plastic formation strain causes the bit to instantly detach, plummeting cutting efficiency.",
+        "Severe Drag: In directional wells, WOB cannot effectively transfer to the bit, making sliding drilling highly inefficient."
+      ],
+      rightTitle: "New-Drill Integrated Technology Process",
+      rightSummary: "Accurately transmits torsional and axial continuous impact to the bit, enhancing rock-breaking capability, reducing torsional vibration, and exponentially lowering stick-slip risk. Meanwhile, it provides a continuous, stable WOB, drastically improving ROP and bit life.",
+    },
+    comparison: {
+      headers: ["Evaluation Dimension", "Traditional Method", "NEW-DRILL Integrated Tech"],
+      rows: [
+        { metric: "Stick-Slip & Drag Freq.", trad: "Extremely high, severe energy consumption", new: "Exponentially reduced, high-freq circumferential impact breaks stick-slip" },
+        { metric: "Rock Breaking Dynamics", trad: "Relies solely on rotation shear", new: "Shear + high-freq circumferential/axial impact assist" },
+        { metric: "Complex Formation Bit Protection", trad: "Prone to severe axial impact,\nleading to severe tooth chipping", new: "Constant WOB avoids hard collisions, achieving smooth cutting" },
+        { metric: "Overall System Life", trad: "Highly prone to fatigue, short life", new: "Highly matched, life extremely extended (up to 300-500 hours)" },
+      ],
+    },
+    drillBit: {
+      title: "High-Speed Stability & Extended Bit Longevity",
+      description: "The NEW-DRILL integrated tool (WOB & RPM Stabilizer) features high speed, large torque, high power, high-temperature resistance, and extended longevity. Highly matched with efficient bits, it provides stable torque, significantly reducing stick-slip and extending bit life. Manufactured from imported all-metal materials, it resists high temps and pressures, driven purely mechanically without being affected by fluid pressure or mud density. Proven through hundreds of thousands of cycles, its reliability is exceptional.\n\nIn practical applications, NEW-DRILL effectively handles complex, heterogeneous, and soft/hard alternating formations, preventing violent axial impacts and tooth damage, while ensuring steady cutting efficiency in plastic formations by minimizing instant bit detachments.",
+    },
+    diagram: {
+      title: "Trinity Concept: Reconstructing Bottom-Hole Dynamics",
+      items: [
+        { title: "Rotary Power Generator", desc: "Produces continuous high-torque dynamic power" },
+        { title: "Hydraulic Impactor", desc: "Generates high-frequency circumferential impact loads to assist PDC bits in rock breaking, reduce stick-slip, protect the bit, and relieve drag during directional operations" },
+        { title: "Axial Impactor", desc: "Provides continuous, relatively constant WOB, resulting in stable bottom-hole conditions. This effectively improves cutting efficiency while protecting cutters, extending bit life, and achieving excellent ROP." }
+      ]
+    },
+    workflow: {
+      title: 'Full-Process Optimization Workflow',
+      steps: [
+        { number: "01", label: "Lithology Selection", desc: "Precise selection and matching of lithology and matched bits for different formations." },
+        { number: "02", label: "Tool Matching", desc: "Ensure matched bits for different formations are compatible with NEW-DRILL tools." },
+        { number: "03", label: "Hydraulic Optimization", desc: "Effective optimization of hydraulic parameters for matched bits in different formations." },
+        { number: "04", label: "Parameter Setting", desc: "Scientifically set the initial parameters of NEW-DRILL and matched bits." },
+        { number: "05", label: "MWD Adjustment", desc: "Real-time dynamic adjustment of drilling parameters as downhole use time progresses." },
+      ],
+    },
+    businessScope: {
+      title: 'Business Scope',
+      mainCategory: "Directional Wells",
+      subGroups: [
+        {
+          name: "Proprietary Technical Services",
+          items: [
+            { tech: "HTHP MWD Technology", detail: "MWD Measurement While Drilling" },
+            { tech: "Horizontal Well Technology", detail: "Conventional Directional/Horizontal Well Tech / HTHP Horizontal Well Tech" },
+            { tech: "Gyro Measurement Technology", detail: "" },
+            { tech: "Sidetracking Technology", detail: "Deep Well Sidetracking Horizontal Tech / Hard Formation & Casing Window Sidetracking / Slim Hole Sidetracking" },
+            { tech: "Vertical Section Acceleration", detail: "NEW-DRILL + High Efficiency PDC / Impregnated Diamond Bit + High Speed Motor" },
+          ]
+        },
+        {
+          name: "Cooperative Technical Services",
+          items: [
+            { tech: "Rotary Steerable System (RSS)", detail: "Continuous Rotary Steering / High Trajectory Control Accuracy / Avoid Drag" },
+            { tech: "Geosteering Technology", detail: "" },
+            { tech: "Vertical Drilling Technology", detail: "" },
+            { tech: "Multilateral Well Technology", detail: "Multilateral Drilling & Completion Tool System" },
+            { tech: "Logging Technology", detail: "Logging While Drilling (LWD)" },
+          ]
+        }
+      ]
+    },
+    validation: {
+      title: "Application Results",
+      cards: [
+        "Breaks the physical limits of traditional single-shear, reconstructing bottom-hole dynamics",
+        "300+ field applications, with technical advancement far exceeding industry standards",
+        "Chengdu Municipal Tech Innovation 1st Prize, an absolute benchmark in vertical section acceleration"
+      ]
+    }
+  },
+
   placeholders: {
     comingSoon: "Content is coming soon...",
     comingSoonTitle: "Coming Soon",
