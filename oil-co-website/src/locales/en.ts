@@ -437,6 +437,61 @@ export const en = {
     }
   },
 
+  targetedLubrication: {
+    breadcrumb: ["> Home", "> Technologies", "> Ultra-High Difficulty Well Completion Tech", "> Microcapsule Targeted Lubrication Tech"],
+    hero: {
+      title: "Targeted Lubrication: Breaking the Physical Limits of Traditional Lubrication.",
+      cta: "Download Product Manual"
+    },
+    limitations: {
+      title: "Limitations of Traditional Lubrication Technology Products",
+      cards: [
+        { title: "Friction Limit:", desc: "Complex trajectories lead to severe friction, making pipe sticking extremely likely" },
+        { title: "Compatibility Conflict:", desc: "Traditional high-concentration lubricants are extremely difficult to combine with oil-based drilling fluids" },
+        { title: "Heat Accumulation Damage:", desc: "Continuous friction generates high temperatures, leading to local carbonization of drill bit cutters and reduced lifespan" },
+        { title: "Total Cost of Ownership (TCO):", desc: "Slow drilling speeds, high tool wear, and high non-productive time (NPT)" }
+      ]
+    },
+    mechanism: {
+      title: "Paradigm Shift from Blind Dispersion to Intelligent Targeting: Dual-Reduction Mechanism",
+      subtitle: "“Lubrication where there is friction.”",
+      left: {
+        title: "Before Rupture: Macro Ball-Bearing Effect",
+        desc: "Capsules exist as tiny spherical particles in the drilling fluid, producing a rolling effect at the contact interface, converting sliding friction into rolling friction and macroscopically reducing drag."
+      },
+      center: {
+        title: "Threshold Triggering and Targeted Film Formation",
+        desc: "When local shear stress exceeds the critical strength of the capsule wall (750N-1500N adjustable as needed), the capsule ruptures precisely, instantly releasing high-concentration lubricant, linearly reducing the friction coefficient.",
+        layers: ["Shell", "Core"]
+      },
+      right: {
+        title: "After Rupture: Micro-Targeted Lubrication",
+        desc: "Capsules are crushed under extreme high pressure/high shear forces (such as at the bit and pipe string contact points), instantly releasing 100% concentration lubricating oil, transitioning from boundary lubrication to mixed lubrication, forming a tough lubricating film on the rough metal and rock friction surfaces."
+      }
+    },
+    metrics: {
+      icons: [
+        { title: "Precise Pressure Response:", desc: "Capsule rupture pressure can be customized (750N-1500N), ensuring product release only at actual friction points." },
+        { title: "All-Round Temperature Coverage:", desc: "Product series covers temperatures from 140°C to 230°C, meeting full-scene requirements from conventional to ultra-deep wells." },
+        { title: "Efficient Rheological Compatibility:", desc: "Perfectly compatible with water-based and oil-based drilling fluid systems; rheological properties are extremely stable before and after aging (apparent viscosity increase ≤ 6 mPa·S)." },
+        { title: "Ultimate Environmental Protection:", desc: "Entire series is non-toxic, passing third-party authoritative testing (SVHC content ≤ 0.1%), achieving low oil content in water-based drilling fluids and meeting strict environmental regulations." }
+      ],
+      stats: [
+        { value: "36.5% - 68.3%", label: "Friction Coefficient Reduction Rate" },
+        { value: ">30%", label: "ROP Increase" },
+        { value: "230°C", label: "Ultimate Temperature Resistance" },
+        { value: "SVHC ≤ 0.1%", label: "Environmental Compliance" }
+      ]
+    },
+    crisis: {
+      title: "Full-Process Crisis Elimination",
+      nodes: [
+        { title: "Directional Drilling Section:", pain: "Pain point: Severe drag, difficulty in steering; torque increase, frequent top drive stalling", solution: "Solution: Eliminate sliding directional drag, ensuring precise orientation." },
+        { title: "Clean-out and Completion Section:", pain: "Pain point: Frequent reaming, casing/completion tools not reaching target depth", solution: "Solution: Significantly reduce tripping drag, ensuring safe placement of casing and tools." },
+        { title: "Long Horizontal Extension Section:", pain: "Pain point: Friction surge, extreme difficulty in tripping; torque fluctuations leading to tool failure", solution: "Solution: Linearly reduce friction coefficient, improving parameter transmission efficiency and ROP." }
+      ]
+    }
+  },
   placeholders: {
     comingSoon: "Content is coming soon...",
     comingSoonTitle: "Coming Soon",
